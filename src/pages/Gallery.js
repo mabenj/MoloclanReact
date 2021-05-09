@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Galleria() {
-	return <div>galleria</div>;
+	return <div style={{ height: "400px", background: "red" }}>GALLERIA</div>;
 }

@@ -1,20 +1,12 @@
 import React from "react";
-import {
-	Navbar,
-	NavDropdown,
-	Form,
-	FormControl,
-	Button,
-	Nav,
-	Container
-} from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
 export default function Header() {
 	const location = useLocation();
 	const activePath = location.pathname.toLowerCase();
 	return (
-		<Navbar className="navbar" variant="dark" expand="md" fixed="top">
+		<Navbar className="navbar" variant="dark" expand="md">
 			<Container>
 				<Nav>
 					<Navbar.Brand href="/" className="navbar-brand">
@@ -32,10 +24,7 @@ export default function Header() {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="">
-							<Nav.Link
-								className="navitem"
-								href="/galleria"
-								active={activePath === "/galleria"}>
+							<Nav.Link href="/galleria" active={activePath === "/galleria"}>
 								GALLERIA
 							</Nav.Link>
 							<Nav.Link href="/servut" active={activePath === "/servut"}>

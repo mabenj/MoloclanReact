@@ -16,3 +16,7 @@
 .navbar-brand {
 	font-size: 30px !important;
 }
+
+.footer-main {
+	background-color: var(--dark-color);
+}
