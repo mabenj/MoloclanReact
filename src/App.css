@@ -1,8 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+	font-family: "Open Sans", sans-serif;
+}
+
 :root {
 	--orange-color: #ffa31a;
 	--grey-color: #808080;
 	--dark-color: #292929;
 	--black-color: #1b1b1b;
+}
+
+body {
+	background-image: url("./img/rust_banner.svg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100%;
+	background-position: 0 70px;
+	background-color: var(--black-color) !important;
+}
+
+/* For navbar */
+body {
+	padding-top: 70px !important;
+}
+@media (max-width: 979px) {
+	body {
+		padding-top: 0px !important;
+	}
 }
 
 .navbar {
@@ -19,4 +44,18 @@
 
 .footer-main {
 	background-color: var(--dark-color);
+}
+
+.footer-main a,
+main a {
+	color: var(--orange-color) !important;
+}
+
+.wrapper {
+	margin: 200px 0;
+	width: 100%;
+	background-color: rgb(39, 39, 39, 0.6);
+	border-radius: 10px;
+	padding: 50px 80px;
+	color: azure;
 }

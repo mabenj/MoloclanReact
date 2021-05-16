@@ -6,24 +6,65 @@ export default function Footer() {
 		<footer className="footer-main">
 			<div className="container p-4">
 				<div className="row">
-					<div className="col"></div>
-					<div className="col-md-6">
-						<h4 className="text-center text-white pb-2">Pääkonttori</h4>
+					<div className="col">
+						<h4 className=" text-white pb-2">Pääkonttori</h4>
 						<ul className="list-unstyled">
-							<li className="text-center text-white">Paska-avenue 42</li>
-							<li className="text-center text-white">Karstula, 43 500 </li>
-							<li className="text-center text-white mb-2">Suomi, Finland</li>
-							<li className="text-center text-white">info@moloclan.fi</li>
-							<li className="text-center text-white">+358 420 609 000</li>
-							<li className="text-center text-white mt-4">
-								<i>
-									Copyright &copy; Markkinarako Oy™ {new Date().getFullYear()}
-								</i>
+							<li className="text-white">Paska-avenue 42</li>
+							<li className="text-white">Karstula, 43 500 </li>
+							<li className="text-white mb-2">Suomi, Finland</li>
+							<li className="text-white">info@moloclan.fi</li>
+							<li className="text-white">+358 420 609 000</li>
+						</ul>
+					</div>
+					<div className="col">
+						<h4 className="text-white pb-2">Sivubisnekset</h4>
+						<ul className="list-unstyled">
+							<li className="text-white">
+								<i>Emoyhtiö &middot; </i>
+								<a
+									href="https://www.youtube.com/watch?v=9V17W0uaZBI"
+									target="_blank"
+									rel="noreferrer">
+									Markkinarako Oy
+								</a>
+							</li>
+							<li className="text-white">
+								<i>Jaridomain &middot; </i>
+								<a
+									href="https://jariclub.moloclan.fi"
+									target="_blank"
+									rel="noreferrer">
+									Jari-Club
+								</a>
+							</li>
+							<li className="text-white">
+								<i>Vanhat sivut &middot; </i>
+								<a
+									href="https://old.moloclan.fi"
+									target="_blank"
+									rel="noreferrer">
+									old.moloclan.fi
+								</a>
 							</li>
 						</ul>
 					</div>
 					<div className="col">
 						<GoogleMap />
+					</div>
+				</div>
+				<div className="row">
+					<div className="col text-white text-center mt-5">
+						<i>Copyright &copy; Markkinarako Oy™ {new Date().getFullYear()}</i>
+						<br />
+						<i>
+							Oranssi ukko -taustakuva by{" "}
+							<a
+								href="https://www.reddit.com/user/veys_ryu"
+								target="_blank"
+								rel="noreferrer">
+								veys_ryu
+							</a>
+						</i>
 					</div>
 				</div>
 			</div>

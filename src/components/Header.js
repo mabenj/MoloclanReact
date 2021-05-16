@@ -6,14 +6,14 @@ export default function Header() {
 	const location = useLocation();
 	const activePath = location.pathname.toLowerCase();
 	return (
-		<Navbar className="navbar" variant="dark" expand="md">
+		<Navbar className="navbar" variant="dark" expand="md" fixed="top">
 			<Container>
 				<Nav>
 					<Navbar.Brand href="/" className="navbar-brand">
 						<img
 							src="/favicon-96x96.png"
-							width="50"
-							height="50"
+							width="35"
+							height="35"
 							className="d-inline-block"
 							alt="MOLO clan logo"
 						/>{" "}

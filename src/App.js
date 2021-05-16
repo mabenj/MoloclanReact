@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Gallery from "./pages/Gallery";
 import Servers from "./pages/Servers";
 import Jari from "./pages/Jari";
+import Home from "./pages/Home";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,6 +23,9 @@ function App() {
 					</Route>
 					<Route path="/jari">
 						<Jari></Jari>
+					</Route>
+					<Route path="/">
+						<Home />
 					</Route>
 				</Switch>
 			</Router>

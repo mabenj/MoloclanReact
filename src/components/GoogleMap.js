@@ -7,8 +7,6 @@ const mapStyles = {
 };
 
 export class MapContainer extends React.Component {
-	//61.342465731938304, 23.773186026305858
-	// 61.336826016194365, 23.766062079251675
 	render() {
 		return (
 			<>
@@ -17,17 +15,27 @@ export class MapContainer extends React.Component {
 					zoom={12}
 					style={mapStyles}
 					initialCenter={{
-						lat: 61.3368,
-						lng: 23.766
+						lat: 61.3329,
+						lng: 23.7621
 					}}>
 					<Marker
-						title={"Pääkonttori on tässä."}
+						title={"Pääkonttori on tässä"}
 						name={"Pääkonttori"}
-						position={{ lat: 61.3424, lng: 23.7731 }}
+						position={{ lat: 61.3268, lng: 23.7456 }}
 						icon={{
 							url: "/favicon-96x96.png",
-                            anchor: new this.props.google.maps.Point(8,8),
-							scaledSize: new this.props.google.maps.Size(16, 16)
+							anchor: new this.props.google.maps.Point(12, 18),
+							scaledSize: new this.props.google.maps.Size(40, 40)
+						}}
+					/>
+					<Marker
+						title={"Haarakonttori on tässä"}
+						name={"Haarakonttori"}
+						position={{ lat: 61.3236, lng: 23.7618 }}
+						icon={{
+							url: "/favicon-96x96.png",
+							anchor: new this.props.google.maps.Point(18, 18),
+							scaledSize: new this.props.google.maps.Size(40, 40)
 						}}
 					/>
 				</Map>
@@ -37,5 +45,5 @@ export class MapContainer extends React.Component {
 }
 
 export default GoogleApiWrapper({
-	apiKey: "AIzaSyCPoKzwJXc308pvU5Orh-WveNVeL3Wmp3Y"
+	apiKey: process.env.REACT_APP_MAPS_API
 })(MapContainer);
