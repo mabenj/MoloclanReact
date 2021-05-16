@@ -57,7 +57,7 @@ export default function Footer() {
 						<i>Copyright &copy; Markkinarako Oy™ {new Date().getFullYear()}</i>
 						<br />
 						<i>
-							Oranssi ukko -taustakuva by{" "}
+							Oranssi ukko -taustakuva ja Roof cämpperi -kuva by{" "}
 							<a
 								href="https://www.reddit.com/user/veys_ryu"
 								target="_blank"
