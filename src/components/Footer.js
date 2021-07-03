@@ -1,5 +1,6 @@
 import React from "react";
 import GoogleMap from "./GoogleMap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Footer() {
 	return (
@@ -7,7 +8,9 @@ export default function Footer() {
 			<div className="container p-4">
 				<div className="row">
 					<div className="col">
-						<h4 className=" text-white pb-2">Pääkonttori</h4>
+						<h4 className="text-white pb-2">
+							Pääkonttori <FontAwesomeIcon icon={["far", "building"]} />
+						</h4>
 						<ul className="list-unstyled">
 							<li className="text-white">Paska-avenue 42</li>
 							<li className="text-white">Karstula, 43 500 </li>
@@ -17,7 +20,9 @@ export default function Footer() {
 						</ul>
 					</div>
 					<div className="col">
-						<h4 className="text-white pb-2">Sivubisnekset</h4>
+						<h4 className="text-white pb-2">
+							Sivubisnekset <FontAwesomeIcon icon="hand-holding-usd" />
+						</h4>
 						<ul className="list-unstyled">
 							<li className="text-white">
 								<i>Emoyhtiö &middot; </i>
@@ -56,7 +61,7 @@ export default function Footer() {
 					<div className="col text-white text-center mt-5">
 						<i>Copyright &copy; Markkinarako Oy™ {new Date().getFullYear()}</i>
 						<br />
-						<i>
+						<i style={{ color: "gray" }}>
 							Oranssi ukko -taustakuva ja Roof cämpperi -kuva by{" "}
 							<a
 								href="https://www.reddit.com/user/veys_ryu"

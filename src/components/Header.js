@@ -24,11 +24,14 @@ export default function Header() {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="">
-							<Nav.Link href="/galleria" active={activePath === "/galleria"}>
-								GALLERIA
+							<Nav.Link href="/" active={activePath === "/"}>
+								MOLO
 							</Nav.Link>
 							<Nav.Link href="/servut" active={activePath === "/servut"}>
 								SERVUT
+							</Nav.Link>
+							<Nav.Link href="/galleria" active={activePath === "/galleria"}>
+								GALLERIA
 							</Nav.Link>
 							<Nav.Link href="/jari" active={activePath === "/jari"}>
 								JARI

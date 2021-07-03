@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap"); */
 
 * {
 	font-family: "Open Sans", sans-serif;
@@ -6,9 +7,13 @@
 
 :root {
 	--orange-color: #ffa31a;
+	--dark-orange-color: #cf4a0c98;
+	--dark-orange-color: #ffa31a6e;
 	--grey-color: #808080;
 	--dark-color: #292929;
 	--black-color: #1b1b1b;
+	--wrapper-bg-color: rgba(22, 22, 22, 0.3);
+	--ts-viewer-bg-color: rgba(73, 73, 73, 0.514);
 }
 
 body {
@@ -30,11 +35,43 @@ body {
 	}
 }
 
+h1,
+h2,
+h3 {
+	font-weight: 800 !important;
+	letter-spacing: 0.05em;
+	word-spacing: 0.2em;
+	text-transform: uppercase;
+	border-left: var(--orange-color);
+	border-left-style: solid;
+	border-left-width: 3px;
+	padding: 0 10px;
+}
+
+h3 {
+	font-size: 22px;
+}
+
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:active,
+.btn-primary:visited {
+	background-color: var(--orange-color) !important;
+}
+
 .navbar {
 	background-color: var(--dark-color);
 }
 
 .nav-link.active {
+	color: var(--orange-color) !important;
+	/* Top only */
+	/* box-shadow: inset 0px 2px 0px -1px var(--orange-color); */
+	/* Bottom only */
+	box-shadow: inset 0px -2px 0px -1px var(--orange-color);
+}
+
+.nav-link:hover {
 	color: var(--orange-color) !important;
 }
 
@@ -42,21 +79,22 @@ body {
 	font-size: 30px !important;
 }
 
-#molo-logo {
+#banner-container {
+	text-align: center;
 	margin-top: 200px;
-	background-image: url("./img/molo-logo.svg");
-	background-repeat: no-repeat;
-	/* background-color: red; */
-	/* background-size: contain; */
-	background-position: center;
-	width: 500px;
-	height: 200px;
-
-	transition: transform 0.2s;
 }
 
-#molo-logo:hover {
-	transform: scale(1.03);
+#banner-texts {
+	fill: aliceblue;
+}
+
+#banner-lines {
+	stroke: aliceblue;
+}
+
+#banner-lines,
+#banner-texts {
+	transition: all 1s ease;
 }
 
 .footer-main {
@@ -71,8 +109,29 @@ main a {
 .wrapper {
 	margin: 100px 0;
 	width: 100%;
-	background-color: rgba(22, 22, 22, 0.3);
-	border-radius: 10px;
+	background-color: var(--wrapper-bg-color);
 	padding: 50px 80px;
 	color: azure;
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
+	border-style: solid;
+	border-image: linear-gradient(var(--dark-orange-color), transparent) 1;
+	border-image-width: 1px;
+	border-bottom: 0;
+	border-radius: 0 0 10px 10px;
+}
+
+.TSViewer {
+	background-color: var(--ts-viewer-bg-color);
+	padding: 30px;
+	border-radius: 5px;
+}
+
+.server-ip {
+	font-family: "Courier New", Courier, monospace;
+}
+
+.ip-info-table td {
+	padding-right: 50px;
+	padding-bottom: 20px;
 }
