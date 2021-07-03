@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 
+const SERVER_IP = "51.79.162.160";
+const FAVICON_URL = `https://api.minetools.eu/favicon/${SERVER_IP}/25565`;
+const FAVICON_URL_FALLBACK = "https://i.imgur.com/8XKJwE8.jpg";
+const QUERY_URL = `https://api.minetools.eu/query/${SERVER_IP}/25565`;
+
 const cardStyle = {
 	backgroundImage: "url('https://i.imgur.com/UPLRrTB.jpg')",
 	backgroundSize: "100%",
@@ -45,21 +50,16 @@ export default function MinecraftCard() {
 	const [playerCount, setPlayerCount] = useState(0);
 	const [isOffline, setIsOffline] = useState(false);
 
-	const serverIp = "51.79.162.160";
-	const faviconUrl = `https://api.minetools.eu/favicon/${serverIp}/25565`;
-	const fallBackFavIconUrl = "https://i.imgur.com/8XKJwE8.jpg";
-	const queryUrl = `https://api.minetools.eu/query/${serverIp}/25565`;
-
 	useEffect(() => {
-		fetch(queryUrl)
+		fetch(QUERY_URL)
 			.then((response) => response.json())
 			.then((data) => {
 				setIsOffline(data.status === "ERR");
-				setPlayers(data.Playerlist?.slice(0, 999) || []);
+				setPlayers(data.Playerlist?.slice(0, 20) || []);
 				setPlayerCount(data.Playerlist?.length || 0);
 			})
 			.catch(console.error);
-	}, [queryUrl]);
+	}, []);
 
 	return (
 		<div style={cardStyle}>
@@ -69,7 +69,7 @@ export default function MinecraftCard() {
 				</h4>
 				<img
 					style={favIconStyle}
-					src={isOffline ? fallBackFavIconUrl : faviconUrl}
+					src={isOffline ? FAVICON_URL_FALLBACK : FAVICON_URL}
 					alt="favicon"
 				/>
 			</span>
@@ -81,7 +81,7 @@ export default function MinecraftCard() {
 						</span>
 					) : (
 						<>
-							Paikalla&nbsp;
+							<span className="align-bottom">Paikalla&nbsp;</span>
 							<span className="badge badge-success badge-pill">
 								{playerCount}
 							</span>
@@ -100,14 +100,12 @@ export default function MinecraftCard() {
 
 const PlayerColumn = ({ players }) => {
 	return (
-		<Col md>
-			<ul className="m-0 p-0 mx-2" style={{ listStyleType: "none" }}>
-				{players.map((playerName, index) => (
-					<li key={index} className="my-1">
-						&middot;&nbsp;{playerName}
-					</li>
-				))}
-			</ul>
+		<Col sm>
+			{players.map((playerName, index) => (
+				<p key={index} className="my-1 pl-4">
+					&middot;&nbsp;{playerName}
+				</p>
+			))}
 		</Col>
 	);
 };

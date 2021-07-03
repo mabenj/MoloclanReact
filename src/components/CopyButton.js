@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Button, Overlay, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const TOOLTIP_DURATION = 1500;
+const TOOLTIP_DURATION = 1000;
 
 export default function CopyButton({ target, variant }) {
 	const [showTooltip, setShowTooltip] = useState(false);
