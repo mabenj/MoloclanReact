@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
-/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap"); */
 
 * {
 	font-family: "Open Sans", sans-serif;
 }
 
 :root {
+	--text-color: aliceblue;
 	--orange-color: #ffa31a;
 	--dark-orange-color: #cf4a0c98;
 	--dark-orange-color: #ffa31a6e;
@@ -82,6 +82,15 @@ h3 {
 }
 
 .hamburger-icon {
+	/* Reset the button styling */
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
 	width: 40px;
 	height: 40px;
 	font-size: 22px;
@@ -105,17 +114,47 @@ h3 {
 	transition: width 200ms;
 }
 
+.sidebar ul {
+	padding-top: 15px;
+	overflow: hidden;
+}
+
+.sidebar ul li {
+	line-height: 60px;
+	list-style: none;
+}
+.sidebar ul li span,
+.sidebar ul li a {
+	display: block;
+	height: 60px;
+	padding: 0 10px;
+	text-decoration: none;
+	text-transform: none;
+	color: var(--text-color);
+	font-size: 16px;
+	white-space: nowrap;
+}
+.sidebar ul li span {
+	color: var(--grey-color);
+	font-size: 18px;
+}
+.sidebar ul li a:hover {
+	background-color: var(--dark-color);
+	color: var(--orange-color);
+	transition: none;
+}
+
 #banner-container {
 	text-align: center;
 	margin-top: 200px;
 }
 
 #banner-texts {
-	fill: aliceblue;
+	fill: var(--text-color);
 }
 
 #banner-lines {
-	stroke: aliceblue;
+	stroke: var(--text-color);
 }
 
 #banner-lines,

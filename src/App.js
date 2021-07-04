@@ -5,6 +5,7 @@ import Gallery from "./pages/Gallery";
 import Servers from "./pages/Servers";
 import Jari from "./pages/Jari";
 import Home from "./pages/Home";
+import GuiPack from "./pages/GuiPack";
 import { Container } from "react-bootstrap";
 
 import "./App.css";
@@ -35,6 +36,9 @@ function App() {
 				<main>
 					<Container fluid="md">
 						<Switch>
+							<Route path="/gui-pack">
+								<GuiPack></GuiPack>
+							</Route>
 							<Route path="/galleria">
 								<Gallery></Gallery>
 							</Route>

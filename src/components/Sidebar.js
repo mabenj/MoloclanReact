@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -12,14 +13,38 @@ export default function Sidebar() {
 
 	return (
 		<>
-			<div className="hamburger-icon" onClick={toggleSidebar}>
+			<button className="hamburger-icon" onClick={toggleSidebar}>
 				<FontAwesomeIcon icon="bars" />
-			</div>
-			<SidebarContent />
+			</button>
+			<SidebarContent header="Proggikset" />
 		</>
 	);
 }
 
-const SidebarContent = () => {
-	return <div className="sidebar"></div>;
+const SidebarContent = ({ header }) => {
+	return (
+		<div className="sidebar">
+			<ul>
+				<li>
+					<span>{header}</span>
+				</li>
+				<li>
+					<Link to="gui-pack">Minecraft GUI Pack</Link>
+				</li>
+				<li>
+					<a
+						href="https://jariclub.moloclan.fi/"
+						target="_blank"
+						rel="noreferrer">
+						Jari Club nettidomain
+					</a>
+				</li>
+				<li>
+					<a href="https://old.moloclan.fi/" target="_blank" rel="noreferrer">
+						Vanha moloclan.fi
+					</a>
+				</li>
+			</ul>
+		</div>
+	);
 };
