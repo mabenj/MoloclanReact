@@ -10,14 +10,22 @@ const cardStyle = {
 	backgroundImage: "url('https://i.imgur.com/UPLRrTB.jpg')",
 	backgroundSize: "100%",
 	backgroundRepeat: "no-repeat",
+	backgroundPosition: "center top",
 	width: "100%",
 	minHeight: "400px",
 	borderRadius: "10px",
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "flex-end",
-	overflow: "hidden"
+	overflow: "hidden",
+	transition: "all 200ms ease"
 };
+
+let cardStyleZoomed = cloneDeep(cardStyle);
+cardStyleZoomed = Object.assign(cardStyleZoomed, {
+	backgroundSize: "110%",
+	backgroundPosition: "50% -10%"
+});
 
 const headerStyle = {
 	display: "flex",
@@ -49,6 +57,7 @@ export default function MinecraftCard() {
 	const [players, setPlayers] = useState([]);
 	const [playerCount, setPlayerCount] = useState(0);
 	const [isOffline, setIsOffline] = useState(false);
+	const [isHovering, setIsHovering] = useState(false);
 
 	useEffect(() => {
 		fetch(QUERY_URL)
@@ -62,7 +71,10 @@ export default function MinecraftCard() {
 	}, []);
 
 	return (
-		<div style={cardStyle}>
+		<div
+			style={isHovering ? cardStyleZoomed : cardStyle}
+			onMouseEnter={() => setIsHovering(true)}
+			onMouseLeave={() => setIsHovering(false)}>
 			<span style={headerStyle}>
 				<h4 className="ml-2" style={{ fontWeight: "700" }}>
 					MOLOCRAFT
@@ -109,3 +121,7 @@ const PlayerColumn = ({ players }) => {
 		</Col>
 	);
 };
+
+function cloneDeep(object) {
+	return JSON.parse(JSON.stringify(object));
+}

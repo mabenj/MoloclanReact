@@ -14,7 +14,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // Regular
 import { faBuilding, faCopy } from "@fortawesome/free-regular-svg-icons";
 // Solid
-import { faHandHoldingUsd, faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+	faHandHoldingUsd,
+	faBars,
+	faExternalLinkAlt
+} from "@fortawesome/free-solid-svg-icons";
 // Brands
 import { faTeamspeak, faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -25,7 +29,8 @@ library.add(
 	faTeamspeak,
 	faDiscord,
 	faCopy,
-	faBars
+	faBars,
+	faExternalLinkAlt
 );
 
 function App() {

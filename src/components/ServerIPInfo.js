@@ -1,5 +1,5 @@
 import React from "react";
-import CopyButton from "../components/CopyButton";
+import { CopyButton } from "./Buttons";
 
 export default function ServerIPInfo({ ipArray, CustomComponent }) {
 	return (

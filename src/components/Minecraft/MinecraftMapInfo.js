@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { CopyButton, OpenButton } from "../Buttons";
 
 function trimProtocol(url) {
 	return url.replace(/(^\w+:|^)\/\//, "");
@@ -12,11 +12,14 @@ export default function MinecraftMapInfo({ mapUrl }) {
 			<table className="ip-info-table">
 				<tbody>
 					<tr>
-						<td className="server-ip col-md-10">
-							<a href={mapUrl}>{trimProtocol(mapUrl)}</a>
+						<td className="server-ip">
+							<a href={mapUrl} target="_blank" rel="noreferrer">
+								{trimProtocol(mapUrl)}
+							</a>
 						</td>
 						<td>
-							<Button variant="warning">Avaa</Button>
+							<CopyButton target={trimProtocol(mapUrl)} />
+							<OpenButton href={mapUrl} />
 						</td>
 					</tr>
 				</tbody>
