@@ -10,12 +10,22 @@ import { Container } from "react-bootstrap";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// Regular
 import { faBuilding, faCopy } from "@fortawesome/free-regular-svg-icons";
-import { faHandHoldingUsd } from "@fortawesome/free-solid-svg-icons";
+// Solid
+import { faHandHoldingUsd, faBars } from "@fortawesome/free-solid-svg-icons";
+// Brands
 import { faTeamspeak, faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
-library.add(faBuilding, faHandHoldingUsd, faTeamspeak, faDiscord, faCopy);
+library.add(
+	faBuilding,
+	faHandHoldingUsd,
+	faTeamspeak,
+	faDiscord,
+	faCopy,
+	faBars
+);
 
 function App() {
 	return (

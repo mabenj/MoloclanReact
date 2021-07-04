@@ -1,26 +1,26 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import ServerIPInfo from "../components/ServerIPInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// Non breaking space
+const Nbsp = () => "\u00A0";
 
 export default function ServerSection({
 	serverComponent,
+	infoComponent,
 	displayName,
-	faIcon,
-	ipArray
+	faIcon
 }) {
 	return (
 		<>
-			<div className="wrapper text-justify">
-				<h3>
-					{displayName}&nbsp;
-					{faIcon ? <FontAwesomeIcon icon={faIcon} /> : ""}
-				</h3>
-				<Row style={{ marginTop: "30px" }}>
-					<Col md="7">{serverComponent}</Col>
-					<Col>{ipArray ? <ServerIPInfo ipArray={ipArray} /> : ""}</Col>
-				</Row>
-			</div>
+			<h3>
+				{displayName ? displayName + Nbsp() : ""}
+				{faIcon ? <FontAwesomeIcon icon={faIcon} /> : ""}
+			</h3>
+			<Row style={{ marginTop: "30px" }}>
+				<Col md="7">{serverComponent}</Col>
+				<Col>{infoComponent}</Col>
+			</Row>
 		</>
 	);
 }

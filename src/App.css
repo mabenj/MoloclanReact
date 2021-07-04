@@ -14,6 +14,8 @@
 	--black-color: #1b1b1b;
 	--wrapper-bg-color: rgba(22, 22, 22, 0.3);
 	--ts-viewer-bg-color: rgba(73, 73, 73, 0.514);
+	--sidebar-bg-color: #1b1b1bec;
+	--navbar-height: 71px;
 }
 
 body {
@@ -27,7 +29,7 @@ body {
 
 /* For navbar */
 body {
-	padding-top: 70px !important;
+	padding-top: var(--navbar-height) !important;
 }
 @media (max-width: 979px) {
 	body {
@@ -77,6 +79,30 @@ h3 {
 
 .navbar-brand {
 	font-size: 30px !important;
+}
+
+.hamburger-icon {
+	width: 40px;
+	height: 40px;
+	font-size: 22px;
+	color: var(--orange-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hamburger-icon:hover {
+	cursor: pointer;
+}
+
+.sidebar {
+	width: 0;
+	height: 100%;
+	background-color: var(--sidebar-bg-color);
+	position: fixed;
+	top: var(--navbar-height);
+	left: 0;
+	transition: width 200ms;
 }
 
 #banner-container {

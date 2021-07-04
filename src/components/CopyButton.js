@@ -19,7 +19,8 @@ export default function CopyButton({ target, variant }) {
 	return (
 		<>
 			<Button variant={variant} size="sm" ref={targetRef} onClick={handleCopy}>
-				Kopioi <FontAwesomeIcon icon={["far", "copy"]} />
+				Kopioi&nbsp;
+				<FontAwesomeIcon icon={["far", "copy"]} />
 			</Button>
 			<Overlay target={targetRef.current} show={showTooltip} placement="top">
 				{(props) => <Tooltip {...props}>Kopioitu'd :D</Tooltip>}
