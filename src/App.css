@@ -209,3 +209,11 @@ main a {
 .custom-btn {
 	color: var(--orange-color) !important;
 }
+
+.jari-quote {
+	transition: all 200ms ease;
+}
+
+.jari-quote:hover {
+	transform: scale(1.1);
+}

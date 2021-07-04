@@ -1,5 +1,6 @@
 import React from "react";
+import Wrapper from "../components/Wrapper";
 
 export default function Galleria() {
-	return <div style={{ height: "400px", background: "red" }}>GALLERIA</div>;
+	return <Wrapper>Huutis</Wrapper>;
 }

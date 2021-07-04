@@ -1,15 +1,17 @@
 import React, { useState, useRef } from "react";
 import { Button, Overlay, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { trimProtocolAndQueryString } from "../Utils";
 
 const TOOLTIP_DURATION = 1000;
 
-export function CopyButton({ target, variant }) {
+export function CopyButton({ targetUrl }) {
 	const [showTooltip, setShowTooltip] = useState(false);
 	const targetRef = useRef(null);
 
 	const handleCopy = (e) => {
-		navigator.clipboard.writeText(target);
+		const textToCopy = trimProtocolAndQueryString(targetUrl);
+		navigator.clipboard.writeText(textToCopy);
 		setShowTooltip(true);
 		setTimeout(() => {
 			setShowTooltip(false);
@@ -22,7 +24,6 @@ export function CopyButton({ target, variant }) {
 				as="span"
 				className="custom-btn"
 				variant=""
-				size="sm"
 				ref={targetRef}
 				onClick={handleCopy}>
 				<FontAwesomeIcon icon={["far", "copy"]} />
@@ -40,7 +41,6 @@ export function OpenButton({ href, target }) {
 			<Button
 				variant=""
 				className="custom-btn"
-				size="sm"
 				href={href}
 				target={target ? target : "_blank"}>
 				<FontAwesomeIcon icon="external-link-alt" />

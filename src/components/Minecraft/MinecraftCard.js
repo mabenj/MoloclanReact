@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
+import { cloneDeep } from "../../Utils";
 
 const SERVER_IP = "51.79.162.160";
 const FAVICON_URL = `https://api.minetools.eu/favicon/${SERVER_IP}/25565`;
@@ -121,7 +122,3 @@ const PlayerColumn = ({ players }) => {
 		</Col>
 	);
 };
-
-function cloneDeep(object) {
-	return JSON.parse(JSON.stringify(object));
-}

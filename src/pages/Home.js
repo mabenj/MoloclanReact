@@ -2,20 +2,50 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MoloLogo from "../components/MoloLogo";
+import Wrapper from "../components/Wrapper";
+
+const OfflineRaidMeme = () => (
+	<img
+		className="d-block rounded mx-auto my-5"
+		style={{ width: "80%" }}
+		src="https://i.imgur.com/qT3VtMt.jpg"
+		alt="molo offline raid meme"
+	/>
+);
+
+const RoofCampImage = () => (
+	<figure>
+		<img
+			className="rounded"
+			style={{ width: "400px" }}
+			src="https://i.imgur.com/3WC3Ddp.jpg"
+			alt="jari avanto rust"
+		/>
+		<figcaption className="text-muted">Kattokämpit tulilla</figcaption>
+	</figure>
+);
 
 export default function Home() {
 	return (
 		<>
 			<MoloLogo />
-			<div className="wrapper text-justify">
+			<Wrapper>
 				{/* cSpell: disable */}
 				<h3>MOLO Clan</h3>
+				<br />
 				<p>
 					MOLO on noin vuonna 2015 alkunsa saanut Rust-klaani. Pian perustamisen
 					jälkeen klaani keräsi itselleen hyvinkin laajan pelaajakunnan (lue{" "}
-					<em>zerg</em>) ja sen myötä kusipäisen klaanin maineen useimmilla
-					palvelimilla, joilla he pelasivat. Kyseistä mainetta vahvisti muihin
-					pelaajiin kohdistuva häikäilemätön
+					<em>
+						<abbr
+							className="initialism text-lowercase"
+							title="semmonen kauhee kasa lössiä">
+							zerg
+						</abbr>
+					</em>
+					) ja sen myötä kusipäisen klaanin maineen useimmilla palvelimilla,
+					joilla he pelasivat. Kyseistä mainetta vahvisti muihin pelaajiin
+					kohdistuva häikäilemätön
 					<em> fleimaaminen</em> sekä lukuisat <em>offline-raid</em>
 					-tyyppiset iskut, joista klaani parhaiten tunnettiin.
 				</p>
@@ -28,12 +58,7 @@ export default function Home() {
 					pelaamisen ja sen myötä aamuyön pikkutunneille sijoittuvien{" "}
 					<em>offline</em>-raidien järjestämisen.
 				</p>
-				<img
-					className="rounded mx-auto my-5"
-					style={{ display: "block", width: "700px" }}
-					src="https://i.imgur.com/qT3VtMt.jpg"
-					alt="molo offline raid meme"
-				/>
+				<OfflineRaidMeme />
 
 				<Row>
 					<Col>
@@ -51,16 +76,11 @@ export default function Home() {
 						</p>
 					</Col>
 					<Col>
-						<img
-							className="rounded mx-auto"
-							style={{ display: "block", width: "400px" }}
-							src="https://i.imgur.com/3WC3Ddp.jpg"
-							alt="roof camp veys_ruy"
-						/>
+						<RoofCampImage />
 					</Col>
 				</Row>
 				{/* cSpell: enable */}
-			</div>
+			</Wrapper>
 		</>
 	);
 }

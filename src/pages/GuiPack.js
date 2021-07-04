@@ -1,5 +1,6 @@
 import React from "react";
+import Wrapper from "../components/Wrapper";
 
 export default function GuiPack() {
-	return <div>HUUTIS</div>;
+	return <Wrapper>Huutis</Wrapper>;
 }

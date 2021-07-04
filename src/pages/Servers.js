@@ -3,11 +3,14 @@ import ServerSection from "../components/ServerSection";
 import TSViewer from "../components/TSViewer/TSViewer";
 import MinecraftCard from "../components/Minecraft/MinecraftCard";
 import MinecraftMap from "../components/Minecraft/MinecraftMap";
-import MinecraftMapInfo from "../components/Minecraft/MinecraftMapInfo";
 import ServerIPInfo from "../components/ServerIPInfo";
+import Wrapper from "../components/Wrapper";
 
-const TEAMSPEAK_IP_ARRAY = ["tessu.moloclan.fi", "ts.moloclan.fi"];
-const MINECRAFT_IP_ARRAY = ["mine.moloclan.fi", "mc.moloclan.fi"];
+const TEAMSPEAK_URL_ARRAY = [
+	"ts3server://tessu.moloclan.fi?port=7010",
+	"ts3server://ts.moloclan.fi?port=7010"
+];
+const MINECRAFT_URL_ARRAY = ["mine.moloclan.fi", "mc.moloclan.fi"];
 const TEAMSPEAK_FA_ICON = ["fab", "teamspeak"];
 const DISCORD_FA_ICON = ["fab", "discord"];
 const MINECRAFT_MAP_URL = "https://moloclan.fi/map";
@@ -15,34 +18,40 @@ const MINECRAFT_MAP_URL = "https://moloclan.fi/map";
 export default function Servers() {
 	return (
 		<>
-			<div className="wrapper text-justify">
+			<Wrapper>
 				<ServerSection
 					serverComponent={<TSViewer />}
-					infoComponent={<ServerIPInfo ipArray={TEAMSPEAK_IP_ARRAY} />}
+					infoComponent={<ServerIPInfo urlArray={TEAMSPEAK_URL_ARRAY} isLink />}
 					displayName="TeamSpeak&nbsp;3"
 					faIcon={TEAMSPEAK_FA_ICON}
 				/>
-			</div>
+			</Wrapper>
 
-			<div className="wrapper text-justify">
+			<Wrapper>
 				<ServerSection
 					serverComponent={<MinecraftCard />}
-					infoComponent={<ServerIPInfo ipArray={MINECRAFT_IP_ARRAY} />}
+					infoComponent={<ServerIPInfo urlArray={MINECRAFT_URL_ARRAY} />}
 					displayName="Minecraft"
 				/>
 				<ServerSection
 					serverComponent={<MinecraftMap mapUrl={MINECRAFT_MAP_URL} />}
-					infoComponent={<MinecraftMapInfo mapUrl={MINECRAFT_MAP_URL} />}
+					infoComponent={
+						<ServerIPInfo
+							urlArray={[MINECRAFT_MAP_URL]}
+							isLink
+							header="Servun Mappi"
+						/>
+					}
 				/>
-			</div>
+			</Wrapper>
 
-			<div className="wrapper text-justify">
+			<Wrapper>
 				<ServerSection
 					serverComponent={<code>HYÖÖRG</code>}
 					displayName="Discord"
 					faIcon={DISCORD_FA_ICON}
 				/>
-			</div>
+			</Wrapper>
 		</>
 	);
 }
