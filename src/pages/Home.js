@@ -21,7 +21,10 @@ const RoofCampImage = () => (
 			src="https://i.imgur.com/3WC3Ddp.jpg"
 			alt="jari avanto rust"
 		/>
-		<figcaption className="text-muted">Kattokämpit tulilla</figcaption>
+		<figcaption className="text-muted">
+			{/* cSpell: disable */}
+			Kala Harri wipen viimeineisenä päivänä <br />- heinäkuu 2016, väritetty
+		</figcaption>
 	</figure>
 );
 
@@ -30,7 +33,6 @@ export default function Home() {
 		<>
 			<MoloLogo />
 			<Wrapper>
-				{/* cSpell: disable */}
 				<h1>MOLO Clan</h1>
 				<br />
 				<p>

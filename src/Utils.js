@@ -13,3 +13,12 @@ export function trimProtocolAndQueryString(url) {
 export function Nbsp() {
 	return "\u00A0";
 }
+
+export function getImgurSpecialUrl(url, suffix) {
+	if (!url) {
+		return url;
+	}
+	const noExtension = url.substring(0, url.lastIndexOf("."));
+	const extension = url.substring(url.lastIndexOf("."));
+	return `${noExtension}${suffix}${extension}`;
+}

@@ -11,13 +11,15 @@ export default function Footer() {
 						<h4 className="text-white pb-2">
 							Pääkonttori <FontAwesomeIcon icon={["far", "building"]} />
 						</h4>
-						<ul className="list-unstyled">
-							<li className="text-white">Paska-avenue 42</li>
-							<li className="text-white">Karstula, 43 500 </li>
-							<li className="text-white mb-2">Suomi, Finland</li>
-							<li className="text-white">info@moloclan.fi</li>
-							<li className="text-white">+358 420 609 000</li>
-						</ul>
+						<address>
+							<ul className="list-unstyled">
+								<li className="text-white">Paska-avenue 42</li>
+								<li className="text-white">Karstula, 43 500 </li>
+								<li className="text-white mb-2">Suomi, Finland</li>
+								<li className="text-white">info@moloclan.fi</li>
+								<li className="text-white">+358 420 609 000</li>
+							</ul>
+						</address>
 					</div>
 					<div className="col">
 						<h4 className="text-white pb-2">
