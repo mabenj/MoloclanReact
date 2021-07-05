@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import Wrapper from "../components/Wrapper";
 
-export default function Jari() {
+export default function Jari({ documentTitle }) {
+	useEffect(() => {
+		document.title = documentTitle;
+	}, [documentTitle]);
 	return (
 		<Wrapper>
 			<Row>

@@ -42,16 +42,16 @@ function App() {
 					<Container fluid="md">
 						<Switch>
 							<Route path="/gui-pack">
-								<GuiPack></GuiPack>
+								<GuiPack documentTitle="MOLO - GUI-Pack" />
 							</Route>
 							<Route path="/galleria">
-								<Gallery></Gallery>
+								<Gallery documentTitle="MOLO - Galleria" />
 							</Route>
 							<Route path="/servut">
-								<Servers></Servers>
+								<Servers documentTitle="MOLO - Servut" />
 							</Route>
 							<Route path="/jari">
-								<Jari></Jari>
+								<Jari documentTitle="MOLO - Jari" />
 							</Route>
 							<Route path="/">
 								<Home />

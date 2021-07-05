@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ServerSection from "../components/ServerSection";
 import TSViewer from "../components/TSViewer/TSViewer";
 import MinecraftCard from "../components/Minecraft/MinecraftCard";
@@ -15,7 +15,10 @@ const TEAMSPEAK_FA_ICON = ["fab", "teamspeak"];
 const DISCORD_FA_ICON = ["fab", "discord"];
 const MINECRAFT_MAP_URL = "https://moloclan.fi/map";
 
-export default function Servers() {
+export default function Servers({ documentTitle }) {
+	useEffect(() => {
+		document.title = documentTitle;
+	}, [documentTitle]);
 	return (
 		<>
 			<Wrapper>
@@ -47,7 +50,7 @@ export default function Servers() {
 
 			<Wrapper>
 				<ServerSection
-					serverComponent={<code>HYÖÖRG</code>}
+					serverComponent={<Discord />}
 					displayName="Discord"
 					faIcon={DISCORD_FA_ICON}
 				/>
@@ -55,3 +58,11 @@ export default function Servers() {
 		</>
 	);
 }
+
+const Discord = () => {
+	return (
+		<>
+			<code>HYÖÖRG</code>
+		</>
+	);
+};

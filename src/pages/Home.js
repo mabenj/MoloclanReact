@@ -39,7 +39,7 @@ export default function Home() {
 					<em>
 						<abbr
 							className="initialism text-lowercase"
-							title="semmonen kauhee kasa lössiä">
+							title="semmonen kauhee lauma videopelaajia">
 							zerg
 						</abbr>
 					</em>
