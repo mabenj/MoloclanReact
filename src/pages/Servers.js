@@ -24,7 +24,13 @@ export default function Servers({ documentTitle }) {
 			<Wrapper>
 				<ServerSection
 					serverComponent={<TSViewer />}
-					infoComponent={<ServerIPInfo urlArray={TEAMSPEAK_URL_ARRAY} isLink />}
+					infoComponent={
+						<ServerIPInfo
+							urlArray={TEAMSPEAK_URL_ARRAY}
+							isLink
+							linkVerb="Joinaa"
+						/>
+					}
 					displayName="TeamSpeak&nbsp;3"
 					faIcon={TEAMSPEAK_FA_ICON}
 				/>
@@ -42,6 +48,7 @@ export default function Servers({ documentTitle }) {
 						<ServerIPInfo
 							urlArray={[MINECRAFT_MAP_URL]}
 							isLink
+							linkVerb="Avaa"
 							header="Servun Mappi"
 						/>
 					}

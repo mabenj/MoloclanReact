@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Button, Overlay, Tooltip } from "react-bootstrap";
+import { Button, Overlay, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { trimProtocolAndQueryString } from "../Utils";
 
@@ -20,14 +20,21 @@ export function CopyButton({ targetUrl }) {
 
 	return (
 		<>
-			<Button
-				as="span"
-				className="custom-btn"
-				variant=""
-				ref={targetRef}
-				onClick={handleCopy}>
-				<FontAwesomeIcon icon={["far", "copy"]} />
-			</Button>
+			<OverlayTrigger
+				placement="top"
+				overlay={<Tooltip>Kopioi tää</Tooltip>}
+				rootClose>
+				<Button
+					as="span"
+					className="custom-btn"
+					variant=""
+					ref={targetRef}
+					onClick={handleCopy}
+					onMouseLeave={() => setShowTooltip(false)}>
+					<FontAwesomeIcon icon={["far", "copy"]} />
+				</Button>
+			</OverlayTrigger>
+
 			<Overlay target={targetRef.current} show={showTooltip} placement="top">
 				{(props) => <Tooltip {...props}>Kopioitu'd :D</Tooltip>}
 			</Overlay>
@@ -35,16 +42,18 @@ export function CopyButton({ targetUrl }) {
 	);
 }
 
-export function OpenButton({ href, target }) {
+export function OpenButton({ href, target, verb }) {
 	return (
 		<>
-			<Button
-				variant=""
-				className="custom-btn"
-				href={href}
-				target={target ? target : "_blank"}>
-				<FontAwesomeIcon icon="external-link-alt" />
-			</Button>
+			<OverlayTrigger placement="top" overlay={<Tooltip>{verb}</Tooltip>}>
+				<Button
+					as="span"
+					variant=""
+					className="custom-btn"
+					onClick={() => window.open(href, target ? target : "_blank")}>
+					<FontAwesomeIcon icon="external-link-alt" />
+				</Button>
+			</OverlayTrigger>
 		</>
 	);
 }

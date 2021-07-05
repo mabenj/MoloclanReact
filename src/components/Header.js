@@ -25,19 +25,11 @@ export default function Header() {
 				<Nav>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="">
-							<Nav.Link href="/" active={activePath === "/"}>
-								MOLO
-							</Nav.Link>
-							<Nav.Link href="/servut" active={activePath === "/servut"}>
-								SERVUT
-							</Nav.Link>
-							<Nav.Link href="/galleria" active={activePath === "/galleria"}>
-								GALLERIA
-							</Nav.Link>
-							<Nav.Link href="/jari" active={activePath === "/jari"}>
-								JARI
-							</Nav.Link>
+						<Nav className="" activeKey={activePath}>
+							<Nav.Link href="/">MOLO</Nav.Link>
+							<Nav.Link href="/servut">SERVUT</Nav.Link>
+							<Nav.Link href="/galleria">GALLERIA</Nav.Link>
+							<Nav.Link href="/jari">JARI</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Nav>

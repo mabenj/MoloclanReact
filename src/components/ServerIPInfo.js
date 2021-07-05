@@ -2,7 +2,7 @@ import React from "react";
 import { CopyButton, OpenButton } from "./Buttons";
 import { trimProtocolAndQueryString } from "../Utils";
 
-export default function ServerIPInfo({ urlArray, isLink, header }) {
+export default function ServerIPInfo({ urlArray, isLink, linkVerb, header }) {
 	return (
 		<>
 			{urlArray?.length > 0 ? (
@@ -23,7 +23,7 @@ export default function ServerIPInfo({ urlArray, isLink, header }) {
 									</td>
 									<td>
 										<CopyButton targetUrl={url} />
-										{isLink ? <OpenButton href={url} /> : null}
+										{isLink ? <OpenButton href={url} verb={linkVerb} /> : null}
 									</td>
 								</tr>
 							))}
