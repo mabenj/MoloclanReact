@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import ReactGA from "react-ga";
 
 export default function Header() {
 	const location = useLocation();
 	const activePath = location.pathname.toLowerCase();
+	useEffect(() => {
+		ReactGA.pageview(window.location.pathname);
+	}, []);
 	return (
 		<Navbar className="navbar" variant="dark" expand="md" fixed="top">
 			<Sidebar />
