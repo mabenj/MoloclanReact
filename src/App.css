@@ -11,12 +11,7 @@
 	--sidebar-bg-color: #1b1b1bec;
 	--navbar-height: 71px;
 	--background-image: url("./img/rust_banner.jpg");
-	--text-font: "Open Sans", sans-serif;
 	--text-code-font: "Courier New", Courier, monospace;
-}
-
-* {
-	/* font-family: var(--text-font); */
 }
 
 body {
@@ -52,7 +47,7 @@ h3 {
 }
 
 h3 {
-	font-size: 22px;
+	font-size: 22px !important;
 }
 
 .btn-warning,
