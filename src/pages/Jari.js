@@ -20,11 +20,11 @@ export default function Jari({ documentTitle }) {
 						lukuisista nimistä. Rakkaalla lapsella monta nimeä ja niin edelleen,
 						mutta MOLO:n keskuudessa hänet tunnetaan yksinkertaisemmin Jarina.
 					</p>
-					<figure class="text-center jari-quote my-5">
-						<blockquote class="blockquote">
+					<figure className="text-center jari-quote my-5">
+						<blockquote className="blockquote">
 							<i>Ei nimi miestä pahenna, ellei mies nimeä.</i>
 						</blockquote>
-						<figcaption class="blockquote-footer">
+						<figcaption className="blockquote-footer">
 							Raumalainen ohikulkija,{" "}
 							<cite title="Source Title">Syvärauman Pub 2016</cite>
 						</figcaption>

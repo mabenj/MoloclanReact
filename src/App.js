@@ -1,4 +1,5 @@
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Gallery from "./pages/Gallery";
@@ -7,6 +8,7 @@ import Jari from "./pages/Jari";
 import Home from "./pages/Home";
 import GuiPack from "./pages/GuiPack";
 import { Container } from "react-bootstrap";
+import ReactGA from "react-ga";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -33,10 +35,17 @@ library.add(
 	faExternalLinkAlt
 );
 
+ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
+const history = createBrowserHistory();
+history.listen((location) => {
+	ReactGA.set({ page: location.pathname });
+	ReactGA.pageview(location.pathname);
+});
+
 function App() {
 	return (
 		<>
-			<Router>
+			<Router history={history}>
 				<Header />
 				<main>
 					<Container fluid="md">

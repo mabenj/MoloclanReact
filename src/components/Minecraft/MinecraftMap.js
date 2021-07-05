@@ -11,7 +11,7 @@ export default function MinecraftMap({ mapUrl }) {
 				<img
 					src={Dynmap}
 					alt="molocraft map"
-					class="img-fluid"
+					className="img-fluid"
 					style={{
 						transform: isHovering ? `scale(${HOVER_ZOOM_SCALE})` : "scale(1)",
 						transition: "all 200ms ease"
