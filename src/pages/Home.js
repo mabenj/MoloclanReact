@@ -31,7 +31,7 @@ export default function Home() {
 			<MoloLogo />
 			<Wrapper>
 				{/* cSpell: disable */}
-				<h3>MOLO Clan</h3>
+				<h1>MOLO Clan</h1>
 				<br />
 				<p>
 					MOLO on noin vuonna 2015 alkunsa saanut Rust-klaani. Pian perustamisen

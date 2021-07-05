@@ -8,7 +8,7 @@ export default function Jari() {
 			<Row>
 				{/* cSpell: disable */}
 				<Col>
-					<h3>Jari Avanto</h3>
+					<h2>Jari Avanto</h2>
 					<p className="lead">Mies, joka ei tunne kelloa</p>
 					<p>
 						Jari Avanto, <em>Manne</em>, Jarru, Jarppi, Jarrutin, Jurnutin,
