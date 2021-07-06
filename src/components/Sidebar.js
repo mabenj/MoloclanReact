@@ -29,7 +29,7 @@ const SidebarContent = ({ header }) => {
 					<span>{header}</span>
 				</li>
 				<li>
-					<Link to="gui-pack">Minecraft GUI Pack</Link>
+					<Link to="/gui-pack">Minecraft GUI Pack</Link>
 				</li>
 				<li>
 					<a

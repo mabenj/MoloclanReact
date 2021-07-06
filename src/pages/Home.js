@@ -19,7 +19,7 @@ const RoofCampImage = () => (
 			className="rounded"
 			style={{ width: "400px" }}
 			src="https://i.imgur.com/3WC3Ddp.jpg"
-			alt="jari avanto rust"
+			alt="Roof camper by veys_ryu"
 		/>
 		<figcaption className="text-muted">
 			{/* cSpell: disable */}

@@ -14,6 +14,17 @@
 	--text-code-font: "Courier New", Courier, monospace;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
+:target:before {
+	content: "";
+	display: block;
+	height: 100px;
+	margin: -100px 0 0;
+}
+
 body {
 	background-image: var(--background-image);
 	background-repeat: no-repeat;
@@ -181,8 +192,7 @@ main a {
 	background-color: var(--wrapper-bg-color);
 	padding: 50px 80px;
 	color: var(--text-color);
-	-webkit-backdrop-filter: blur(5px);
-	backdrop-filter: blur(5px);
+	/* backdrop-filter: blur(7px); */
 	border-style: solid;
 	border-image: linear-gradient(var(--dark-orange-color), transparent) 1;
 	border-image-width: 1px;
