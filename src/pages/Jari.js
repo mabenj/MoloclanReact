@@ -67,7 +67,7 @@ export default function Jari({ documentTitle }) {
 						<img
 							className="rounded mx-auto"
 							style={{ width: "100%" }}
-							src="https://i.imgur.com/BwAHlaJ.jpg"
+							src="https://i.imgur.com/aYaF4gs.jpg"
 							alt="jari avanto rust"
 						/>
 						<figcaption className="text-muted">

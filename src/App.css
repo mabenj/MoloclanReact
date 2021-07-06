@@ -221,3 +221,12 @@ main a {
 .jari-quote:hover {
 	transform: scale(1.1);
 }
+
+.gallery-image {
+	overflow: hidden;
+}
+
+.gallery-image img:hover {
+	transform: scale(1.05);
+	transition: all 200ms ease;
+}
