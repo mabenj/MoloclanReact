@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import Gallery from "react-photo-gallery";
 import FsLightbox from "fslightbox-react";
 import { getImgurSpecialUrl } from "../Utils";
+import { isOpera, isEdge, isChrome, isChromium } from "react-device-detect";
+
+const hasBackdropBlurBug = isOpera || isEdge || isChrome || isChromium;
 
 const SMALL_THUMBNAIL_SUFFIX = "t";
 const MEDIUM_THUMBNAIL_SUFFIX = "m";
@@ -78,44 +81,35 @@ export default function GallerySection({ header, id, media, direction }) {
 			<FsLightbox
 				toggler={lightboxController.toggler}
 				sources={media.map((media) => media.src)}
+				customAttributes={media.map((media) => ({
+					alt: media.desc
+				}))}
 				sourceIndex={lightboxController.sourceIndex}
+				onClose={addBackDropBlur}
+				onOpen={hideBackDropBlur}
+				exitFullscreenOnClose
 			/>
 		</div>
 	);
 }
 
-// const MediaComponent = ({ direction, top, left, margin, photo: media }) => {
-// 	if (media.iframe) {
-// 		return (
-// 			<div className="ratio ratio-16x9">
-// 				<iframe
-// 					src={media.src}
-// 					title={media.desc}
-// 					style={{
-// 						border: 0,
-// 						width: media.width,
-// 						height: media.height,
-// 						margin: margin,
-// 						position: direction === "column" ? "absolute" : "initial",
-// 						left: direction === "column" ? left : "initial",
-// 						top: direction === "column" ? top : "initial"
-// 					}}
-// 					allowFullScreen></iframe>
-// 			</div>
-// 		);
-// 	} else {
-// 		return (
-// 			<div className="gallery-image" style={{ margin }}>
-// 				<img
-// 					src={media.src}
-// 					alt={media.desc}
-// 					width={media.width}
-// 					height={media.height}
-// 				/>
-// 			</div>
-// 		);
-// 	}
-// };
+function addBackDropBlur() {
+	if (!hasBackdropBlurBug) {
+		return;
+	}
+	[...document.querySelectorAll(".wrapper")].forEach((wrapper) => {
+		wrapper.className += " back-blur";
+	});
+}
+
+function hideBackDropBlur() {
+	if (!hasBackdropBlurBug) {
+		return;
+	}
+	[...document.querySelectorAll(".wrapper")].forEach((wrapper) => {
+		wrapper.classList.remove("back-blur");
+	});
+}
 
 function formatMedia(mediaArray) {
 	return mediaArray.map((media) => {
