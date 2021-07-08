@@ -31,7 +31,7 @@ body {
 	background-image: var(--background-image);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-size: 100%;
+	background-size: 100vw;
 	background-position: 0 var(--navbar-height);
 	background-color: var(--black-color) !important;
 }
@@ -80,6 +80,7 @@ h3 {
 
 .navbar {
 	background-color: var(--dark-color);
+	width: 100vw;
 }
 
 .nav-link.active {
