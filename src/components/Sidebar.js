@@ -29,18 +29,25 @@ const SidebarContent = ({ header }) => {
 					<span>{header}</span>
 				</li>
 				<li>
-					<Link to="/gui-pack">Minecraft GUI Pack</Link>
+					<Link to="/gui-pack" className="hvr-bounce-to-right">
+						Minecraft GUI Pack
+					</Link>
 				</li>
 				<li>
 					<a
 						href="https://jariclub.moloclan.fi/"
 						target="_blank"
-						rel="noreferrer">
+						rel="noreferrer"
+						className="hvr-bounce-to-right">
 						Jari Club nettidomain
 					</a>
 				</li>
 				<li>
-					<a href="https://old.moloclan.fi/" target="_blank" rel="noreferrer">
+					<a
+						href="https://old.moloclan.fi/"
+						target="_blank"
+						rel="noreferrer"
+						className="hvr-bounce-to-right">
 						Vanha moloclan.fi
 					</a>
 				</li>

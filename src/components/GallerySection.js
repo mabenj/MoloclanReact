@@ -4,6 +4,7 @@ import Gallery from "react-photo-gallery";
 import FsLightbox from "fslightbox-react";
 import { getImgurSpecialUrl } from "../Utils";
 import { isOpera, isEdge, isChrome, isChromium } from "react-device-detect";
+import Tilty from "react-tilty";
 
 const hasBackdropBlurBug = isOpera || isEdge || isChrome || isChromium;
 
@@ -35,35 +36,21 @@ export default function GallerySection({ header, id, media, direction }) {
 	}) => {
 		if (media.iframe) {
 			return (
-				<div className="ratio ratio-16x9">
-					<iframe
-						src={media.src}
-						title={media.desc}
-						style={{
-							border: 0,
-							width: media.width,
-							height: media.height,
-							margin: margin,
-							position: direction === "column" ? "absolute" : "initial",
-							left: direction === "column" ? left : "initial",
-							top: direction === "column" ? top : "initial"
-						}}
-						allowFullScreen></iframe>
-				</div>
+				<VideoPlayer
+					videoSource={media}
+					margin={margin}
+					direction={direction}
+					left={left}
+					top={top}
+				/>
 			);
 		} else {
 			return (
-				<div
-					className="gallery-image"
-					style={{ margin }}
-					onClick={() => openLightboxOnIndex(index)}>
-					<img
-						src={media.src}
-						alt={media.desc}
-						width={media.width}
-						height={media.height}
-					/>
-				</div>
+				<TiltedImage
+					margin={margin}
+					onClick={() => openLightboxOnIndex(index)}
+					image={media}
+				/>
 			);
 		}
 	};
@@ -92,6 +79,46 @@ export default function GallerySection({ header, id, media, direction }) {
 		</div>
 	);
 }
+
+const TiltedImage = ({ margin, onClick, image }) => {
+	return (
+		<Tilty
+			max={25}
+			perspective={1500}
+			speed={1000}
+			style={{ transformStyle: "preserve-3d" }}>
+			<div className="gallery-image" style={{ margin }} onClick={onClick}>
+				<img
+					src={image.src}
+					alt={image.alt}
+					width={image.width}
+					height={image.height}
+				/>
+				<p className="rounded p-1">{image.alt}</p>
+			</div>
+		</Tilty>
+	);
+};
+
+const VideoPlayer = ({ videoSource, margin, direction, left, top }) => {
+	return (
+		<div className="ratio ratio-16x9">
+			<iframe
+				src={videoSource.src}
+				title={videoSource.desc}
+				style={{
+					border: 0,
+					width: videoSource.width,
+					height: videoSource.height,
+					margin: margin,
+					position: direction === "column" ? "absolute" : "initial",
+					left: direction === "column" ? left : "initial",
+					top: direction === "column" ? top : "initial"
+				}}
+				allowFullScreen></iframe>
+		</div>
+	);
+};
 
 function addBackDropBlur() {
 	if (!hasBackdropBlurBug) {

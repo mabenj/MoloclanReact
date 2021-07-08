@@ -12,33 +12,6 @@ const headerStyle = {
 	alignItems: "center"
 };
 
-const sections = [
-	{
-		displayName: "Rust-perseilyt",
-		id: "rust",
-		media: RustImagesJson,
-		direction: "row"
-	},
-	{
-		displayName: "Paint-teokset",
-		id: "paint",
-		media: PhotoshopImagesJson,
-		direction: "row"
-	},
-	{
-		displayName: "8k Screenshotteja",
-		id: "screenshots",
-		media: ScreenshotImagesJson,
-		direction: "row"
-	},
-	{
-		displayName: "Kummallisuuksia",
-		id: "misc",
-		media: MiscJson,
-		direction: "column"
-	}
-];
-
 export default function Galleria({ documentTitle }) {
 	useEffect(() => {
 		document.title = documentTitle;
@@ -73,3 +46,30 @@ export default function Galleria({ documentTitle }) {
 		</>
 	);
 }
+
+const sections = [
+	{
+		displayName: "Rust-perseilyt",
+		id: "rust",
+		media: RustImagesJson,
+		direction: "row"
+	},
+	{
+		displayName: "Paint-teokset",
+		id: "paint",
+		media: PhotoshopImagesJson,
+		direction: "row"
+	},
+	{
+		displayName: "8k Screenshotteja",
+		id: "screenshots",
+		media: ScreenshotImagesJson,
+		direction: "row"
+	},
+	{
+		displayName: "Kummallisuuksia",
+		id: "misc",
+		media: MiscJson,
+		direction: "column"
+	}
+];

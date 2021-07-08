@@ -29,7 +29,7 @@ export default function Header() {
 				<Nav>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
-						<Nav className="" activeKey={activePath}>
+						<Nav activeKey={activePath}>
 							<Nav.Link href="/">MOLO</Nav.Link>
 							<Nav.Link href="/servut">SERVUT</Nav.Link>
 							<Nav.Link href="/galleria">GALLERIA</Nav.Link>
