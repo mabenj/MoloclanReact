@@ -75,5 +75,12 @@
 		"width": 16,
 		"height": 9,
 		"iframe": true
+	},
+	{
+		"src": "https://www.youtube-nocookie.com/embed/PCnQiJDft4Y?modestbranding=1&rel=0",
+		"desc": "Pituushyppyä",
+		"width": 16,
+		"height": 9,
+		"iframe": true
 	}
 ]

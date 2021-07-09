@@ -46,7 +46,7 @@ export default function GallerySection({ header, id, media, direction }) {
 			);
 		} else {
 			return (
-				<TiltedImage
+				<TiltableImage
 					margin={margin}
 					onClick={() => openLightboxOnIndex(index)}
 					image={media}
@@ -80,7 +80,7 @@ export default function GallerySection({ header, id, media, direction }) {
 	);
 }
 
-const TiltedImage = ({ margin, onClick, image }) => {
+const TiltableImage = ({ margin, onClick, image }) => {
 	return (
 		<Tilty
 			max={25}

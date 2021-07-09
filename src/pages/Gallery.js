@@ -49,14 +49,14 @@ export default function Galleria({ documentTitle }) {
 
 const sections = [
 	{
-		displayName: "Rust-perseilyt",
+		displayName: "Rust-häröilyt",
 		id: "rust",
 		media: RustImagesJson,
 		direction: "row"
 	},
 	{
 		displayName: "Paint-teokset",
-		id: "paint",
+		id: "photoshop",
 		media: PhotoshopImagesJson,
 		direction: "row"
 	},
@@ -68,7 +68,7 @@ const sections = [
 	},
 	{
 		displayName: "Kummallisuuksia",
-		id: "misc",
+		id: "weird",
 		media: MiscJson,
 		direction: "column"
 	}

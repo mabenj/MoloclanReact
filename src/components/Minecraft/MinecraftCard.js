@@ -89,8 +89,9 @@ export default function MinecraftCard() {
 			<div style={footerStyle}>
 				<h4 className="ml-2 mt-2">
 					{isOffline ? (
-						<span className="badge badge-danger badge-pill">
-							Servu on rikki tai jtn
+						<span>
+							<span className="badge badge-danger badge-pill">Offlinessa</span>
+							<p className="lead d-inline ml-2">Se on rikki tai jtn</p>
 						</span>
 					) : (
 						<>
