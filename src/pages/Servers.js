@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import ServerSection from "../components/ServerSection";
+import ServerSection from "../components/ServerPage/ServerSection";
+import ServerIPInfo from "../components/ServerPage/ServerIPInfo";
 import TSViewer from "../components/TSViewer/TSViewer";
-import MinecraftCard from "../components/Minecraft/MinecraftCard";
+import MinecraftCard from "../components/Minecraft/MinecraftCard2";
 import MinecraftMap from "../components/Minecraft/MinecraftMap";
-import ServerIPInfo from "../components/ServerIPInfo";
 import Wrapper from "../components/Wrapper";
 
 const TEAMSPEAK_URL_ARRAY = [

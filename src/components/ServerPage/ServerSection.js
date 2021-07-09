@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nbsp } from "../Utils";
+import { Nbsp } from "../../Utils";
 
 export default function ServerSection({
 	serverComponent,

@@ -1,6 +1,6 @@
 import React from "react";
-import { CopyButton, OpenButton } from "./Buttons";
-import { trimProtocolAndQueryString } from "../Utils";
+import { CopyButton, OpenButton } from "../Buttons";
+import { trimProtocolAndQueryString } from "../../Utils";
 
 export default function ServerIPInfo({ urlArray, isLink, linkVerb, header }) {
 	return (

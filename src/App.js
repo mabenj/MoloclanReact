@@ -1,7 +1,7 @@
 import { Route, Router, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Navigation/Header";
+import Footer from "./components/Navigation/Footer";
 import Gallery from "./pages/Gallery";
 import Servers from "./pages/Servers";
 import Jari from "./pages/Jari";
