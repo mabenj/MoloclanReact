@@ -5,6 +5,7 @@ import FsLightbox from "fslightbox-react";
 import { getImgurSpecialUrl } from "../Utils";
 import { isOpera, isEdge, isChrome, isChromium } from "react-device-detect";
 import Tilty from "react-tilty";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const hasBackdropBlurBug = isOpera || isEdge || isChrome || isChromium;
 
@@ -14,10 +15,13 @@ const LARGE_THUMBNAIL_SUFFIX = "l";
 const HUGE_THUMBNAIL_SUFFIX = "h";
 
 export default function GallerySection({ header, id, media, direction }) {
+	const { width } = useWindowDimensions();
 	const [lightboxController, setLightboxController] = useState({
 		toggler: false,
 		sourceIndex: 0
 	});
+
+	const isMobile = width < 768;
 
 	function openLightboxOnIndex(index) {
 		setLightboxController((prev) => ({
@@ -56,14 +60,14 @@ export default function GallerySection({ header, id, media, direction }) {
 	};
 
 	return (
-		<div className="mt-5" id={id}>
+		<div className="mt-2" id={id}>
 			<h3 className="mb-4">{header}</h3>
 			<Gallery
 				photos={formatMedia(media)}
 				margin={direction === "column" ? 10 : 3}
 				renderImage={MediaComponent}
 				direction={direction}
-				columns={2}
+				columns={isMobile ? 1 : 2}
 			/>
 			<FsLightbox
 				toggler={lightboxController.toggler}
@@ -94,7 +98,7 @@ const TiltableImage = ({ margin, onClick, image }) => {
 					width={image.width}
 					height={image.height}
 				/>
-				<p className="rounded p-1">{image.alt}</p>
+				<p className="rounded">{image.alt}</p>
 			</div>
 		</Tilty>
 	);

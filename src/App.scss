@@ -1,18 +1,18 @@
 $text-color: azure;
-$orange-color: #ffa31a;
-$dark-orange-color: #cf4a0c98;
-$dark-orange-color: #ffa31a6e;
-$grey-color: #808080;
-$dark-color: #292929;
-$black-color: #1b1b1b;
-$wrapper-bg-color: rgba(22, 22, 22, 0.3);
-$ts-viewer-bg-color: rgba(73, 73, 73, 0.514);
-$sidebar-bg-color: #1b1b1bec;
+$orange-color: hsl(36, 100%, 55%);
+$dark-orange-color: hsla(19, 89%, 43%, 0.596);
+$dark-orange-color: hsla(36, 100%, 55%, 0.431);
+$grey-color: hsl(0, 0%, 50%);
+$dark-color: hsl(0, 0%, 16%);
+$black-color: hsl(0, 0%, 11%);
+$wrapper-bg-color: hsla(0, 0%, 9%, 0.3);
+$ts-viewer-bg-color: hsla(0, 0%, 29%, 0.514);
+$sidebar-bg-color: hsla(0, 0%, 11%, 0.925);
+$gallery-caption-color: hsla(180, 100%, 97%, 0.685);
+$gallery-caption-bg-color: hsla(0, 0%, 5%, 0.575);
 $navbar-height: 71px;
 $background-image: url("./img/rust_banner.jpg");
 $text-code-font: "Courier New", Courier, monospace;
-$gallery-caption-color: rgba(240, 255, 255, 0.685);
-$gallery-caption-bg-color: rgba(22, 22, 22, 0.384);
 $xxl: 1400px;
 $xl: 1200px;
 $lg: 992px;
@@ -236,7 +236,7 @@ main a {
 	.wrapper {
 		padding: 30px 10px;
 		text-align: initial;
-		margin: 10px 0;
+		margin: $navbar-height + 20px 0;
 	}
 }
 
@@ -279,6 +279,10 @@ main a {
 	transform: scale(1.1);
 }
 
+.gallery-section-list-item {
+	background-color: transparent !important;
+}
+
 .gallery-image {
 	position: relative;
 
@@ -289,10 +293,12 @@ main a {
 	p {
 		position: absolute;
 		transform: translateZ(30px);
-		bottom: 5px;
-		left: 25px;
+		bottom: 0;
+		left: 3%;
 		background-color: $gallery-caption-bg-color;
 		color: $gallery-caption-color;
+		padding-left: 5px !important;
+		padding-right: 5px !important;
 	}
 }
 

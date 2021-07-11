@@ -5,6 +5,8 @@ import RustImagesJson from "../img/GalleryMedias/gallery-rust-sources.json";
 import PhotoshopImagesJson from "../img/GalleryMedias/gallery-photoshop-sources.json";
 import ScreenshotImagesJson from "../img/GalleryMedias/gallery-screenshots-sources.json";
 import MiscJson from "../img/GalleryMedias/gallery-misc-sources.json";
+import { ListGroup } from "react-bootstrap";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const headerStyle = {
 	display: "flex",
@@ -13,25 +15,14 @@ const headerStyle = {
 };
 
 export default function Galleria({ documentTitle }) {
+	const { width } = useWindowDimensions();
+	const isMobile = width < 768;
 	useEffect(() => {
 		document.title = documentTitle;
 	}, [documentTitle]);
 	return (
 		<>
-			<Wrapper>
-				<div style={headerStyle}>
-					<h1 className="border-0">Galleria</h1>
-					<ul className="list-inline">
-						{sections.map((section) => (
-							<li key={section.id} className="list-inline-item px-3">
-								<a className="text-decoration-none" href={"#" + section.id}>
-									{section.displayName}
-								</a>
-							</li>
-						))}
-					</ul>
-				</div>
-			</Wrapper>
+			<Wrapper>{isMobile ? <MobileHeader /> : <DesktopHeader />}</Wrapper>
 			{sections.map((section) => (
 				<Wrapper>
 					<GallerySection
@@ -46,6 +37,44 @@ export default function Galleria({ documentTitle }) {
 		</>
 	);
 }
+
+const DesktopHeader = () => {
+	return (
+		<>
+			<div style={headerStyle}>
+				<h1 className="border-0">Galleria</h1>
+				<ul className="list-inline">
+					{sections.map((section) => (
+						<li key={section.id} className="list-inline-item px-3">
+							<a className="text-decoration-none" href={"#" + section.id}>
+								{section.displayName}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</>
+	);
+};
+
+const MobileHeader = () => {
+	return (
+		<>
+			{" "}
+			<h1>Galleria</h1>
+			<ListGroup variant="flush">
+				{sections.map((section) => (
+					<ListGroup.Item
+						key={section.id}
+						action
+						className="gallery-section-list-item">
+						<a href={"#" + section.id}>{section.displayName}</a>
+					</ListGroup.Item>
+				))}
+			</ListGroup>
+		</>
+	);
+};
 
 const sections = [
 	{
