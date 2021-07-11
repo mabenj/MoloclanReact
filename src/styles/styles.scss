@@ -1,3 +1,5 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 $text-color: azure;
 $orange-color: hsl(36, 100%, 55%);
 $dark-orange-color: hsla(19, 89%, 43%, 0.596);
@@ -19,6 +21,9 @@ $xl: 1200px;
 $lg: 992px;
 $md: 768px;
 $sm: 576px;
+
+// Bootstrap default variable overrides
+$warning: $orange-color;
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
 

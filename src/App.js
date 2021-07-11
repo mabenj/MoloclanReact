@@ -10,7 +10,6 @@ import GuiPack from "./pages/GuiPack";
 import { Container } from "react-bootstrap";
 import ReactGA from "react-ga";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/styles.scss";
 
 // Regular
