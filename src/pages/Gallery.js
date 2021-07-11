@@ -14,7 +14,7 @@ const headerStyle = {
 	alignItems: "center"
 };
 
-export default function Galleria({ documentTitle }) {
+export default function Gallery({ documentTitle }) {
 	const { width } = useWindowDimensions();
 	const isMobile = width < 768;
 	useEffect(() => {
@@ -24,7 +24,7 @@ export default function Galleria({ documentTitle }) {
 		<>
 			<Wrapper>{isMobile ? <MobileHeader /> : <DesktopHeader />}</Wrapper>
 			{sections.map((section) => (
-				<Wrapper>
+				<Wrapper key={section.id}>
 					<GallerySection
 						key={section.id}
 						header={section.displayName}

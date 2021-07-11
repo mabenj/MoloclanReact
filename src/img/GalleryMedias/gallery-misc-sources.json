@@ -1,86 +1,74 @@
 [
 	{
-		"src": "https://www.youtube-nocookie.com/embed/MwPGvPh8ZHs?modestbranding=1&rel=0",
+		"youtubeId": "MwPGvPh8ZHs",
 		"desc": "CSGO Cache perseilyt squekyssä",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/LAlBXPz2S84?modestbranding=1&rel=0",
+		"youtubeId": "LAlBXPz2S84",
 		"desc": "Kerge panee miinoja",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/27N-h_iWUig?modestbranding=1&rel=0",
+		"youtubeId": "27N-h_iWUig",
 		"desc": "Jaria koijataan",
 		"width": 9,
-		"height": 16,
-		"iframe": true
+		"height": 16
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/7hnuWwWI3Cc?modestbranding=1&rel=0",
+		"youtubeId": "7hnuWwWI3Cc",
 		"desc": "Cat vibing to kake",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/fJ-ZnoCiF70?modestbranding=1&rel=0",
+		"youtubeId": "fJ-ZnoCiF70",
 		"desc": "MW lobby-sekoilut",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/2yXJCbiNVbw?modestbranding=1&rel=0",
+		"youtubeId": "2yXJCbiNVbw",
 		"desc": "Suklaatehdas",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/T63f9E6N_eo?modestbranding=1&rel=0",
+		"youtubeId": "T63f9E6N_eo",
 		"desc": "Mini coopperi lähtee",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/SKUTANG8NYo?modestbranding=1&rel=0",
+		"youtubeId": "SKUTANG8NYo",
 		"desc": "Dutch hyppää kyytiin",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/cll-k13REkk?modestbranding=1&rel=0",
+		"youtubeId": "cll-k13REkk",
 		"desc": "Ronaldo painaa saksarin",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/igxnDzvT3Lc?modestbranding=1&rel=0",
+		"youtubeId": "igxnDzvT3Lc",
 		"desc": "Vessa",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/flmOtMu_f9w?modestbranding=1&rel=0",
+		"youtubeId": "flmOtMu_f9w",
 		"desc": "Lentsikka lähtee",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	},
 	{
-		"src": "https://www.youtube-nocookie.com/embed/PCnQiJDft4Y?modestbranding=1&rel=0",
+		"youtubeId": "PCnQiJDft4Y",
 		"desc": "Pituushyppyä",
 		"width": 16,
-		"height": 9,
-		"iframe": true
+		"height": 9
 	}
 ]

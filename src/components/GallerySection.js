@@ -8,6 +8,7 @@ import Tilty from "react-tilty";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const hasBackdropBlurBug = isOpera || isEdge || isChrome || isChromium;
+const USE_LIGHTBOX_VIDEO_PLAYER = false;
 
 const SMALL_THUMBNAIL_SUFFIX = "t";
 const MEDIUM_THUMBNAIL_SUFFIX = "m";
@@ -38,14 +39,17 @@ export default function GallerySection({ header, id, media, direction }) {
 		margin,
 		photo: media
 	}) => {
-		if (media.iframe) {
+		if (media.youtubeId) {
 			return (
-				<VideoPlayer
+				<VideoPlayerThumbnail
 					videoSource={media}
 					margin={margin}
 					direction={direction}
+					onClick={() => openLightboxOnIndex(index)}
 					left={left}
 					top={top}
+					embeddedPlayer={!USE_LIGHTBOX_VIDEO_PLAYER}
+					key={media.src}
 				/>
 			);
 		} else {
@@ -54,6 +58,7 @@ export default function GallerySection({ header, id, media, direction }) {
 					margin={margin}
 					onClick={() => openLightboxOnIndex(index)}
 					image={media}
+					key={media.src}
 				/>
 			);
 		}
@@ -71,7 +76,7 @@ export default function GallerySection({ header, id, media, direction }) {
 			/>
 			<FsLightbox
 				toggler={lightboxController.toggler}
-				sources={media.map((media) => media.src)}
+				sources={formatLightboxMedia(media)}
 				customAttributes={media.map((media) => ({
 					alt: media.desc
 				}))}
@@ -104,14 +109,39 @@ const TiltableImage = ({ margin, onClick, image }) => {
 	);
 };
 
-const VideoPlayer = ({ videoSource, margin, direction, left, top }) => {
-	return (
-		<div className="ratio ratio-16x9">
-			<iframe
+const VideoPlayerThumbnail = ({
+	videoSource,
+	margin,
+	direction,
+	left,
+	top,
+	onClick,
+	embeddedPlayer
+}) => {
+	if (embeddedPlayer) {
+		return (
+			<div className="ratio ratio-16x9">
+				<iframe
+					src={videoSource.src}
+					title={videoSource.desc}
+					style={{
+						border: 0,
+						width: videoSource.width,
+						height: videoSource.height,
+						margin: margin,
+						position: direction === "column" ? "absolute" : "initial",
+						left: direction === "column" ? left : "initial",
+						top: direction === "column" ? top : "initial"
+					}}
+					allowFullScreen></iframe>
+			</div>
+		);
+	} else {
+		return (
+			<img
 				src={videoSource.src}
-				title={videoSource.desc}
+				alt={videoSource.desc}
 				style={{
-					border: 0,
 					width: videoSource.width,
 					height: videoSource.height,
 					margin: margin,
@@ -119,9 +149,10 @@ const VideoPlayer = ({ videoSource, margin, direction, left, top }) => {
 					left: direction === "column" ? left : "initial",
 					top: direction === "column" ? top : "initial"
 				}}
-				allowFullScreen></iframe>
-		</div>
-	);
+				onClick={onClick}
+			/>
+		);
+	}
 };
 
 function addBackDropBlur() {
@@ -143,15 +174,48 @@ function hideBackDropBlur() {
 }
 
 function formatMedia(mediaArray) {
-	return mediaArray.map((media) => {
+	return mediaArray.map((media, i) => {
+		let source,
+			width,
+			height = "";
+		if (media.youtubeId && USE_LIGHTBOX_VIDEO_PLAYER) {
+			source = `https://img.youtube.com/vi/${media.youtubeId}/hqdefault.jpg`;
+			width = 480;
+			height = 360;
+		} else {
+			source = media.youtubeId
+				? `https://www.youtube-nocookie.com/embed/${media.youtubeId}?modestbranding=1&rel=0`
+				: getImgurSpecialUrl(media.src, LARGE_THUMBNAIL_SUFFIX);
+			width = media.width;
+			height = media.height;
+		}
 		return {
-			src: media.iframe
-				? media.src
-				: getImgurSpecialUrl(media.src, LARGE_THUMBNAIL_SUFFIX),
-			width: media.width,
-			height: media.height,
+			src: source,
+			width: width,
+			height: height,
 			alt: media.desc,
-			iframe: media.iframe
+			youtubeId: media.youtubeId
 		};
 	});
+}
+
+function formatLightboxMedia(mediaArray) {
+	const result = mediaArray.map((media) => {
+		if (media.youtubeId && USE_LIGHTBOX_VIDEO_PLAYER) {
+			return (
+				<iframe
+					src={`https://www.youtube-nocookie.com/embed/${media.youtubeId}?modestbranding=1&rel=0`}
+					title={media.alt}
+					width="1920px"
+					height="1080px"
+					frameBorder="0"
+					allow="autoplay; fullscreen"
+					allowFullScreen
+				/>
+			);
+		} else {
+			return media.src;
+		}
+	});
+	return result;
 }
