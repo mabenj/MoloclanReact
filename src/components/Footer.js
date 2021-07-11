@@ -1,15 +1,17 @@
 import React from "react";
 import GoogleMap from "./GoogleMap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Row, Col } from "react-bootstrap";
 
 export default function Footer() {
 	return (
 		<footer className="footer-main">
 			<div className="container p-4">
-				<div className="row">
-					<div className="col">
+				<Row>
+					<Col md>
 						<h4 className="text-white pb-2">
-							Pääkonttori <FontAwesomeIcon icon={["far", "building"]} />
+							Pääkonttori&nbsp;
+							<FontAwesomeIcon icon={["far", "building"]} />
 						</h4>
 						<address>
 							<ul className="list-unstyled">
@@ -20,10 +22,11 @@ export default function Footer() {
 								<li className="text-white">+358 420 609 000</li>
 							</ul>
 						</address>
-					</div>
-					<div className="col">
+					</Col>
+					<Col md>
 						<h4 className="text-white pb-2">
-							Sivubisnekset <FontAwesomeIcon icon="hand-holding-usd" />
+							Sivubisnekset&nbsp;
+							<FontAwesomeIcon icon="hand-holding-usd" />
 						</h4>
 						<ul className="list-unstyled">
 							<li className="text-white">
@@ -54,13 +57,13 @@ export default function Footer() {
 								</a>
 							</li>
 						</ul>
-					</div>
-					<div className="col">
+					</Col>
+					<Col md>
 						<GoogleMap />
-					</div>
-				</div>
-				<div className="row">
-					<div className="col text-white text-center mt-5">
+					</Col>
+				</Row>
+				<Row>
+					<Col className="text-white text-center mt-5">
 						<i>Copyright &copy; Markkinarako Oy™ {new Date().getFullYear()}</i>
 						<br />
 						<i style={{ color: "gray" }}>
@@ -72,8 +75,8 @@ export default function Footer() {
 								veys_ryu
 							</a>
 						</i>
-					</div>
-				</div>
+					</Col>
+				</Row>
 			</div>
 		</footer>
 	);

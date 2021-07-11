@@ -12,18 +12,18 @@ export default function Sidebar() {
 	};
 
 	return (
-		<>
+		<div className="sidebar">
 			<button className="hamburger-icon" onClick={toggleSidebar}>
 				<FontAwesomeIcon icon="bars" />
 			</button>
 			<SidebarContent header="Proggikset" />
-		</>
+		</div>
 	);
 }
 
 const SidebarContent = ({ header }) => {
 	return (
-		<div className="sidebar">
+		<div className="sidebar-content">
 			<ul>
 				<li>
 					<span>{header}</span>

@@ -6,26 +6,32 @@ import Wrapper from "../components/Wrapper";
 
 const OfflineRaidMeme = () => (
 	<img
-		className="d-block rounded mx-auto my-5"
-		style={{ width: "80%" }}
+		className="d-block rounded mx-auto my-5 front-page-image"
 		src="https://i.imgur.com/qT3VtMt.jpg"
 		alt="molo offline raid meme"
 	/>
 );
 
 const RoofCampImage = () => (
-	<figure>
-		<img
-			className="rounded"
-			style={{ width: "400px" }}
-			src="https://i.imgur.com/3WC3Ddp.jpg"
-			alt="Roof camper by veys_ryu"
-		/>
-		<figcaption className="text-muted">
-			{/* cSpell: disable */}
-			Kala Harri wipen viimeineisenä päivänä <br />- heinäkuu 2016, väritetty
-		</figcaption>
-	</figure>
+	<div
+		style={{
+			display: "flex",
+			flexDirection: "column",
+			alignItems: "center"
+		}}>
+		<figure>
+			<img
+				className="rounded front-page-image"
+				width="400px"
+				src="https://i.imgur.com/3WC3Ddp.jpg"
+				alt="Roof camper by veys_ryu"
+			/>
+			<figcaption className="text-muted">
+				{/* cSpell: disable */}
+				Kala Harri wipen viimeineisenä päivänä <br />- heinäkuu 2016, väritetty
+			</figcaption>
+		</figure>
+	</div>
 );
 
 export default function Home() {
@@ -63,7 +69,7 @@ export default function Home() {
 				<OfflineRaidMeme />
 
 				<Row>
-					<Col>
+					<Col lg>
 						<p>
 							Sittemmin klaani on lopettanut toimintansa Rustin parissa ja
 							jatkaa häröilyä TeamSpeak-palvelimen puolella. Palvelimen
@@ -77,7 +83,7 @@ export default function Home() {
 							vastaavasti noin 2,50€.
 						</p>
 					</Col>
-					<Col>
+					<Col lg>
 						<RoofCampImage />
 					</Col>
 				</Row>

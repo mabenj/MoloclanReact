@@ -103,6 +103,12 @@ h3 {
 	font-size: 30px !important;
 }
 
+@media (max-width: $lg) {
+	.sidebar {
+		display: none;
+	}
+}
+
 .hamburger-icon {
 	/* Reset the button styling */
 	background: none;
@@ -126,7 +132,7 @@ h3 {
 	cursor: pointer;
 }
 
-.sidebar {
+.sidebar-content {
 	width: 0;
 	height: 100%;
 	background-color: $sidebar-bg-color;
@@ -167,6 +173,20 @@ h3 {
 	text-align: center;
 	margin-top: 200px;
 }
+@media (max-width: $lg) {
+	#banner-container {
+		margin-top: 100px;
+	}
+}
+
+#banner-svg {
+	width: 530px;
+}
+@media (max-width: $lg) {
+	#banner-svg {
+		width: 100%;
+	}
+}
 
 #banner-texts {
 	fill: $text-color;
@@ -179,6 +199,15 @@ h3 {
 #banner-lines,
 #banner-texts {
 	transition: all 1s ease;
+}
+
+.front-page-image {
+	width: 80%;
+}
+@media (max-width: $lg) {
+	.front-page-image {
+		width: 100%;
+	}
 }
 
 .footer-main {
@@ -205,8 +234,9 @@ main a {
 }
 @media (max-width: $lg) {
 	.wrapper {
-		padding: 50px 10px;
+		padding: 30px 10px;
 		text-align: initial;
+		margin: 10px 0;
 	}
 }
 
