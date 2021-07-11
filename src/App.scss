@@ -37,15 +37,12 @@ body {
 	background-size: 100vw;
 	background-position: 0 $navbar-height;
 	background-color: $black-color !important;
-}
-
-/* For navbar */
-body {
+	/* For navbar */
 	padding-top: $navbar-height !important;
 }
 @media (max-width: $lg) {
 	body {
-		padding-top: 0px !important;
+		background-size: 140vw;
 	}
 }
 
@@ -175,7 +172,7 @@ h3 {
 }
 @media (max-width: $lg) {
 	#banner-container {
-		margin-top: 100px;
+		margin-top: 40px;
 	}
 }
 
@@ -236,7 +233,7 @@ main a {
 	.wrapper {
 		padding: 30px 10px;
 		text-align: initial;
-		margin: $navbar-height + 20px 0;
+		margin: 10px 0;
 	}
 }
 
