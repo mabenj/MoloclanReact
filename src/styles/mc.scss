@@ -1,0 +1,55 @@
+$background-url: "https://i.imgur.com/UPLRrTBh.jpg";
+$hover-scale: 1.1;
+$playerlist-bg: hsla(0, 0%, 45%, 0.514);
+
+.mc-container {
+	width: 100%;
+	background-color: transparent;
+	overflow: hidden;
+}
+
+.mc-bg-container {
+	overflow: hidden;
+
+	.mc-bg-image {
+		background-image: url($background-url);
+		background-size: 100%;
+		background-repeat: no-repeat;
+		width: 100%;
+		height: 225px;
+		transition: all 200ms ease;
+	}
+
+	.mc-bg-image:hover {
+		transform: scale($hover-scale);
+	}
+}
+
+.mc-title {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	position: absolute;
+	bottom: 150px;
+
+	h4 {
+		font-weight: 700;
+	}
+
+	.mc-fav-icon {
+		width: 80px;
+		background-color: white;
+		border: 1px solid grey;
+		border-radius: 99999px;
+		box-shadow: 5px 5px 20px grey;
+		position: relative;
+		top: 20px;
+		margin-right: 40px;
+	}
+}
+
+.mc-playerlist {
+	background-color: $playerlist-bg;
+	height: 150px;
+}

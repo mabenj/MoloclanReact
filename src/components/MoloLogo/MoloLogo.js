@@ -11,7 +11,7 @@ import LineTopRight from "./Lines/LineTopRight";
 import LineBottomLeft from "./Lines/LineBottomLeft";
 import LineBottomRight from "./Lines/LineBottomRight";
 
-import "../../hover.css";
+import "../../styles/hover.css";
 
 const BIG_TEXT_ANIMATIONS = [
 	"hvr-wobble-top",

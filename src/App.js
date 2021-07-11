@@ -10,8 +10,8 @@ import GuiPack from "./pages/GuiPack";
 import { Container } from "react-bootstrap";
 import ReactGA from "react-ga";
 
-import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/styles.scss";
 
 // Regular
 import { faBuilding, faCopy } from "@fortawesome/free-regular-svg-icons";

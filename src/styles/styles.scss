@@ -10,14 +10,17 @@ $ts-viewer-bg-color: hsla(0, 0%, 29%, 0.514);
 $sidebar-bg-color: hsla(0, 0%, 11%, 0.925);
 $gallery-caption-color: hsla(180, 100%, 97%, 0.685);
 $gallery-caption-bg-color: hsla(0, 0%, 5%, 0.575);
+
 $navbar-height: 71px;
-$background-image: url("./img/rust_banner.jpg");
-$text-code-font: "Courier New", Courier, monospace;
+$background-image: url("../img/rust_banner.jpg");
+
 $xxl: 1400px;
 $xl: 1200px;
 $lg: 992px;
 $md: 768px;
 $sm: 576px;
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
 
 html {
 	scroll-behavior: smooth;
@@ -31,14 +34,20 @@ html {
 }
 
 body {
+	margin: 0;
+	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	background-image: $background-image;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100vw;
 	background-position: 0 $navbar-height;
-	background-color: $black-color !important;
+	background-color: $black-color;
 	/* For navbar */
-	padding-top: $navbar-height !important;
+	padding-top: $navbar-height;
 }
 @media (max-width: $lg) {
 	body {
@@ -47,7 +56,7 @@ body {
 }
 
 %headers-shared {
-	font-weight: 800 !important;
+	font-weight: 800;
 	letter-spacing: 0.05em;
 	word-spacing: 0.2em;
 	text-transform: uppercase;
@@ -59,17 +68,23 @@ body {
 
 h1 {
 	@extend %headers-shared;
-	font-size: 1.6rem !important;
+	font-size: 1.6rem;
 }
 
 h2 {
 	@extend %headers-shared;
-	font-size: 1.5rem !important;
+	font-size: 1.5rem;
 }
 
 h3 {
 	@extend %headers-shared;
-	font-size: 1.4rem !important;
+	font-size: 1.4rem;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+	color: $text-color;
 }
 
 .btn-warning,
@@ -97,7 +112,7 @@ h3 {
 }
 
 .navbar-brand {
-	font-size: 30px !important;
+	font-size: 30px;
 }
 
 @media (max-width: $lg) {
@@ -211,9 +226,11 @@ h3 {
 	background-color: $dark-color;
 }
 
-.footer-main a,
-main a {
-	color: $orange-color !important;
+.footer-main,
+main {
+	a {
+		color: $orange-color;
+	}
 }
 
 .wrapper {
@@ -251,11 +268,12 @@ main a {
 }
 
 .server-ip {
-	font-family: $text-code-font;
-
 	a {
-		color: $text-color !important;
-		font-family: $text-code-font;
+		color: $text-color;
+	}
+
+	a:hover {
+		color: $orange-color;
 	}
 }
 
@@ -277,7 +295,7 @@ main a {
 }
 
 .gallery-section-list-item {
-	background-color: transparent !important;
+	background-color: transparent;
 }
 
 .gallery-image {
@@ -294,8 +312,8 @@ main a {
 		left: 3%;
 		background-color: $gallery-caption-bg-color;
 		color: $gallery-caption-color;
-		padding-left: 5px !important;
-		padding-right: 5px !important;
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 }
 

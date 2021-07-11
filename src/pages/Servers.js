@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ServerSection from "../components/ServerPage/ServerSection";
 import ServerIPInfo from "../components/ServerPage/ServerIPInfo";
 import TSViewer from "../components/TSViewer/TSViewer";
-import MinecraftCard from "../components/Minecraft/MinecraftCard2";
+import MinecraftCard from "../components/Minecraft/MinecraftCard";
 import MinecraftMap from "../components/Minecraft/MinecraftMap";
 import Wrapper from "../components/Wrapper";
 

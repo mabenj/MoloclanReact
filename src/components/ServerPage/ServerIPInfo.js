@@ -14,11 +14,13 @@ export default function ServerIPInfo({ urlArray, isLink, linkVerb, header }) {
 								<tr key={index}>
 									<td className="server-ip">
 										{isLink ? (
-											<a href={url} target="_blank" rel="noreferrer">
-												{trimProtocolAndQueryString(url)}
-											</a>
+											<code>
+												<a href={url} target="_blank" rel="noreferrer">
+													{trimProtocolAndQueryString(url)}
+												</a>
+											</code>
 										) : (
-											trimProtocolAndQueryString(url)
+											<code>{trimProtocolAndQueryString(url)}</code>
 										)}
 									</td>
 									<td>
