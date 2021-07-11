@@ -7,6 +7,7 @@ import Servers from "./pages/Servers";
 import Jari from "./pages/Jari";
 import Home from "./pages/Home";
 import GuiPack from "./pages/GuiPack";
+import NotFound from "./pages/NotFound";
 import { Container } from "react-bootstrap";
 import ReactGA from "react-ga";
 
@@ -61,8 +62,14 @@ function App() {
 							<Route path="/jari">
 								<Jari documentTitle="MOLO - Jari" />
 							</Route>
-							<Route path="/">
+							<Route path="/home">
 								<Home />
+							</Route>
+							<Route exact path="/">
+								<Home />
+							</Route>
+							<Route path="*">
+								<NotFound />
 							</Route>
 						</Switch>
 					</Container>
