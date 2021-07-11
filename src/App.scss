@@ -1,20 +1,23 @@
-:root {
-	--text-color: azure;
-	--orange-color: #ffa31a;
-	--dark-orange-color: #cf4a0c98;
-	--dark-orange-color: #ffa31a6e;
-	--grey-color: #808080;
-	--dark-color: #292929;
-	--black-color: #1b1b1b;
-	--wrapper-bg-color: rgba(22, 22, 22, 0.3);
-	--ts-viewer-bg-color: rgba(73, 73, 73, 0.514);
-	--sidebar-bg-color: #1b1b1bec;
-	--navbar-height: 71px;
-	--background-image: url("./img/rust_banner.jpg");
-	--text-code-font: "Courier New", Courier, monospace;
-	--gallery-caption-color: rgba(240, 255, 255, 0.685);
-	--gallery-caption-bg-color: rgba(22, 22, 22, 0.384);
-}
+$text-color: azure;
+$orange-color: #ffa31a;
+$dark-orange-color: #cf4a0c98;
+$dark-orange-color: #ffa31a6e;
+$grey-color: #808080;
+$dark-color: #292929;
+$black-color: #1b1b1b;
+$wrapper-bg-color: rgba(22, 22, 22, 0.3);
+$ts-viewer-bg-color: rgba(73, 73, 73, 0.514);
+$sidebar-bg-color: #1b1b1bec;
+$navbar-height: 71px;
+$background-image: url("./img/rust_banner.jpg");
+$text-code-font: "Courier New", Courier, monospace;
+$gallery-caption-color: rgba(240, 255, 255, 0.685);
+$gallery-caption-bg-color: rgba(22, 22, 22, 0.384);
+$xxl: 1400px;
+$xl: 1200px;
+$lg: 992px;
+$md: 768px;
+$sm: 576px;
 
 html {
 	scroll-behavior: smooth;
@@ -28,46 +31,47 @@ html {
 }
 
 body {
-	background-image: var(--background-image);
+	background-image: $background-image;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100vw;
-	background-position: 0 var(--navbar-height);
-	background-color: var(--black-color) !important;
+	background-position: 0 $navbar-height;
+	background-color: $black-color !important;
 }
 
 /* For navbar */
 body {
-	padding-top: var(--navbar-height) !important;
+	padding-top: $navbar-height !important;
 }
-@media (max-width: 979px) {
+@media (max-width: $lg) {
 	body {
 		padding-top: 0px !important;
 	}
 }
 
-h1,
-h2,
-h3 {
+%headers-shared {
 	font-weight: 800 !important;
 	letter-spacing: 0.05em;
 	word-spacing: 0.2em;
 	text-transform: uppercase;
-	border-left: var(--orange-color);
+	border-left: $orange-color;
 	border-left-style: solid;
 	border-left-width: 3px;
 	padding: 0 10px;
 }
 
 h1 {
+	@extend %headers-shared;
 	font-size: 1.6rem !important;
 }
 
 h2 {
+	@extend %headers-shared;
 	font-size: 1.5rem !important;
 }
 
 h3 {
+	@extend %headers-shared;
 	font-size: 1.4rem !important;
 }
 
@@ -75,24 +79,24 @@ h3 {
 .btn-warning:hover,
 .btn-warning:active,
 .btn-primary:visited {
-	background-color: var(--orange-color) !important;
+	background-color: $orange-color !important;
 }
 
 .navbar {
-	background-color: var(--dark-color);
+	background-color: $dark-color;
 	width: 100vw;
 }
 
 .nav-link.active {
-	color: var(--orange-color) !important;
+	color: $orange-color !important;
 	/* Top only */
-	/* box-shadow: inset 0px 2px 0px -1px var(--orange-color); */
+	/* box-shadow: inset 0px 2px 0px -1px $orange-color; */
 	/* Bottom only */
-	box-shadow: inset 0px -2px 0px -1px var(--orange-color);
+	box-shadow: inset 0px -2px 0px -1px $orange-color;
 }
 
 .nav-link:hover {
-	color: var(--orange-color) !important;
+	color: $orange-color !important;
 }
 
 .navbar-brand {
@@ -112,7 +116,7 @@ h3 {
 	width: 40px;
 	height: 40px;
 	font-size: 22px;
-	color: var(--orange-color);
+	color: $orange-color;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -125,36 +129,38 @@ h3 {
 .sidebar {
 	width: 0;
 	height: 100%;
-	background-color: var(--sidebar-bg-color);
+	background-color: $sidebar-bg-color;
 	position: fixed;
-	top: var(--navbar-height);
+	top: $navbar-height;
 	left: 0;
 	transition: width 200ms;
-}
 
-.sidebar ul {
-	padding-top: 15px;
-	overflow: hidden;
-}
+	ul {
+		padding-top: 15px;
+		overflow: hidden;
 
-.sidebar ul li {
-	line-height: 60px;
-	list-style: none;
-}
-.sidebar ul li span,
-.sidebar ul li a {
-	display: block;
-	height: 60px;
-	padding: 0 10px;
-	text-decoration: none;
-	text-transform: none;
-	color: var(--text-color);
-	font-size: 16px;
-	white-space: nowrap;
-}
-.sidebar ul li span {
-	color: var(--grey-color);
-	font-size: 18px;
+		li {
+			line-height: 60px;
+			list-style: none;
+
+			span,
+			a {
+				display: block;
+				height: 60px;
+				padding: 0 10px;
+				text-decoration: none;
+				text-transform: none;
+				color: $text-color;
+				font-size: 16px;
+				white-space: nowrap;
+			}
+
+			span {
+				color: var(--grey-color);
+				font-size: 18px;
+			}
+		}
+	}
 }
 
 #banner-container {
@@ -163,11 +169,11 @@ h3 {
 }
 
 #banner-texts {
-	fill: var(--text-color);
+	fill: $text-color;
 }
 
 #banner-lines {
-	stroke: var(--text-color);
+	stroke: $text-color;
 }
 
 #banner-lines,
@@ -176,25 +182,32 @@ h3 {
 }
 
 .footer-main {
-	background-color: var(--dark-color);
+	background-color: $dark-color;
 }
 
 .footer-main a,
 main a {
-	color: var(--orange-color) !important;
+	color: $orange-color !important;
 }
 
 .wrapper {
 	margin: 100px 0;
 	width: 100%;
-	background-color: var(--wrapper-bg-color);
+	background-color: $wrapper-bg-color;
 	padding: 50px 80px;
-	color: var(--text-color);
+	color: $text-color;
 	border-style: solid;
-	border-image: linear-gradient(var(--dark-orange-color), transparent) 1;
+	border-image: linear-gradient($dark-orange-color, transparent) 1;
 	border-image-width: 1px;
 	border-bottom: 0;
 	border-radius: 0 0 10px 10px;
+	text-align: justify;
+}
+@media (max-width: $lg) {
+	.wrapper {
+		padding: 50px 10px;
+		text-align: initial;
+	}
 }
 
 .back-blur {
@@ -205,18 +218,18 @@ main a {
 }
 
 .TSViewer {
-	background-color: var(--ts-viewer-bg-color);
+	background-color: $ts-viewer-bg-color;
 	padding: 30px;
 	border-radius: 5px;
 }
 
 .server-ip {
-	font-family: var(--text-code-font);
-}
+	font-family: $text-code-font;
 
-.server-ip a {
-	color: var(--text-color) !important;
-	font-family: var(--text-code-font);
+	a {
+		color: $text-color !important;
+		font-family: $text-code-font;
+	}
 }
 
 .ip-info-table td {
@@ -225,7 +238,7 @@ main a {
 }
 
 .custom-btn {
-	color: var(--orange-color) !important;
+	color: $orange-color !important;
 }
 
 .jari-quote {
@@ -238,19 +251,19 @@ main a {
 
 .gallery-image {
 	position: relative;
-}
 
-.gallery-image img:hover {
-	cursor: pointer;
-}
+	img:hover {
+		cursor: pointer;
+	}
 
-.gallery-image p {
-	position: absolute;
-	transform: translateZ(30px);
-	bottom: 5px;
-	left: 25px;
-	background-color: var(--gallery-caption-bg-color);
-	color: var(--gallery-caption-color);
+	p {
+		position: absolute;
+		transform: translateZ(30px);
+		bottom: 5px;
+		left: 25px;
+		background-color: $gallery-caption-bg-color;
+		color: $gallery-caption-color;
+	}
 }
 
 /* Hover.css begin */
@@ -276,7 +289,7 @@ main a {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: var(--dark-color);
+	background: $dark-color;
 	-webkit-transform: scaleX(0);
 	transform: scaleX(0);
 	-webkit-transform-origin: 0 50%;
