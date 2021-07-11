@@ -7,7 +7,7 @@ export default function Sidebar() {
 
 	const toggleSidebar = (e) => {
 		setIsOpen((prev) => !prev);
-		let sidebar = document.querySelector(".sidebar");
+		let sidebar = document.querySelector(".sidebar-content");
 		sidebar.style.width = isOpen ? 0 : "20%";
 	};
 
