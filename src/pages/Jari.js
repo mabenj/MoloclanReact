@@ -31,13 +31,33 @@ export default function Jari({ documentTitle }) {
 					</figure>
 				</Col>
 			</Row>
-			<Row>
+			<Row style={{ display: "flex", flexDirection: "row-reverse" }}>
 				<Col>
+					<figure>
+						<img
+							className="rounded mx-auto"
+							style={{ width: "100%" }}
+							src="https://i.imgur.com/aYaF4gs.jpg"
+							alt="jari avanto rust"
+						/>
+						<figcaption className="text-muted">Pantomiimiesitys</figcaption>
+					</figure>
+				</Col>
+				<Col md>
 					<p>
 						Jari on erikoinen yksilö. Jarin mieltymyksiin lukeutuvat muun
 						muasssa: eri valtioiden rajojen muotojen tutkiskelu, kananjauhelihan
 						puolestapuhuminen sekä ainainen roastaamisen kohteeksi pyrkiminen.
 					</p>
+					<figure>
+						<img
+							className="rounded mx-auto"
+							style={{ width: "95%" }}
+							src="https://i.imgur.com/7Ah2eth.jpg"
+							alt="jari avanto rust2"
+						/>
+						<figcaption className="text-muted">Keihäänheittoa</figcaption>
+					</figure>
 					<p>
 						Jarin kommelluksista ja tempauksista on olemassa jos minkälaista
 						tarinaa ja kansantarua. Niistä kuitenkin kenties legendaarisimmat
@@ -61,19 +81,6 @@ export default function Jari({ documentTitle }) {
 						</a>
 						.
 					</p>
-				</Col>
-				<Col>
-					<figure>
-						<img
-							className="rounded mx-auto"
-							style={{ width: "100%" }}
-							src="https://i.imgur.com/aYaF4gs.jpg"
-							alt="jari avanto rust"
-						/>
-						<figcaption className="text-muted">
-							Jarin pantomiimiesitys
-						</figcaption>
-					</figure>
 				</Col>
 			</Row>
 		</Wrapper>
