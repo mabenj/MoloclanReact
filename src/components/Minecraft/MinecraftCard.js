@@ -73,16 +73,16 @@ const PlayerList = ({ players, totalPlayerCount, isOffline }) => {
 			<StatusText isOffline={isOffline} playerCount={totalPlayerCount} />
 			<Row>
 				<PlayerColumn players={first3} />
-				<PlayerColumn players={second3} />
-				<PlayerColumn players={third3} />
+				<PlayerColumn players={second3}  />
+				<PlayerColumn players={third3} className="d-none d-xl-block" />
 			</Row>
 		</div>
 	);
 };
 
-const PlayerColumn = ({ players }) => {
+const PlayerColumn = ({ players, className }) => {
 	return (
-		<Col sm>
+		<Col className={className}>
 			{players.map((playerName) => (
 				<p key={playerName} className="my-1 pl-4">
 					&middot;&nbsp;{playerName}

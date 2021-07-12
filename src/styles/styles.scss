@@ -1,6 +1,6 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-$text-color: azure;
+$text-color: hsl(180, 100%, 97%);
 $orange-color: hsl(36, 100%, 55%);
 $dark-orange-color: hsla(19, 89%, 43%, 0.596);
 $dark-orange-color: hsla(36, 100%, 55%, 0.431);
@@ -255,7 +255,7 @@ main {
 	.wrapper {
 		padding: 30px 10px;
 		text-align: initial;
-		margin: 10px 0;
+		margin: 110px 0;
 	}
 }
 
@@ -272,7 +272,11 @@ main {
 	border-radius: 5px;
 }
 
-.server-ip {
+.server-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
 	a {
 		color: $text-color;
 	}
@@ -280,11 +284,6 @@ main {
 	a:hover {
 		color: $orange-color;
 	}
-}
-
-.ip-info-table td {
-	padding-right: 50px;
-	padding-bottom: 20px;
 }
 
 .custom-btn {

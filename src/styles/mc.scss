@@ -13,7 +13,7 @@ $playerlist-bg: hsla(0, 0%, 45%, 0.514);
 
 	.mc-bg-image {
 		background-image: url($background-url);
-		background-size: 100%;
+		background-size: cover;
 		background-repeat: no-repeat;
 		width: 100%;
 		height: 225px;
