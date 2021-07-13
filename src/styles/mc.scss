@@ -1,6 +1,7 @@
 $background-url: "https://i.imgur.com/UPLRrTBh.jpg";
 $hover-scale: 1.1;
 $playerlist-bg: hsla(0, 0%, 45%, 0.514);
+$playerlist-height: 190px;
 
 .mc-container {
 	width: 100%;
@@ -31,7 +32,7 @@ $playerlist-bg: hsla(0, 0%, 45%, 0.514);
 	justify-content: space-between;
 	align-items: flex-end;
 	position: absolute;
-	bottom: 150px;
+	bottom: $playerlist-height;
 
 	h4 {
 		font-weight: 700;
@@ -51,22 +52,32 @@ $playerlist-bg: hsla(0, 0%, 45%, 0.514);
 
 .mc-playerlist {
 	background-color: $playerlist-bg;
-	height: 150px;
-    width: 100%;
+	height: $playerlist-height;
+	width: 100%;
+	overflow: auto hidden;
 
-    .mc-playerlist-status{
-        height: 20%;
-    }
+	.mc-playerlist-status {
+		height: 20%;
+	}
 
-    .mc-playerlist-players{
-        height: 80%;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        // align-items: center;
+	.mc-playerlist-players {
+		height: 80%;
+		padding: 10px;
+		display: flex;
 
-        span{
-        }
-    }
+		span {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 0 10px;
+
+			img {
+				margin-right: 5px;
+			}
+		}
+
+		span:hover {
+			transform: scale($hover-scale);
+		}
+	}
 }

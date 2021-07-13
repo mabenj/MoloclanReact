@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 
 import "../../styles/mc.scss";
 
-// const SERVER_IP = "104.152.140.171";
-const SERVER_IP = "217.79.241.195";
+const SERVER_IP = "104.152.140.171";
+// const SERVER_IP = "217.79.241.195";
+const QUERY_URL = `https://api.minetools.eu/query/${SERVER_IP}/25565`;
 const FAVICON_URL = `https://api.minetools.eu/favicon/${SERVER_IP}/25565`;
 const FAVICON_URL_FALLBACK = "https://i.imgur.com/8XKJwE8t.jpg";
-const QUERY_URL = `https://api.minetools.eu/query/${SERVER_IP}/25565`;
-const NUMBER_OF_PLAYERS_TO_TAKE = 9;
+const AVATAR_API_URL = "https://minotar.net/body/";
+const AVATAR_WIDTH = 40;
+const MAX_NUMBER_OF_PLAYERS_TO_TAKE = 3;
 
 export default function MinecraftCard() {
-	const [players, setPlayers] = useState([]);
+	const [players, setPlayers] = useState([{ name: "", skinSource: "" }]);
 	const [playerCount, setPlayerCount] = useState(0);
 	const [isOffline, setIsOffline] = useState(false);
 
@@ -21,7 +21,16 @@ export default function MinecraftCard() {
 			.then((response) => response.json())
 			.then((data) => {
 				setIsOffline(data.status === "ERR");
-				setPlayers(data.Playerlist?.slice(0, NUMBER_OF_PLAYERS_TO_TAKE) || []);
+				setPlayers(
+					data.Playerlist?.slice(0, MAX_NUMBER_OF_PLAYERS_TO_TAKE).map(
+						(playerName) => {
+							return {
+								name: playerName,
+								skinSource: `${AVATAR_API_URL}${playerName}/${AVATAR_WIDTH}.png`
+							};
+						}
+					)
+				);
 				setPlayerCount(data.Playerlist?.length || 0);
 			})
 			.catch(console.error);
@@ -65,22 +74,23 @@ const Title = ({ isOffline }) => {
 	);
 };
 
-//TODO: https://crafatar.com/
-//TODO: dynamic number of players to display depending on the width of the device
+// TODO: backdrop for avatar
 const PlayerList = ({ players, totalPlayerCount, isOffline }) => {
 	return (
 		<div className="mc-playerlist">
-			<StatusText isOffline={isOffline} playerCount={totalPlayerCount} className="mc-playerlist-status" />
-            <div className="mc-playerlist-players">
-                {
-                    players.map(playerName=>(
-                        <span key={playerName}>
-                            <FontAwesomeIcon icon="user"className="mr-2"/>
-                            {playerName}
-                        </span>
-                    ))
-                }
-            </div>
+			<StatusText
+				isOffline={isOffline}
+				playerCount={totalPlayerCount}
+				className="mc-playerlist-status"
+			/>
+			<div className="mc-playerlist-players">
+				{players.map(({ name, skinSource }) => (
+					<span key={name} title={name}>
+						<img src={skinSource} alt={name} width={AVATAR_WIDTH} />
+						<p>{name}</p>
+					</span>
+				))}
+			</div>
 		</div>
 	);
 };
