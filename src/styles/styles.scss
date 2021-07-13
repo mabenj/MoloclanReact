@@ -2,7 +2,8 @@
 
 $text-color: hsl(180, 100%, 97%);
 $orange-color: hsl(36, 100%, 55%);
-$dark-orange-color: hsla(19, 89%, 43%, 0.596);
+$carrot-color: hsla(19, 89%, 43%, 0.596);
+$anchor-color-hover: hsl(19, 100%, 50%);
 $dark-orange-color: hsla(36, 100%, 55%, 0.431);
 $grey-color: hsl(0, 0%, 50%);
 $dark-color: hsl(0, 0%, 16%);
@@ -236,6 +237,10 @@ main {
 	a {
 		color: $orange-color;
 	}
+
+    a:hover{
+        color: $anchor-color-hover;
+    }
 }
 
 .wrapper {
