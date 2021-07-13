@@ -52,4 +52,21 @@ $playerlist-bg: hsla(0, 0%, 45%, 0.514);
 .mc-playerlist {
 	background-color: $playerlist-bg;
 	height: 150px;
+    width: 100%;
+
+    .mc-playerlist-status{
+        height: 20%;
+    }
+
+    .mc-playerlist-players{
+        height: 80%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        // align-items: center;
+
+        span{
+        }
+    }
 }

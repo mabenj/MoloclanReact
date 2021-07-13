@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 import "../../styles/mc.scss";
 
-const SERVER_IP = "51.79.162.160";
+// const SERVER_IP = "104.152.140.171";
+const SERVER_IP = "217.79.241.195";
 const FAVICON_URL = `https://api.minetools.eu/favicon/${SERVER_IP}/25565`;
 const FAVICON_URL_FALLBACK = "https://i.imgur.com/8XKJwE8t.jpg";
 const QUERY_URL = `https://api.minetools.eu/query/${SERVER_IP}/25565`;
-const NUMBER_OF_PLAYERS_TO_TAKE = 20;
+const NUMBER_OF_PLAYERS_TO_TAKE = 9;
 
 export default function MinecraftCard() {
 	const [players, setPlayers] = useState([]);
@@ -34,7 +36,6 @@ export default function MinecraftCard() {
 				totalPlayerCount={playerCount}
 				isOffline={isOffline}
 			/>
-			{/* <Title isOffline={isOffline} /> */}
 		</Container>
 	);
 }
@@ -64,37 +65,29 @@ const Title = ({ isOffline }) => {
 	);
 };
 
+//TODO: https://crafatar.com/
+//TODO: dynamic number of players to display depending on the width of the device
 const PlayerList = ({ players, totalPlayerCount, isOffline }) => {
-	let first3 = players.slice(0, 3);
-	let second3 = players.slice(3, 6);
-	let third3 = players.slice(6, 9);
 	return (
 		<div className="mc-playerlist">
-			<StatusText isOffline={isOffline} playerCount={totalPlayerCount} />
-			<Row>
-				<PlayerColumn players={first3} />
-				<PlayerColumn players={second3}  />
-				<PlayerColumn players={third3} className="d-none d-xl-block" />
-			</Row>
+			<StatusText isOffline={isOffline} playerCount={totalPlayerCount} className="mc-playerlist-status" />
+            <div className="mc-playerlist-players">
+                {
+                    players.map(playerName=>(
+                        <span key={playerName}>
+                            <FontAwesomeIcon icon="user"className="mr-2"/>
+                            {playerName}
+                        </span>
+                    ))
+                }
+            </div>
 		</div>
 	);
 };
 
-const PlayerColumn = ({ players, className }) => {
+const StatusText = ({ isOffline, playerCount, className }) => {
 	return (
-		<Col className={className}>
-			{players.map((playerName) => (
-				<p key={playerName} className="my-1 pl-4">
-					&middot;&nbsp;{playerName}
-				</p>
-			))}
-		</Col>
-	);
-};
-
-const StatusText = ({ isOffline, playerCount }) => {
-	return (
-		<h4 className="ml-2 pt-2">
+		<h4 className={`ml-2 pt-2 ${className}`}>
 			{isOffline ? (
 				<span className="badge badge-danger badge-pill">
 					Servu on rikki tai jtn

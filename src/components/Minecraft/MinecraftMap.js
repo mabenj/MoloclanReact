@@ -5,6 +5,7 @@ const HOVER_ZOOM_SCALE = 1.1;
 
 export default function MinecraftMap({ mapUrl }) {
 	const [isHovering, setIsHovering] = useState(false);
+    mapUrl = "https://map.hearthcraft.net/?worldname=SMP_Map3_9&mapname=flat&zoom=4&x=113&y=64&z=95";
 	return (
 		<a href={mapUrl} target="_blank" rel="noreferrer">
 			<div className="rounded" style={{ overflow: "hidden" }}>
