@@ -72,15 +72,14 @@ export default function Home() {
 					<Col lg>
 						<p>
 							Sittemmin klaani on lopettanut toimintansa Rustin parissa ja
-							jatkaa häröilyä TeamSpeak-palvelimen puolella. Palvelimen
+							nykyään jatkaa häröilyä TeamSpeak-palvelimen puolella. Palvelimen
 							IP-osoitteen löydät <Link to="/servut">SERVUT</Link>-sivulta.
 						</p>
 						<p>
-							Osa klaanin jäsenistöstä on sittemmin jatkanut toimintaa
-							perustamalla kehnoa menestystä nauttivan
-							startup-markkinointiyrityksen nimeltään Markkinarako Oy. Yrityksen
-							liikevaihto vuonna 2019 oli noin 5€ ja vuonna 2020 se oli
-							vastaavasti noin 2,50€.
+							Osa klaanin jäsenistöstä on jatkanut toimintaa perustamalla kehnoa
+							menestystä nauttivan startup-markkinointiyrityksen:
+							<em> Markkinarako Oy</em>. Yrityksen liikevaihto vuonna 2019 oli
+							noin 5€ ja vuonna 2020 se oli vastaavasti noin 3€.
 						</p>
 					</Col>
 					<Col lg>
