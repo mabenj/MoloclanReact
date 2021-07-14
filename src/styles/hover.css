@@ -604,10 +604,10 @@
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
+/* }
 .hvr-wobble-vertical:hover,
 .hvr-wobble-vertical:focus,
-.hvr-wobble-vertical:active {
+.hvr-wobble-vertical:active { */
 	-webkit-animation-name: hvr-wobble-vertical;
 	animation-name: hvr-wobble-vertical;
 	-webkit-animation-duration: 1s;
@@ -677,10 +677,10 @@
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
+	/* }
 .hvr-wobble-horizontal:hover,
 .hvr-wobble-horizontal:focus,
-.hvr-wobble-horizontal:active {
+.hvr-wobble-horizontal:active { */
 	-webkit-animation-name: hvr-wobble-horizontal;
 	animation-name: hvr-wobble-horizontal;
 	-webkit-animation-duration: 1s;
@@ -750,10 +750,10 @@
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
+/* }
 .hvr-wobble-to-bottom-right:hover,
 .hvr-wobble-to-bottom-right:focus,
-.hvr-wobble-to-bottom-right:active {
+.hvr-wobble-to-bottom-right:active { */
 	-webkit-animation-name: hvr-wobble-to-bottom-right;
 	animation-name: hvr-wobble-to-bottom-right;
 	-webkit-animation-duration: 1s;
@@ -823,10 +823,10 @@
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
+/* }
 .hvr-wobble-to-top-right:hover,
 .hvr-wobble-to-top-right:focus,
-.hvr-wobble-to-top-right:active {
+.hvr-wobble-to-top-right:active { */
 	-webkit-animation-name: hvr-wobble-to-top-right;
 	animation-name: hvr-wobble-to-top-right;
 	-webkit-animation-duration: 1s;
@@ -1046,10 +1046,10 @@
 	-webkit-transform: perspective(1px) translateZ(0);
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-	/* }
+}
 .hvr-wobble-skew:hover,
 .hvr-wobble-skew:focus,
-.hvr-wobble-skew:active { */
+.hvr-wobble-skew:active {
 	-webkit-animation-name: hvr-wobble-skew;
 	animation-name: hvr-wobble-skew;
 	-webkit-animation-duration: 1s;
@@ -1236,10 +1236,10 @@
 	transition-duration: 0.3s;
 	-webkit-transition-property: transform;
 	transition-property: transform;
-}
+	/* }
 .hvr-backward:hover,
 .hvr-backward:focus,
-.hvr-backward:active {
+.hvr-backward:active { */
 	-webkit-transform: translateX(-8px);
 	transform: translateX(-8px);
 }
@@ -4135,7 +4135,7 @@
 .hvr-icon-wobble-vertical .hvr-icon {
 	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
-}
+} 
 .hvr-icon-wobble-vertical:hover .hvr-icon,
 .hvr-icon-wobble-vertical:focus .hvr-icon,
 .hvr-icon-wobble-vertical:active .hvr-icon {
@@ -4147,7 +4147,7 @@
 	animation-timing-function: ease-in-out;
 	-webkit-animation-iteration-count: 1;
 	animation-iteration-count: 1;
-}
+} 
 
 /* Icon Buzz */
 @-webkit-keyframes hvr-icon-buzz {

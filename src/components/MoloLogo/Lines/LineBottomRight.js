@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LineBottomRight() {
+export default function LineBottomRight(props) {
 	return (
 		<line
 			id="line-br"
@@ -9,6 +9,7 @@ export default function LineBottomRight() {
 			x2="489"
 			y2="210.5"
 			strokeWidth="5"
+			className={props.className}
 		/>
 	);
 }

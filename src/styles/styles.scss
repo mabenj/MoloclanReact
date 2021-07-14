@@ -187,38 +187,6 @@ code {
 	}
 }
 
-#banner-container {
-	text-align: center;
-	margin-top: 200px;
-}
-@media (max-width: $lg) {
-	#banner-container {
-		margin-top: 40px;
-	}
-}
-
-#banner-svg {
-	width: 530px;
-}
-@media (max-width: $lg) {
-	#banner-svg {
-		width: 100%;
-	}
-}
-
-#banner-texts {
-	fill: $text-color;
-}
-
-#banner-lines {
-	stroke: $text-color;
-}
-
-#banner-lines,
-#banner-texts {
-	transition: all 1s ease;
-}
-
 .front-page-image {
 	width: 80%;
 }

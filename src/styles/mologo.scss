@@ -1,0 +1,49 @@
+$line-color: hsl(180, 100%, 97%);
+
+$xxl: 1400px;
+$xl: 1200px;
+$lg: 992px;
+$md: 768px;
+$sm: 576px;
+
+#banner-container {
+	// text-align: center;
+	margin-top: 200px;
+	display: flex;
+	justify-content: center;
+}
+@media (max-width: $lg) {
+	#banner-container {
+		margin-top: 40px;
+	}
+}
+
+#banner-svg {
+	// width: 530px;
+}
+@media (max-width: $lg) {
+	#banner-svg {
+		width: 100%;
+	}
+}
+
+#banner {
+}
+
+#banner-texts {
+	fill: $line-color;
+}
+
+#banner-lines {
+	stroke: $line-color;
+}
+
+#banner-lines,
+#banner-texts {
+	transition: all 1s ease;
+}
+
+.upper,
+.lower {
+	transition: all 2s ease;
+}
