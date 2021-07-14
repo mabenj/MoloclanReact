@@ -1,6 +1,8 @@
 $background-url: "https://i.imgur.com/UPLRrTBh.jpg";
 $hover-scale: 1.1;
+$fav-icon-bg: hsla(0, 0%, 100%, 0.418);
 $playerlist-bg: hsla(0, 0%, 45%, 0.514);
+$avatar-bg-shadow: rgba(0, 0, 0, 0.521);
 $playerlist-height: 190px;
 
 .mc-container {
@@ -41,9 +43,9 @@ $playerlist-height: 190px;
 	.mc-fav-icon {
 		width: 80px;
 		background-color: white;
-		border: 1px solid grey;
+		border: 1px solid $fav-icon-bg;
 		border-radius: 99999px;
-		box-shadow: 5px 5px 20px grey;
+		box-shadow: 5px 5px 20px $fav-icon-bg;
 		position: relative;
 		top: 20px;
 		margin-right: 40px;
@@ -73,6 +75,8 @@ $playerlist-height: 190px;
 
 			img {
 				margin-right: 5px;
+				-webkit-filter: drop-shadow(5px 5px 5px $avatar-bg-shadow);
+				filter: drop-shadow(5px 5px 5px $avatar-bg-shadow);
 			}
 		}
 

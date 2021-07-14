@@ -4,12 +4,15 @@ import "../../styles/mc.scss";
 
 const SERVER_IP = "104.152.140.171";
 // const SERVER_IP = "217.79.241.195";
+// const SERVER_IP = "mc.moloclan.fi";
 const QUERY_URL = `https://api.minetools.eu/query/${SERVER_IP}/25565`;
 const FAVICON_URL = `https://api.minetools.eu/favicon/${SERVER_IP}/25565`;
 const FAVICON_URL_FALLBACK = "https://i.imgur.com/8XKJwE8t.jpg";
+const HEROBRINE_AVATAR_URL =
+	"https://lh3.googleusercontent.com/vlHjs581Tvn1vxp0upYCuX6xNvfHk-49vjnh-v0XAkW9Vs2ETzwSGqPOOnmZTTk6bNw4Y185XWaafYFFQR8VdA";
 const AVATAR_API_URL = "https://minotar.net/body/";
 const AVATAR_WIDTH = 40;
-const MAX_NUMBER_OF_PLAYERS_TO_TAKE = 3;
+const MAX_NUMBER_OF_PLAYERS_TO_TAKE = 5;
 
 export default function MinecraftCard() {
 	const [players, setPlayers] = useState([{ name: "", skinSource: "" }]);
@@ -29,7 +32,7 @@ export default function MinecraftCard() {
 								skinSource: `${AVATAR_API_URL}${playerName}/${AVATAR_WIDTH}.png`
 							};
 						}
-					)
+					) || []
 				);
 				setPlayerCount(data.Playerlist?.length || 0);
 			})
@@ -74,8 +77,16 @@ const Title = ({ isOffline }) => {
 	);
 };
 
-// TODO: backdrop for avatar
 const PlayerList = ({ players, totalPlayerCount, isOffline }) => {
+	if (isOffline || players.length === 0) {
+		players = [
+			{
+				name: "herobrine",
+				skinSource: HEROBRINE_AVATAR_URL
+			}
+		];
+	}
+
 	return (
 		<div className="mc-playerlist">
 			<StatusText
