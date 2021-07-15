@@ -12,7 +12,7 @@ const HEROBRINE_AVATAR_URL =
 	"https://lh3.googleusercontent.com/vlHjs581Tvn1vxp0upYCuX6xNvfHk-49vjnh-v0XAkW9Vs2ETzwSGqPOOnmZTTk6bNw4Y185XWaafYFFQR8VdA";
 const AVATAR_API_URL = "https://minotar.net/body/";
 const AVATAR_WIDTH = 40;
-const MAX_NUMBER_OF_PLAYERS_TO_TAKE = 5;
+const MAX_NUMBER_OF_PLAYERS_TO_TAKE = 12;
 
 export default function MinecraftCard() {
 	const [players, setPlayers] = useState([{ name: "", skinSource: "" }]);
