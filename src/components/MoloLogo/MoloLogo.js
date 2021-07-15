@@ -12,7 +12,6 @@ import LineBottomLeft from "./Lines/LineBottomLeft";
 import LineBottomRight from "./Lines/LineBottomRight";
 
 import "../../styles/mologo.scss";
-import "../../styles/hover.css";
 
 const BIG_TEXT_ANIMATIONS = [
 	"hvr-wobble-horizontal",
@@ -26,6 +25,7 @@ export default function MoloLogo() {
 	const [upperClass, setUpperClass] = useState("upper");
 	const [lowerClass, setLowerClass] = useState("lower");
 	const [bigTextAnimationIndex, setBigTextAnimationIndex] = useState(-1);
+	const [isUpperBackward, setIsUpperBackward] = useState(false);
 
 	useEffect(() => {
 		setBigTextClass(`${BIG_TEXT_ANIMATIONS[bigTextAnimationIndex]}`);
@@ -39,12 +39,12 @@ export default function MoloLogo() {
 			}
 			return newIndex;
 		});
-		setUpperClass(`upper hvr-backward`);
-		setLowerClass(`lower hvr-forward`);
+		setUpperClass(`upper hvr-${isUpperBackward ? "backward" : "forward"}`);
+		setLowerClass(`lower hvr-${isUpperBackward ? "forward" : "backward"}`);
+		setIsUpperBackward(Math.random() < 0.5);
 	}
 
 	function endAnimation() {
-		// setBigTextClass(`${BIG_TEXT_ANIMATIONS[bigTextAnimationIndex]}`);
 		setUpperClass(`upper`);
 		setLowerClass(`lower`);
 	}
