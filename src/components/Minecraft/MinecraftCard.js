@@ -98,7 +98,7 @@ const PlayerList = ({ players, totalPlayerCount, isOffline }) => {
 				{players.map(({ name, skinSource }) => (
 					<span key={name} title={name}>
 						<img src={skinSource} alt={name} width={AVATAR_WIDTH} />
-						<p>{name}</p>
+						<p className="d-inline-block text-truncate">{name}</p>
 					</span>
 				))}
 			</div>
