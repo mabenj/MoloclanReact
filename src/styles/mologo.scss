@@ -90,6 +90,8 @@ $animation-duration-out: 0.5s;
 	transform: translate(-$translate-x, $translate-y);
 }
 
+$wobble-duration: 0.7s;
+
 /* Wobble Vertical */
 @-webkit-keyframes hvr-wobble-vertical {
 	16.65% {
@@ -137,7 +139,7 @@ $animation-duration-out: 0.5s;
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 	animation-name: hvr-wobble-vertical;
-	animation-duration: 1s;
+	animation-duration: $wobble-duration;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: 1;
 }
@@ -189,7 +191,7 @@ $animation-duration-out: 0.5s;
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 	animation-name: hvr-wobble-horizontal;
-	animation-duration: 1s;
+	animation-duration: $wobble-duration;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: 1;
 }
@@ -241,7 +243,7 @@ $animation-duration-out: 0.5s;
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 	animation-name: hvr-wobble-to-bottom-right;
-	animation-duration: 1s;
+	animation-duration: $wobble-duration;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: 1;
 }
@@ -293,7 +295,7 @@ $animation-duration-out: 0.5s;
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 	animation-name: hvr-wobble-to-top-right;
-	animation-duration: 1s;
+	animation-duration: $wobble-duration;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: 1;
 }
