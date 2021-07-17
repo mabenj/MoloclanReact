@@ -43,3 +43,8 @@ export function waitForElem(selector) {
 		});
 	});
 }
+
+export async function waitForElemAndDelete(selector) {
+	const elem = await waitForElem(selector);
+    elem.parentNode.removeChild(elem);
+}

@@ -40,7 +40,7 @@ export default function Home() {
 			<MoloLogo />
 			<Wrapper>
 				<h1>MOLO Clan</h1>
-				<br />
+				<p className="lead">Maxakin lempijoukko tunareita</p>
 				<p>
 					MOLO on noin vuonna 2015 alkunsa saanut Rust-klaani. Pian perustamisen
 					jälkeen klaani keräsi itselleen hyvinkin laajan pelaajakunnan (lue{" "}
