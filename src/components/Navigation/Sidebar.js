@@ -34,22 +34,22 @@ const SidebarContent = ({ header }) => {
 					</Nav.Link>
 				</li>
 				<li>
-					<a
+					<Nav.Link
 						href="https://jariclub.moloclan.fi/"
 						target="_blank"
 						rel="noreferrer"
 						className="hvr-bounce-to-right">
 						Jari Club nettidomain
-					</a>
+					</Nav.Link>
 				</li>
 				<li>
-					<a
+					<Nav.Link
 						href="https://old.moloclan.fi/"
 						target="_blank"
 						rel="noreferrer"
 						className="hvr-bounce-to-right">
 						Vanha moloclan.fi
-					</a>
+					</Nav.Link>
 				</li>
 			</ul>
 		</div>
