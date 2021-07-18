@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 
 export default function Sidebar() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -29,9 +29,9 @@ const SidebarContent = ({ header }) => {
 					<span>{header}</span>
 				</li>
 				<li>
-					<Link to="/gui-pack" className="hvr-bounce-to-right">
+					<Nav.Link href="/gui-pack" className="hvr-bounce-to-right">
 						Minecraft GUI Pack
-					</Link>
+					</Nav.Link>
 				</li>
 				<li>
 					<a
