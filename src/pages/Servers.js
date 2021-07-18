@@ -4,6 +4,7 @@ import ServerIPInfo from "../components/ServerPage/ServerIPInfo";
 import TSViewer from "../components/TSViewer/TSViewer";
 import MinecraftCard from "../components/Minecraft/MinecraftCard";
 import MinecraftMap from "../components/Minecraft/MinecraftMap";
+import DiscordCard from "../components/Discord/DiscordCard";
 import Wrapper from "../components/Wrapper";
 
 const TEAMSPEAK_URL_ARRAY = [
@@ -57,7 +58,7 @@ export default function Servers({ documentTitle }) {
 
 			<Wrapper>
 				<ServerSection
-					serverComponent={<Discord />}
+					serverComponent={<DiscordCard />}
 					displayName="Discord"
 					faIcon={DISCORD_FA_ICON}
 				/>
@@ -65,11 +66,3 @@ export default function Servers({ documentTitle }) {
 		</>
 	);
 }
-
-const Discord = () => {
-	return (
-		<>
-			<code>HYÖÖRG</code>
-		</>
-	);
-};

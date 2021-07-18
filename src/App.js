@@ -21,10 +21,17 @@ import {
 	faBars,
 	faExternalLinkAlt,
 	faUser,
-	faDownload
+	faDownload,
+	faCheckCircle,
+	faTimesCircle,
+	faPoop
 } from "@fortawesome/free-solid-svg-icons";
 // Brands
-import { faTeamspeak, faDiscord } from "@fortawesome/free-brands-svg-icons";
+import {
+	faTeamspeak,
+	faDiscord,
+	faSkype
+} from "@fortawesome/free-brands-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(
@@ -36,7 +43,11 @@ library.add(
 	faBars,
 	faExternalLinkAlt,
 	faUser,
-	faDownload
+	faDownload,
+	faCheckCircle,
+	faTimesCircle,
+	faPoop,
+	faSkype
 );
 
 ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);

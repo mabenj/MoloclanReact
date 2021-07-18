@@ -45,7 +45,7 @@
 			"infoLink": "https://en.wikipedia.org/wiki/Audio_codec",
 			"valueMapping": {
 				"ts3": "CELT, Speex, Opus",
-				"discord": "opus",
+				"discord": "Opus",
 				"skype": "Silk"
 			}
 		},

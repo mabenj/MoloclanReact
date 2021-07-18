@@ -16,10 +16,10 @@ export default function ServerSection({
 				{faIcon ? <FontAwesomeIcon icon={faIcon} /> : ""}
 			</h3>
 			<Row style={{ marginTop: "30px" }}>
-				<Col lg="7" style={{ marginBottom: "30px" }}>
+				<Col lg={infoComponent ? 7 : 12} style={{ marginBottom: "30px" }}>
 					{serverComponent}
 				</Col>
-				<Col>{infoComponent}</Col>
+				{infoComponent ? <Col>{infoComponent}</Col> : null}
 			</Row>
 		</>
 	);
