@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Route, Router, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Header from "./components/Navigation/Header";
@@ -8,7 +9,7 @@ import Jari from "./pages/Jari";
 import Home from "./pages/Home";
 import GuiPack from "./pages/GuiPack";
 import { Container } from "react-bootstrap";
-import ReactGA from "react-ga";
+import ReactGA, { set } from "react-ga";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/styles.scss";
@@ -47,27 +48,31 @@ function App() {
 		<>
 			<Router history={history}>
 				<Header />
-				<main>
-					<Container fluid="md">
-						<Switch>
-							<Route path="/gui-pack">
-								<GuiPack documentTitle="MOLO - GUI-Pack" />
-							</Route>
-							<Route path="/galleria">
-								<Gallery documentTitle="MOLO - Galleria" />
-							</Route>
-							<Route path="/servut">
-								<Servers documentTitle="MOLO - Servut" />
-							</Route>
-							<Route path="/jari">
-								<Jari documentTitle="MOLO - Jari" />
-							</Route>
-							<Route path="/">
-								<Home />
-							</Route>
-						</Switch>
-					</Container>
-				</main>
+				<MainContainer>
+					<Switch>
+						<Route path="/gui-pack">
+							<GuiPack documentTitle="MOLO - GUI-Pack" />
+						</Route>
+						<Route path="/galleria">
+							<Gallery documentTitle="MOLO - Galleria" />
+						</Route>
+						<Route path="/servut">
+							<Servers documentTitle="MOLO - Servut" />
+						</Route>
+						<Route path="/jari">
+							<Jari documentTitle="MOLO - Jari" />
+						</Route>
+						<Route path="/home">
+							<Home />
+						</Route>
+						<Route exact path="/">
+							<Home />
+						</Route>
+						<Route path="*">
+							<NotFound />
+						</Route>
+					</Switch>
+				</MainContainer>
 			</Router>
 			<Footer />
 		</>
@@ -75,3 +80,35 @@ function App() {
 }
 
 export default App;
+
+const MainContainer = (props) => {
+	const [initialX, setInitialX] = useState(0);
+	const [initialY, setInitialY] = useState(0);
+
+	function handleScroll(e) {
+		const bgOffsetY = -window.pageYOffset * 0.3;
+		const newY = initialY + bgOffsetY;
+		// console.log("initial: ", initialY);
+		// console.log("offset: ", bgOffsetY);
+		console.log(initialY);
+		document.body.style.backgroundPosition = `${initialX}px ${newY}px`;
+	}
+
+	useEffect(() => {
+		// TODO waitforelem
+		const initialBgPosition = window.getComputedStyle(
+			document.body
+		).backgroundPosition;
+		setInitialX(parseInt(initialBgPosition.split(" ")[0]));
+		setInitialY(parseInt(initialBgPosition.split(" ")[1]));
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
+	return (
+		<main>
+			<Container fluid="md">{props.children}</Container>
+		</main>
+	);
+};
