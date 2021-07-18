@@ -42,7 +42,7 @@ const DesktopHeader = () => {
 	return (
 		<>
 			<div style={headerStyle}>
-				<h1 className="border-0">Galleria</h1>
+				<h1 className="border-0 mb-4">Galleria</h1>
 				<ul className="list-inline">
 					{sections.map((section) => (
 						<li key={section.id} className="list-inline-item px-3">
