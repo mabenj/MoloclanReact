@@ -20,7 +20,8 @@ import {
 	faHandHoldingUsd,
 	faBars,
 	faExternalLinkAlt,
-    faUser
+	faUser,
+	faDownload
 } from "@fortawesome/free-solid-svg-icons";
 // Brands
 import { faTeamspeak, faDiscord } from "@fortawesome/free-brands-svg-icons";
@@ -34,7 +35,8 @@ library.add(
 	faCopy,
 	faBars,
 	faExternalLinkAlt,
-    faUser
+	faUser,
+	faDownload
 );
 
 ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);

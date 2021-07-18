@@ -15,7 +15,13 @@ const MEDIUM_THUMBNAIL_SUFFIX = "m";
 const LARGE_THUMBNAIL_SUFFIX = "l";
 const HUGE_THUMBNAIL_SUFFIX = "h";
 
-export default function GallerySection({ header, id, media, direction }) {
+export default function GallerySection({
+	header,
+	id,
+	media,
+	direction,
+	thumbnailSize
+}) {
 	const { width } = useWindowDimensions();
 	const [lightboxController, setLightboxController] = useState({
 		toggler: false,
@@ -23,12 +29,39 @@ export default function GallerySection({ header, id, media, direction }) {
 	});
 
 	const isMobile = width < 768;
+	const tnSuffix = determineThumbnailSuffix(thumbnailSize);
 
 	function openLightboxOnIndex(index) {
 		setLightboxController((prev) => ({
 			toggler: !prev.toggler,
 			sourceIndex: index
 		}));
+	}
+
+	function formatMedia(mediaArray) {
+		return mediaArray.map((media, i) => {
+			let source,
+				width,
+				height = "";
+			if (media.youtubeId && USE_LIGHTBOX_VIDEO_PLAYER) {
+				source = `https://img.youtube.com/vi/${media.youtubeId}/hqdefault.jpg`;
+				width = 480;
+				height = 360;
+			} else {
+				source = media.youtubeId
+					? `https://www.youtube-nocookie.com/embed/${media.youtubeId}?modestbranding=1&rel=0`
+					: getImgurSpecialUrl(media.src, tnSuffix);
+				width = media.width;
+				height = media.height;
+			}
+			return {
+				src: source,
+				width: width,
+				height: height,
+				alt: media.desc,
+				youtubeId: media.youtubeId
+			};
+		});
 	}
 
 	const MediaComponent = ({
@@ -173,32 +206,6 @@ function hideBackDropBlur() {
 	});
 }
 
-function formatMedia(mediaArray) {
-	return mediaArray.map((media, i) => {
-		let source,
-			width,
-			height = "";
-		if (media.youtubeId && USE_LIGHTBOX_VIDEO_PLAYER) {
-			source = `https://img.youtube.com/vi/${media.youtubeId}/hqdefault.jpg`;
-			width = 480;
-			height = 360;
-		} else {
-			source = media.youtubeId
-				? `https://www.youtube-nocookie.com/embed/${media.youtubeId}?modestbranding=1&rel=0`
-				: getImgurSpecialUrl(media.src, LARGE_THUMBNAIL_SUFFIX);
-			width = media.width;
-			height = media.height;
-		}
-		return {
-			src: source,
-			width: width,
-			height: height,
-			alt: media.desc,
-			youtubeId: media.youtubeId
-		};
-	});
-}
-
 function formatLightboxMedia(mediaArray) {
 	const result = mediaArray.map((media) => {
 		if (media.youtubeId && USE_LIGHTBOX_VIDEO_PLAYER) {
@@ -218,4 +225,23 @@ function formatLightboxMedia(mediaArray) {
 		}
 	});
 	return result;
+}
+
+function determineThumbnailSuffix(sizeString) {
+	switch (sizeString) {
+		case "small":
+		case SMALL_THUMBNAIL_SUFFIX:
+			return SMALL_THUMBNAIL_SUFFIX;
+		case "medium":
+		case MEDIUM_THUMBNAIL_SUFFIX:
+			return MEDIUM_THUMBNAIL_SUFFIX;
+		case "large":
+		case LARGE_THUMBNAIL_SUFFIX:
+			return LARGE_THUMBNAIL_SUFFIX;
+		case "huge":
+		case HUGE_THUMBNAIL_SUFFIX:
+			return HUGE_THUMBNAIL_SUFFIX;
+		default:
+			return LARGE_THUMBNAIL_SUFFIX;
+	}
 }

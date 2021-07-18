@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Wrapper from "../components/Wrapper";
 import GallerySection from "../components/GallerySection";
-import RustImagesJson from "../img/GalleryMedias/gallery-rust-sources.json";
-import PhotoshopImagesJson from "../img/GalleryMedias/gallery-photoshop-sources.json";
-import ScreenshotImagesJson from "../img/GalleryMedias/gallery-screenshots-sources.json";
-import MiscJson from "../img/GalleryMedias/gallery-misc-sources.json";
+import RustImagesJson from "../img/MediaSources/gallery-rust-sources.json";
+import PhotoshopImagesJson from "../img/MediaSources/gallery-photoshop-sources.json";
+import ScreenshotImagesJson from "../img/MediaSources/gallery-screenshots-sources.json";
+import MiscJson from "../img/MediaSources/gallery-misc-sources.json";
 import { ListGroup } from "react-bootstrap";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 

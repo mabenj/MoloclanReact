@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import Wrapper from "../components/Wrapper";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ImageSources from "../img/MediaSources/gui-pack-images-sources.json";
+import GallerySection from "../components/GallerySection";
+
+const DL_LINK =
+	"https://drive.google.com/uc?export=download&id=1-LWFKtqat0KoDyzf4oXKSnkDCmVIkEHD";
 
 const GuiPackIcon = () => {
 	return (
@@ -43,11 +49,13 @@ export default function GuiPack({ documentTitle }) {
 					<GuiPackIcon />
 				</Col>
 			</Row>
-			<Row>
+			<Row className="mt-5">
 				<Col>
 					<h3>Asentaminen</h3>
 					<ol>
-						<li>Lataa GUI Pack napista</li>
+						<li>
+							Lataa <em>GUI-Pack.zip</em>
+						</li>
 						<li>Käynnistä mine</li>
 						<li>Avaa "Options"</li>
 						<li>
@@ -78,6 +86,25 @@ export default function GuiPack({ documentTitle }) {
 						</li>
 					</ol>
 					{/* cSpell: enable */}
+				</Col>
+			</Row>
+			<Row className="mt-2">
+				<Col>
+					<Button variant="warning" href={DL_LINK} download>
+						<FontAwesomeIcon icon="download" />
+						&nbsp;&nbsp;Lataa
+					</Button>
+				</Col>
+			</Row>
+			<Row className="mt-5">
+				<Col>
+					<GallerySection
+						header="Kuvii"
+						id="images"
+						media={ImageSources}
+						direction="row"
+						thumbnailSize="huge"
+					/>
 				</Col>
 			</Row>
 		</Wrapper>
