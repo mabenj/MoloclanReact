@@ -11,7 +11,7 @@ $black-color: hsl(0, 0%, 11%);
 $wrapper-bg-color: hsla(0, 0%, 9%, 0.3);
 $ts-viewer-bg-color: hsla(0, 0%, 29%, 0.514);
 $discord-table-bg-color: hsla(0, 0%, 29%, 0.514);
-$discord-table-bg-color-hover: hsla(0, 0%, 66%, 0.281);
+$discord-table-bg-color-hover: hsla(0, 0%, 66%, 0.123);
 $sidebar-bg-color: hsla(0, 0%, 11%, 0.925);
 $gallery-caption-color: hsla(180, 100%, 97%, 0.685);
 $gallery-caption-bg-color: hsla(0, 0%, 5%, 0.575);
@@ -311,7 +311,9 @@ main {
 	}
 
 	tr:hover {
-		background-color: $discord-table-bg-color-hover !important;
+		td {
+			background-color: $discord-table-bg-color-hover !important;
+		}
 	}
 }
 
