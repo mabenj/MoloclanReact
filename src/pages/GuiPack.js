@@ -6,7 +6,7 @@ import ImageSources from "../img/MediaSources/gui-pack-images-sources.json";
 import GallerySection from "../components/GallerySection";
 
 const DL_LINK =
-	"https://drive.google.com/uc?export=download&id=1-LWFKtqat0KoDyzf4oXKSnkDCmVIkEHD";
+	"https://drive.google.com/uc?export=download&id=1XtGaMgX7xDzrKSGYGvLHWIMSIVJZHdBs";
 
 const GuiPackIcon = () => {
 	return (
