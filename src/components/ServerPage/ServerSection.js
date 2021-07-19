@@ -16,7 +16,11 @@ export default function ServerSection({
 				{faIcon ? <FontAwesomeIcon icon={faIcon} /> : ""}
 			</h3>
 			<Row style={{ marginTop: "30px" }}>
-				<Col lg={infoComponent ? 7 : 12} style={{ marginBottom: "30px" }}>
+				<Col
+					xl={infoComponent ? 7 : 12}
+					lg={infoComponent ? 8 : 12}
+					md={infoComponent ? 9 : 12}
+					style={{ marginBottom: "30px" }}>
 					{serverComponent}
 				</Col>
 				{infoComponent ? <Col>{infoComponent}</Col> : null}

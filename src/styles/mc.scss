@@ -8,6 +8,12 @@ $playerlist-height: 190px;
 $bg-container-height: 225px;
 $fav-icon-height: 80px;
 
+$xxl: 1400px;
+$xl: 1200px;
+$lg: 992px;
+$md: 768px;
+$sm: 576px;
+
 .mc-container {
 	width: 100%;
 	background-color: transparent;
@@ -95,6 +101,12 @@ $fav-icon-height: 80px;
 
 			p {
 				max-width: 100%;
+			}
+		}
+		@media (max-width: $lg) {
+			span {
+				flex-basis: 33%;
+				max-width: 33%;
 			}
 		}
 	}
