@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import ReactGA from "react-ga";
 import WeatherWidget from "../WeatherWidget";
+import Chicken from "../Chicken";
 
 export default function Header() {
 	const location = useLocation();
@@ -11,7 +12,7 @@ export default function Header() {
 	useEffect(() => {
 		ReactGA.pageview(window.location.pathname);
 	}, []);
-    
+
 	const styleOuter = {
 		width: "100%",
 		display: "flex",
@@ -48,6 +49,7 @@ export default function Header() {
 					</Nav>
 				</Container>
 			</span>
+			<Chicken />
 		</Navbar>
 	);
 }
