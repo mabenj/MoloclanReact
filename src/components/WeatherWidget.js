@@ -1,11 +1,10 @@
-import React/*, { useState, useEffect }*/ from "react";
-//import locationService from "../services/locationService";
-//import weatherService from "../services/weatherService";
+import React, { useState, useEffect } from "react";
+import locationService from "../services/locationService";
+import weatherService from "../services/weatherService";
 
 export default function WeatherWidget() {
-	/*
 	const [clientCity, setClientCity] = useState("");
-	const [weatherCelsius, setWeatherCelsius] = useState(0);
+	const [weatherInfo, setWeatherInfo] = useState({});
 
 	useEffect(() => {
 		async function fetchLocationAndWeather() {
@@ -15,14 +14,16 @@ export default function WeatherWidget() {
 				locationInfo.lon
 			);
 			setClientCity(locationInfo.city);
-			setWeatherCelsius(weatherInfo.temperature);
+			setWeatherInfo(weatherInfo);
 		}
 		fetchLocationAndWeather();
-	});*/
+	});
 
 	return (
 		<div className="text-white position-absolute">
-			{/* {clientCity}, {weatherCelsius}&nbsp;°C */}
+			{clientCity}
+			<br />
+			{weatherInfo.weatherIcon} {weatherInfo.temperature}&nbsp;°C
 		</div>
 	);
 }
