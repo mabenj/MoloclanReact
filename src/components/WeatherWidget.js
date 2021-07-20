@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import locationService from "../services/locationService";
-import weatherService from "../services/weatherService";
+import React/*, { useState, useEffect }*/ from "react";
+//import locationService from "../services/locationService";
+//import weatherService from "../services/weatherService";
 
 export default function WeatherWidget() {
 	/*
