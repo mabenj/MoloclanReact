@@ -3,6 +3,7 @@ import locationService from "../services/locationService";
 import weatherService from "../services/weatherService";
 
 export default function WeatherWidget() {
+	/*
 	const [clientCity, setClientCity] = useState("");
 	const [weatherCelsius, setWeatherCelsius] = useState(0);
 
@@ -17,7 +18,7 @@ export default function WeatherWidget() {
 			setWeatherCelsius(weatherInfo.temperature);
 		}
 		fetchLocationAndWeather();
-	});
+	});*/
 
 	return (
 		<div className="text-white position-absolute">
