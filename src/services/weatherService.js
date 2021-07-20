@@ -3,7 +3,7 @@ import axios from "axios";
 // eslint-disable-next-line no-unused-vars
 const API_URL_TEMPLATE =
 	"https://fcc-weather-api.glitch.me/api/current?lat={latitude}&lon={longitude}";
-const API_URL_TEMPLATE2 = "http://wttr.in/{latitude},{longitude}?format=j1";
+const API_URL_TEMPLATE2 = "https://wttr.in/{latitude},{longitude}?format=j1";
 
 const getWeatherInfo = async (latitude, longitude) => {
 	debugger;
