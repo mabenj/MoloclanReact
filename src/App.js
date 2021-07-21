@@ -10,6 +10,7 @@ import GuiPack from "./pages/GuiPack";
 import NotFound from "./pages/NotFound";
 import ReactGA from "react-ga";
 import MainContainer from "./components/MainContainer";
+import ScrollToTop from "./components/Navigation/ScrollToTop";
 
 import "./styles/styles.scss";
 
@@ -61,6 +62,7 @@ function App() {
 	return (
 		<>
 			<Router history={history}>
+				<ScrollToTop />
 				<Header />
 				<MainContainer>
 					<Switch>

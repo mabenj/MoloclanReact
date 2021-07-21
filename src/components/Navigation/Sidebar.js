@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import WeatherWidget from "../WeatherWidget";
 
 export default function Sidebar() {
 	const [isOpen, setIsOpen] = useState(false);
@@ -13,9 +15,20 @@ export default function Sidebar() {
 
 	return (
 		<div className="sidebar">
-			<button className="hamburger-icon" onClick={toggleSidebar}>
-				<FontAwesomeIcon icon="bars" />
-			</button>
+			<div
+				className=""
+				style={{
+					display: "flex",
+					alignItems: "center"
+				}}>
+				<button
+					className="hamburger-icon"
+					onClick={toggleSidebar}
+					style={{ zIndex: 2 }}>
+					<FontAwesomeIcon icon="bars" />
+				</button>
+				<WeatherWidget style={{ zIndex: 2 }} />
+			</div>
 			<SidebarContent header="Proggikset" />
 		</div>
 	);
@@ -23,15 +36,15 @@ export default function Sidebar() {
 
 const SidebarContent = ({ header }) => {
 	return (
-		<div className="sidebar-content">
-			<ul>
+		<div className="sidebar-content" style={{ position: "fixed", zIndex: 1 }}>
+			<ul className="mt-5">
 				<li>
 					<span>{header}</span>
 				</li>
 				<li>
-					<Nav.Link href="/gui-pack" className="hvr-bounce-to-right">
+					<NavLink to="/gui-pack" className="hvr-bounce-to-right">
 						Minecraft GUI Pack
-					</Nav.Link>
+					</NavLink>
 				</li>
 				<li>
 					<Nav.Link

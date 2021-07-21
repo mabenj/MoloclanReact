@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import locationService from "../services/locationService";
 import weatherService from "../services/weatherService";
 
-export default function WeatherWidget() {
+export default function WeatherWidget({ className, style }) {
 	const [clientCity, setClientCity] = useState("");
 	const [weatherInfo, setWeatherInfo] = useState({});
 
@@ -24,7 +24,7 @@ export default function WeatherWidget() {
 	}
 
 	return (
-		<div className="text-white ml-3" style={{}}>
+		<div className={`text-white ml-3 ${className}`} style={style}>
 			<span className="light-grey-color">
 				{clientCity}&nbsp;&nbsp;&nbsp;{weatherInfo.weatherIcon}&nbsp;
 				{weatherInfo.temperature}&nbsp;°C
