@@ -48,3 +48,10 @@ export async function waitForElemAndDelete(selector) {
 	const elem = await waitForElem(selector);
 	elem.parentNode.removeChild(elem);
 }
+
+export function scrollToElementSmooth(selector) {
+	const yOffset = -100;
+	const element = document.querySelector(selector);
+	const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+	window.scrollTo({ top: y, behavior: "smooth" });
+}

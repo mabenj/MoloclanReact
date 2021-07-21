@@ -7,6 +7,8 @@ import ScreenshotImagesJson from "../img/MediaSources/gallery-screenshots-source
 import MiscJson from "../img/MediaSources/gallery-misc-sources.json";
 import { ListGroup } from "react-bootstrap";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import { scrollToElementSmooth } from "../Utils";
+import { Button } from "react-bootstrap";
 
 const headerStyle = {
 	display: "flex",
@@ -46,9 +48,13 @@ const DesktopHeader = () => {
 				<ul className="list-inline">
 					{sections.map((section) => (
 						<li key={section.id} className="list-inline-item px-3">
-							<a className="text-decoration-none" href={"#" + section.id}>
+							<Button
+								as="a"
+								variant=""
+								className="text-decoration-none orange-color orange-color-hover"
+								onClick={() => scrollToElementSmooth(`#${section.id}`)}>
 								{section.displayName}
-							</a>
+							</Button>
 						</li>
 					))}
 				</ul>
@@ -68,7 +74,13 @@ const MobileHeader = () => {
 						key={section.id}
 						action
 						className="gallery-section-list-item">
-						<a href={"#" + section.id}>{section.displayName}</a>
+						<Button
+							as="a"
+							variant=""
+							className="text-decoration-none orange-color orange-color-hover"
+							onClick={() => scrollToElementSmooth(`#${section.id}`)}>
+							{section.displayName}
+						</Button>
 					</ListGroup.Item>
 				))}
 			</ListGroup>

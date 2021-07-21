@@ -32,17 +32,6 @@ $warning: $orange-color;
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
 
-html {
-	scroll-behavior: smooth;
-}
-
-:target:before {
-	content: "";
-	display: block;
-	height: 100px;
-	margin: -100px 0 0;
-}
-
 //TODO: https://medium.com/@dailyfire/pure-css-parallax-simple-tricks-da102d0ffdb9
 body {
 	margin: 0;
@@ -323,6 +312,14 @@ main {
 
 .error-color {
 	color: $error-color;
+}
+
+.orange-color {
+	color: $orange-color;
+}
+
+.orange-color-hover:hover {
+	color: $orange-color;
 }
 
 /* ########### Hover.css begin ########### */
