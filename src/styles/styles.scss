@@ -280,18 +280,18 @@ main {
 	background-color: transparent;
 }
 
-.gallery-image {
-	position: relative;
+.gallery-tilty {
+	transform-style: preserve-3d;
 
 	img:hover {
 		cursor: pointer;
 	}
 
-	p {
+	.gallery-tilty-inner {
+		transform: translateZ(40px);
 		position: absolute;
-		transform: translateZ(30px);
-		bottom: 0;
-		left: 3%;
+		bottom: 6%;
+		left: 6%;
 		background-color: $gallery-caption-bg-color;
 		color: $gallery-caption-color;
 		padding-left: 5px;

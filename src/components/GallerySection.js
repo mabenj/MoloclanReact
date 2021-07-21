@@ -128,16 +128,16 @@ const TiltableImage = ({ margin, onClick, image }) => {
 			max={25}
 			perspective={1500}
 			speed={1000}
-			style={{ transformStyle: "preserve-3d" }}>
-			<div className="gallery-image" style={{ margin }} onClick={onClick}>
-				<img
-					src={image.src}
-					alt={image.alt}
-					width={image.width}
-					height={image.height}
-				/>
-				<p className="rounded">{image.alt}</p>
-			</div>
+			className="gallery-tilty"
+			style={{ margin }}>
+			<img
+				src={image.src}
+				width={image.width}
+				height={image.height}
+				alt={image.alt}
+				onClick={onClick}
+			/>
+			<div className="gallery-tilty-inner rounded">{image.alt}</div>
 		</Tilty>
 	);
 };
