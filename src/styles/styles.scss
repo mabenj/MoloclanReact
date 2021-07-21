@@ -5,6 +5,7 @@ $orange-color: hsl(36, 100%, 55%);
 $carrot-color: hsla(19, 89%, 43%, 0.596);
 $anchor-color-hover: hsl(19, 100%, 50%);
 $dark-orange-color: hsla(36, 100%, 55%, 0.431);
+$light-grey-color: hsl(0, 0%, 67%);
 $grey-color: hsl(0, 0%, 50%);
 $dark-color: hsl(0, 0%, 16%);
 $black-color: hsl(0, 0%, 11%);
@@ -320,6 +321,10 @@ main {
 
 .orange-color-hover:hover {
 	color: $orange-color;
+}
+	
+.light-grey-color {
+	color: $light-grey-color;
 }
 
 /* ########### Hover.css begin ########### */

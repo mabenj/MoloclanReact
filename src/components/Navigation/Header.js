@@ -20,9 +20,8 @@ export default function Header() {
 	};
 	return (
 		<Navbar className="navbar" variant="dark" expand="md" fixed="top">
-			<Sidebar />
+			<Left />
 			<span style={styleOuter}>
-				<WeatherWidget />
 				<Container>
 					<Nav>
 						<Navbar.Brand href="/" className="navbar-brand">
@@ -53,3 +52,14 @@ export default function Header() {
 		</Navbar>
 	);
 }
+
+const Left = () => {
+	return (
+		<div
+			className="position-absolute"
+			style={{ display: "flex", alignItems: "center" }}>
+			<Sidebar />
+			<WeatherWidget />
+		</div>
+	);
+};

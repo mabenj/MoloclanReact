@@ -6,7 +6,6 @@ const API_URL_TEMPLATE =
 const API_URL_TEMPLATE2 = "https://wttr.in/{latitude},{longitude}?format=j1";
 
 const getWeatherInfo = async (latitude, longitude) => {
-	debugger;
 	const { data } = await axios.get(createApiUrl(latitude, longitude));
 	return {
 		temperature: data.current_condition[0].temp_C,

@@ -19,11 +19,16 @@ export default function WeatherWidget() {
 		fetchLocationAndWeather();
 	});
 
+	if (!clientCity || !weatherInfo) {
+		return null;
+	}
+
 	return (
-		<div className="text-white position-absolute">
-			{clientCity}
-			<br />
-			{weatherInfo.weatherIcon} {weatherInfo.temperature}&nbsp;°C
+		<div className="text-white ml-3" style={{}}>
+			<span className="light-grey-color">
+				{clientCity}&nbsp;&nbsp;&nbsp;{weatherInfo.weatherIcon}&nbsp;
+				{weatherInfo.temperature}&nbsp;°C
+			</span>
 		</div>
 	);
 }
