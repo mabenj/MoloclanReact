@@ -11,7 +11,7 @@ const getClientLocationInfo = async () => {
 		// coords are Turku
 		return { city: "St. Testania", lat: 60.447, lon: 22.26 };
 	}
-	const { data } = await axios.get(API_URL4);
+	const { data } = await axios.get(API_URL3);
 	return { city: data.city, lat: data.latitude, lon: data.longitude };
 };
 

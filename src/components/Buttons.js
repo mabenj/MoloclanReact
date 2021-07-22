@@ -57,3 +57,14 @@ export function OpenButton({ href, target, verb }) {
 		</>
 	);
 }
+
+export function HamburgerButton({ onClick, style, className }) {
+	return (
+		<button
+			className={`hamburger-icon ${className}`}
+			onClick={onClick}
+			style={style}>
+			<FontAwesomeIcon icon="bars" />
+		</button>
+	);
+}

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import WeatherWidget from "../WeatherWidget";
+import { HamburgerButton } from "../Buttons";
 
-export default function Sidebar() {
+export default function Sidebar({ className }) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleSidebar = (e) => {
@@ -13,19 +13,14 @@ export default function Sidebar() {
 	};
 
 	return (
-		<div className="sidebar">
+		<div className={`sidebar ${className}`}>
 			<div
 				className=""
 				style={{
 					display: "flex",
 					alignItems: "center"
 				}}>
-				<button
-					className="hamburger-icon"
-					onClick={toggleSidebar}
-					style={{ zIndex: 2 }}>
-					<FontAwesomeIcon icon="bars" />
-				</button>
+				<HamburgerButton onClick={toggleSidebar} style={{ zIndex: 2 }} />
 				<WeatherWidget style={{ zIndex: 2 }} />
 			</div>
 			<SidebarContent header="Proggikset" />
