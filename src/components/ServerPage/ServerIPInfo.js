@@ -19,7 +19,9 @@ export default function ServerIPInfo({ urlArray, isLink, linkVerb, header }) {
 							</a>
 						</code>
 					) : (
-						<code>{trimProtocolAndQueryString(url)}</code>
+						<code className="user-select-all">
+							{trimProtocolAndQueryString(url)}
+						</code>
 					)}
 					<span>
 						{isLink ? <OpenButton href={url} verb={linkVerb} /> : null}
