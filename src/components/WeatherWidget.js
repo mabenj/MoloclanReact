@@ -24,7 +24,7 @@ export default function WeatherWidget({ className, style }) {
 	}
 
 	return (
-		<div className={`text-white ml-3 ${className}`} style={style}>
+		<div className={`ml-3 ${className}`} style={style}>
 			<span className="light-grey-color">
 				{clientCity}&nbsp;&nbsp;&nbsp;{weatherInfo.weatherIcon}&nbsp;
 				{weatherInfo.temperature}&nbsp;°C

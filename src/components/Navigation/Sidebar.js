@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import WeatherWidget from "../WeatherWidget";
 
@@ -9,7 +8,7 @@ export default function Sidebar() {
 
 	const toggleSidebar = (e) => {
 		setIsOpen((prev) => !prev);
-		let sidebar = document.querySelector(".sidebar-content");
+		const sidebar = document.querySelector(".sidebar-content");
 		sidebar.style.width = isOpen ? 0 : "20%";
 	};
 
@@ -41,30 +40,36 @@ const SidebarContent = ({ header }) => {
 				<li>
 					<span>{header}</span>
 				</li>
-				<li>
-					<NavLink to="/gui-pack" className="hvr-bounce-to-right">
-						Minecraft GUI Pack
-					</NavLink>
-				</li>
-				<li>
-					<Nav.Link
-						href="https://jariclub.moloclan.fi/"
-						target="_blank"
-						rel="noreferrer"
-						className="hvr-bounce-to-right">
-						Jari Club nettidomain
-					</Nav.Link>
-				</li>
-				<li>
-					<Nav.Link
-						href="https://old.moloclan.fi/"
-						target="_blank"
-						rel="noreferrer"
-						className="hvr-bounce-to-right">
-						Vanha moloclan.fi
-					</Nav.Link>
-				</li>
+				{sidebarItems.map((item) => (
+					<li key={item.to}>
+						<NavLink
+							to={item.to}
+							className="hvr-bounce-to-right navigation-link"
+							target={item.target}
+							rel="noreferrer">
+							{item.displayName}
+						</NavLink>
+					</li>
+				))}
 			</ul>
 		</div>
 	);
 };
+
+const sidebarItems = [
+	{
+		to: "/gui-pack",
+		target: "",
+		displayName: "Minecraft GUI Pack"
+	},
+	{
+		to: { pathname: "https://jariclub.moloclan.fi/" },
+		target: "_blank",
+		displayName: "Jari Club nettidomain"
+	},
+	{
+		to: { pathname: "https://old.moloclan.fi/" },
+		target: "_blank",
+		displayName: "Vanha moloclan.fi"
+	}
+];

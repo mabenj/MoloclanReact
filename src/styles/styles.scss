@@ -18,6 +18,7 @@ $gallery-caption-color: hsla(180, 100%, 97%, 0.685);
 $gallery-caption-bg-color: hsla(0, 0%, 5%, 0.575);
 $success-color: hsl(144, 100%, 39%);
 $error-color: hsl(0, 100%, 63%);
+$navigation-bg-color: hsla(0, 0%, 9%, 0.863);
 
 //TODO
 // $navbar-height: 71px;
@@ -97,31 +98,46 @@ code {
 	background-color: $orange-color !important;
 }
 
-.navbar {
-	background-color: $dark-color;
+.navigation-bar {
+	background: linear-gradient(
+		$navigation-bg-color,
+		60%,
+		rgba($navigation-bg-color, 0)
+	);
 	width: 100vw;
+	display: flex;
+	align-items: center;
+	padding-bottom: 30px;
+}
+
+.navigation-bar-middle {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
 }
 
 .navigation-links {
 	display: flex;
+	align-items: baseline;
 
 	.navigation-link {
 		color: $text-color;
-		padding: 10px 10px 10px 10px;
-	}
-
-	.navigation-link:hover {
-		color: $orange-color !important;
-		text-decoration: none;
+		color: $light-grey-color;
+		margin: 0 10px;
 	}
 
 	.navigation-link.active {
-		color: $orange-color !important;
+		color: $orange-color;
 		/* Top only */
 		/* box-shadow: inset 0px 2px 0px -1px $orange-color; */
 		/* Bottom only */
 		box-shadow: inset 0px -2px 0px -1px $orange-color;
 	}
+}
+
+.navigation-link:hover {
+	color: $orange-color !important;
+	text-decoration: none;
 }
 
 .navbar-brand {
@@ -131,6 +147,11 @@ code {
 
 .navbar-brand:hover {
 	color: $text-color;
+}
+
+.sidebar {
+	display: flex;
+	height: 100%;
 }
 
 @media (max-width: $lg) {
@@ -149,9 +170,9 @@ code {
 	cursor: pointer;
 	outline: inherit;
 
-	width: 40px;
-	height: 40px;
-	font-size: 22px;
+	width: 60px;
+	height: 60px;
+	font-size: 28px;
 	color: $orange-color;
 	display: flex;
 	justify-content: center;
@@ -340,7 +361,7 @@ main {
 .orange-color-hover:hover {
 	color: $orange-color;
 }
-	
+
 .light-grey-color {
 	color: $light-grey-color;
 }
