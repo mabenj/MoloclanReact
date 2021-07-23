@@ -3,6 +3,7 @@ import { Row, Col, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { HamburgerButton } from "../Buttons";
+import Chicken from "../Chicken";
 
 const linkDefinitions = [
 	{ to: "/", displayName: "MOLO", exact: true },
@@ -22,7 +23,9 @@ export default function Header() {
 				<Col md={9} xl={7}>
 					<Navigation />
 				</Col>
-				<Col className=""></Col>
+				<Col className="">
+					<Chicken />
+				</Col>
 			</Row>
 		</>
 	);

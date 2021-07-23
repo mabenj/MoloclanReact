@@ -382,12 +382,24 @@ main {
 	color: $light-grey-color;
 }
 
-.orange-color {
-	color: $orange-color;
+.orange-toggle.react-toggle--checked .react-toggle-track {
+	background-color: $orange-color;
 }
 
-.orange-color-hover:hover {
-	color: $orange-color;
+.orange-toggle.react-toggle--checked:hover .react-toggle-track:hover {
+	background-color: $orange-color;
+}
+
+.react-toggle--checked {
+	.react-toggle-thumb {
+		border-color: white;
+	}
+
+	.react-toggle-thumb:hover {
+		.orange-toggle.react-toggle--checked {
+			background-color: $orange-color;
+		}
+	}
 }
 
 /* ########### Hover.css begin ########### */

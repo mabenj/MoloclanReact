@@ -26,7 +26,8 @@ import {
 	faDownload,
 	faCheckCircle,
 	faTimesCircle,
-	faPoop
+	faPoop,
+	faDrumstickBite
 } from "@fortawesome/free-solid-svg-icons";
 // Brands
 import {
@@ -49,7 +50,8 @@ library.add(
 	faCheckCircle,
 	faTimesCircle,
 	faPoop,
-	faSkype
+	faSkype,
+	faDrumstickBite
 );
 
 const pageDefinitions = [
