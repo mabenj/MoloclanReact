@@ -1,16 +1,26 @@
 import axios from "axios";
+import sessionStorageService from "../services/sessionStorageService";
 
 // eslint-disable-next-line no-unused-vars
 const API_URL_TEMPLATE =
 	"https://fcc-weather-api.glitch.me/api/current?lat={latitude}&lon={longitude}";
 const API_URL_TEMPLATE2 = "https://wttr.in/{latitude},{longitude}?format=j1";
 
+const STORAGE_KEY = "molo_weather_info";
+
 const getWeatherInfo = async (latitude, longitude) => {
+	const stored = sessionStorageService.getItemOrNull(STORAGE_KEY);
+	if (stored) {
+		return stored;
+	}
+
 	const { data } = await axios.get(createApiUrl(latitude, longitude));
-	return {
+	const weatherInfo = {
 		temperature: data.current_condition[0].temp_C,
 		weatherIcon: getWeatherIcon(data.current_condition[0].weatherCode)
 	};
+	sessionStorageService.setItem(STORAGE_KEY, weatherInfo);
+	return weatherInfo;
 };
 
 const createApiUrl = (latitude, longitude) => {
@@ -26,8 +36,8 @@ const getWeatherIcon = (weatherCode) => {
 	return weatherIcon ? weatherIcon : WEATHER_SYMBOL["Unknown"];
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { getWeatherInfo };
+const weatherService = { getWeatherInfo };
+export default weatherService;
 
 // https://github.com/chubin/wttr.in/blob/master/lib/constants.py
 const WWO_CODE = {

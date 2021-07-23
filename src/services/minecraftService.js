@@ -44,5 +44,5 @@ const getServerInfo = async (numberOfPlayersToTake, avatarWidth) => {
 	}
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { getServerInfo };
+const minecraftService = { getServerInfo };
+export default minecraftService;

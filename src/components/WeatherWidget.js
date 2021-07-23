@@ -8,16 +8,13 @@ export default function WeatherWidget({ className, style }) {
 
 	useEffect(() => {
 		async function fetchLocationAndWeather() {
-			var locationInfo = await locationService.getClientLocationInfo();
-			var weatherInfo = await weatherService.getWeatherInfo(
-				locationInfo.lat,
-				locationInfo.lon
-			);
-			setClientCity(locationInfo.city);
+			const { lat, lon, city } = await locationService.getClientLocationInfo();
+			const weatherInfo = await weatherService.getWeatherInfo(lat, lon);
+			setClientCity(city);
 			setWeatherInfo(weatherInfo);
 		}
 		fetchLocationAndWeather();
-	});
+	}, []);
 
 	if (!clientCity || !weatherInfo) {
 		return null;
