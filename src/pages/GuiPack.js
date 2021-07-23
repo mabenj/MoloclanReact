@@ -88,7 +88,7 @@ export default function GuiPack() {
 			<Row className="mt-2">
 				<Col>
 					<Button variant="warning" href={DL_LINK} download>
-						<FontAwesomeIcon icon="download" />
+						<FontAwesomeIcon icon="save" />
 						&nbsp;&nbsp;Lataa
 					</Button>
 				</Col>
