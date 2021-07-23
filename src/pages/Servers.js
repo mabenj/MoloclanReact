@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ServerSection from "../components/ServerPage/ServerSection";
 import ServerIPInfo from "../components/ServerPage/ServerIPInfo";
 import TSViewer from "../components/TSViewer/TSViewer";
@@ -16,10 +16,7 @@ const TEAMSPEAK_FA_ICON = ["fab", "teamspeak"];
 const DISCORD_FA_ICON = ["fab", "discord"];
 const MINECRAFT_MAP_URL = "https://moloclan.fi/map";
 
-export default function Servers({ documentTitle }) {
-	useEffect(() => {
-		document.title = documentTitle;
-	}, [documentTitle]);
+export default function Servers() {
 	return (
 		<>
 			<Wrapper>

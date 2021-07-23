@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Wrapper from "../components/Wrapper";
 import GallerySection from "../components/GallerySection";
 import RustImagesJson from "../img/MediaSources/gallery-rust-sources.json";
@@ -16,12 +16,9 @@ const headerStyle = {
 	alignItems: "center"
 };
 
-export default function Gallery({ documentTitle }) {
+export default function Gallery() {
 	const { width } = useWindowDimensions();
 	const isMobile = width < 768;
-	useEffect(() => {
-		document.title = documentTitle;
-	}, [documentTitle]);
 	return (
 		<>
 			<Wrapper>{isMobile ? <MobileHeader /> : <DesktopHeader />}</Wrapper>

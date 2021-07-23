@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Row, Col, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import ReactGA from "react-ga";
 import { HamburgerButton } from "../Buttons";
 
 const linkDefinitions = [
@@ -13,9 +12,6 @@ const linkDefinitions = [
 ];
 
 export default function Header() {
-	useEffect(() => {
-		ReactGA.pageview(window.location.pathname);
-	}, []);
 	return (
 		<>
 			<NavbarMobile className="d-md-none" />

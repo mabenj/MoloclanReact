@@ -11,6 +11,7 @@ import NotFound from "./pages/NotFound";
 import ReactGA from "react-ga";
 import MainContainer from "./components/MainContainer";
 import ScrollToTop from "./components/Navigation/ScrollToTop";
+import useDocumentTitle from "./hooks/useDocumentTitle";
 
 import "./styles/styles.scss";
 
@@ -51,6 +52,45 @@ library.add(
 	faSkype
 );
 
+const pageDefinitions = [
+	{
+		component: GuiPack,
+		path: "/gui-pack",
+		title: "MOLO - GUI pack"
+	},
+	{
+		component: Gallery,
+		path: "/galleria",
+		title: "MOLO - Galleria"
+	},
+	{
+		component: Servers,
+		path: "/servut",
+		title: "MOLO - Servut"
+	},
+	{
+		component: Jari,
+		path: "/jari",
+		title: "MOLO - Jari Avanto"
+	},
+	{
+		component: Home,
+		path: "/home",
+		title: "MOLO"
+	},
+	{
+		component: Home,
+		path: "/",
+		title: "MOLO",
+		exact: true
+	},
+	{
+		component: NotFound,
+		path: "*",
+		title: "MOLO - 404"
+	}
+];
+
 ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
 const history = createBrowserHistory();
 history.listen((location) => {
@@ -62,31 +102,21 @@ function App() {
 	return (
 		<>
 			<Router history={history}>
+				{/* Scrolls to top when page changes */}
 				<ScrollToTop />
 				<Header />
 				<MainContainer>
 					<Switch>
-						<Route path="/gui-pack">
-							<GuiPack documentTitle="MOLO - GUI-Pack" />
-						</Route>
-						<Route path="/galleria">
-							<Gallery documentTitle="MOLO - Galleria" />
-						</Route>
-						<Route path="/servut">
-							<Servers documentTitle="MOLO - Servut" />
-						</Route>
-						<Route path="/jari">
-							<Jari documentTitle="MOLO - Jari" />
-						</Route>
-						<Route path="/home">
-							<Home />
-						</Route>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route path="*">
-							<NotFound />
-						</Route>
+						{pageDefinitions.map(({ path, exact, component, title }) => (
+							<Route
+								key={path}
+								path={path}
+								exact={exact}
+								render={(props) => (
+									<Page {...props} component={component} title={title} />
+								)}
+							/>
+						))}
 					</Switch>
 				</MainContainer>
 			</Router>
@@ -94,5 +124,10 @@ function App() {
 		</>
 	);
 }
+
+const Page = ({ title, component }) => {
+	useDocumentTitle(title);
+	return component();
+};
 
 export default App;
