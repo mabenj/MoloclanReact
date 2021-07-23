@@ -3,8 +3,6 @@ import ChickenImages from "../img/MediaSources/flying-chicken-sources.json";
 import Toggle from "react-toggle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import "react-toggle/style.css";
-
 const style = {
 	position: "absolute",
 	right: "40px"
@@ -15,15 +13,17 @@ export default function Chicken() {
 
 	return (
 		<div style={style}>
-			<Toggle
-				checked={isFlying}
-				onChange={(e) => setIsFlying(e.target.checked)}
-				className="orange-toggle"
-				icons={{
-					checked: <FontAwesomeIcon icon="drumstick-bite" />,
-					unchecked: null
-				}}
-			/>
+			<div className="orange-toggle">
+				<Toggle
+					checked={isFlying}
+					onChange={(e) => setIsFlying(e.target.checked)}
+					className="orange-toggle"
+					icons={{
+						checked: <FontAwesomeIcon className="pb-1" icon="drumstick-bite" />,
+						unchecked: null
+					}}
+				/>
+			</div>
 			<ChickenImg isFlying={isFlying} />
 		</div>
 	);
