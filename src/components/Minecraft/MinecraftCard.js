@@ -24,8 +24,10 @@ export default function MinecraftCard() {
 
 	return (
 		<Container>
-			<BackgroundImage />
-			<Title favIcon={favIcon} />
+			<BackgroundContainer>
+				<BackgroundImage />
+				<Title favIcon={favIcon} />
+			</BackgroundContainer>
 			<PlayerList
 				players={players}
 				totalPlayerCount={playerCount}
@@ -39,12 +41,12 @@ const Container = ({ children }) => {
 	return <div className="rounded mc-container">{children}</div>;
 };
 
+const BackgroundContainer = ({ children }) => {
+	return <div className="mc-bg-container">{children}</div>;
+};
+
 const BackgroundImage = () => {
-	return (
-		<div className="mc-bg-container">
-			<div className="mc-bg-image" />
-		</div>
-	);
+	return <div className="mc-bg-image" />;
 };
 
 const Title = ({ favIcon }) => {

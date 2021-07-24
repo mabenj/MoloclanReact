@@ -2,7 +2,7 @@ $background-url: "https://i.imgur.com/UPLRrTBh.jpg";
 $hover-scale-bg: 1.1;
 $hover-scale-avatar: 1.2;
 $fav-icon-bg: hsla(0, 0%, 100%, 0.418);
-$playerlist-bg: hsla(0, 0%, 45%, 0.514);
+$playerlist-bg: hsla(0, 0%, 35%, 0.514);
 $avatar-bg-shadow: rgba(0, 0, 0, 0.521);
 $playerlist-height: 190px;
 $bg-container-height: 225px;
@@ -32,8 +32,10 @@ $sm: 576px;
 		width: 100%;
 		transition: all 200ms ease;
 	}
+}
 
-	.mc-bg-image:hover {
+.mc-bg-container:hover {
+	.mc-bg-image {
 		transform: scale($hover-scale-bg);
 	}
 }
@@ -53,10 +55,10 @@ $sm: 576px;
 
 	.mc-fav-icon {
 		height: $fav-icon-height;
-		background-color: white;
+		background-color: $fav-icon-bg;
 		border: 1px solid $fav-icon-bg;
 		border-radius: 99999px;
-		box-shadow: 5px 5px 20px $fav-icon-bg;
+		box-shadow: 0 0 10px $fav-icon-bg;
 		position: relative;
 		top: 20px;
 		margin-right: 40px;
