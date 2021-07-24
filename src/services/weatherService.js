@@ -17,7 +17,11 @@ const getWeatherInfo = async (latitude, longitude) => {
 	const { data } = await axios.get(createApiUrl(latitude, longitude));
 	const weatherInfo = {
 		temperature: data.current_condition[0].temp_C,
-		weatherIcon: getWeatherIcon(data.current_condition[0].weatherCode)
+		weatherIcon: getWeatherIcon(data.current_condition[0].weatherCode),
+		moonIcon:
+			MOON_PHASES[data.weather[0]?.astronomy[0]?.moon_phase?.toLowerCase()],
+		sunrise: data.weather[0]?.astronomy[0]?.sunrise,
+		sunset: data.weather[0]?.astronomy[0]?.sunset
 	};
 	sessionStorageService.setItem(STORAGE_KEY, weatherInfo);
 	return weatherInfo;
@@ -113,5 +117,13 @@ const WEATHER_SYMBOL = {
 	VeryCloudy: "☁️"
 };
 
-// eslint-disable-next-line no-unused-vars
-const MOON_PHASES = ("🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘");
+const MOON_PHASES = {
+	new: "🌑",
+	"waxing crescent": "🌒",
+	"first quarter": "🌓",
+	"waxing gibbous": "🌔",
+	full: "🌕",
+	"waning gibbous": "🌖",
+	"third quarter": "🌗",
+	"waning crescent": "🌘"
+};

@@ -6,7 +6,7 @@ const API_URL = "https://freegeoip.app/json/";
 const API_URL2 = "http://ip-api.com/json";
 const API_URL3 = "https://ipapi.co/json/";
 const API_URL4 = "https://ipwhois.app/json/";
-const API_URL5 = "http://www.geoplugin.net/json.gp";
+const API_URL5 = "https://www.geoplugin.net/json.gp";
 
 const STORAGE_KEY = "molo_loc_info";
 

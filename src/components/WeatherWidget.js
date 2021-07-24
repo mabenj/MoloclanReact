@@ -5,6 +5,7 @@ import weatherService from "../services/weatherService";
 export default function WeatherWidget({ className, style }) {
 	const [clientCity, setClientCity] = useState("");
 	const [weatherInfo, setWeatherInfo] = useState({});
+	const [isNight, setIsNight] = useState(false);
 
 	useEffect(() => {
 		async function fetchLocationAndWeather() {
@@ -12,6 +13,8 @@ export default function WeatherWidget({ className, style }) {
 			const weatherInfo = await weatherService.getWeatherInfo(lat, lon);
 			setClientCity(city);
 			setWeatherInfo(weatherInfo);
+			const now = new Date();
+			setIsNight(!isDateBetween(now, weatherInfo.sunrise, weatherInfo.sunset));
 		}
 		fetchLocationAndWeather();
 	}, []);
@@ -23,9 +26,26 @@ export default function WeatherWidget({ className, style }) {
 	return (
 		<div className={`ml-3 ${className}`} style={style}>
 			<span className="light-grey-color text-nowrap">
-				{clientCity}&nbsp;&nbsp;&nbsp;{weatherInfo.weatherIcon}&nbsp;
+				{clientCity}&nbsp;&nbsp;&nbsp;
+				{isNight ? weatherInfo.moonIcon : weatherInfo.weatherIcon}&nbsp;
 				{weatherInfo.temperature}&nbsp;°C
 			</span>
 		</div>
 	);
+}
+
+function isDateBetween(date, timeString1, timeString2) {
+	const minutes1 = getMinutesSinceMidNight(timeString1);
+	const minutes2 = getMinutesSinceMidNight(timeString2);
+	const dateMinutes = date.getHours() * 60 + date.getMinutes();
+	return dateMinutes >= minutes1 && dateMinutes <= minutes2;
+}
+
+function getMinutesSinceMidNight(timeString) {
+	const [time, AmPm] = timeString.split(" ");
+	let [hours, minutes] = time.split(":");
+	if (AmPm.toLowerCase() === "pm") {
+		hours += 12;
+	}
+	return hours * 60 + minutes;
 }
