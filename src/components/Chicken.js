@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const style = {
 	position: "absolute",
-	right: "40px"
+	right: "40px",
+	top: "-5px"
 };
 
 export default function Chicken() {
