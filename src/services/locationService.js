@@ -17,7 +17,6 @@ const getClientLocationInfo = async () => {
 	}
 
 	const { data } = await axios.get(API_URL4);
-	console.log(data);
 	const locationInfo = {
 		city: data.city,
 		lat: data.latitude,
