@@ -10,6 +10,7 @@ import LineTopLeft from "./Lines/LineTopLeft";
 import LineTopRight from "./Lines/LineTopRight";
 import LineBottomLeft from "./Lines/LineBottomLeft";
 import LineBottomRight from "./Lines/LineBottomRight";
+import { animateCSS } from "../../Utils";
 
 import "../../styles/mologo.scss";
 
@@ -21,11 +22,16 @@ const BIG_TEXT_ANIMATIONS = [
 ];
 
 export default function MoloLogo() {
-	const [bigTextClass, setBigTextClass] = useState("");
+	const [bigTextClass, setBigTextClass] = useState("big-text");
 	const [upperClass, setUpperClass] = useState("upper");
 	const [lowerClass, setLowerClass] = useState("lower");
 	const [bigTextAnimationIndex, setBigTextAnimationIndex] = useState(-1);
 	const [isUpperBackward, setIsUpperBackward] = useState(false);
+
+	useEffect(() => {
+		animateCSS(".upper", "bounceInLeft");
+		animateCSS(".lower", "bounceInRight");
+	}, []);
 
 	useEffect(() => {
 		setBigTextClass(`${BIG_TEXT_ANIMATIONS[bigTextAnimationIndex]}`);

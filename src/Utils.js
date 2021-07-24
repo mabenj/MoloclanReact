@@ -55,3 +55,21 @@ export function scrollToElementSmooth(selector) {
 	const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 	window.scrollTo({ top: y, behavior: "smooth" });
 }
+
+export function animateCSS(selector, animation, prefix = "animate__") {
+	new Promise((resolve, reject) => {
+		const animationName = `${prefix}${animation}`;
+		const nodes = document.querySelectorAll(selector);
+
+		nodes.forEach((node) => {
+			node.classList.add(`${prefix}animated`, animationName);
+			node.addEventListener("animationend", handleAnimationEnd, { once: true });
+
+			function handleAnimationEnd(event) {
+				event.stopPropagation();
+				node.classList.remove(`${prefix}animated`, animationName);
+				resolve("Animation ended");
+			}
+		});
+	});
+}
