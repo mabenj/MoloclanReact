@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import WeatherWidget from "../WeatherWidget";
-import { HamburgerButton } from "../Buttons";
+import { HamburgerButton, CloseButton } from "../Buttons";
+import { animateCSS } from "../../Utils";
+
+const openButtonId = "sidebar-open-btn";
+const closeButtonId = "sidebar-close-btn";
 
 export default function Sidebar({ className }) {
 	const [isOpen, setIsOpen] = useState(false);
 
-	const toggleSidebar = (e) => {
-		setIsOpen((prev) => !prev);
-		const sidebar = document.querySelector(".sidebar-content");
-		sidebar.style.width = isOpen ? 0 : "20%";
+	const openSidebar = (e) => {
+		setIsOpen(true);
+		document.querySelector(".sidebar-content").style.width = "20%";
+		animateCSS(`#${closeButtonId}`, "flipInY");
+	};
+
+	const closeSidebar = (e) => {
+		setIsOpen(false);
+		document.querySelector(".sidebar-content").style.width = 0;
+		animateCSS(`#${openButtonId}`, "flipInY");
 	};
 
 	return (
@@ -20,7 +30,16 @@ export default function Sidebar({ className }) {
 					display: "flex",
 					alignItems: "center"
 				}}>
-				<HamburgerButton onClick={toggleSidebar} style={{ zIndex: 2 }} />
+				<HamburgerButton
+					id={openButtonId}
+					onClick={openSidebar}
+					style={{ zIndex: 2, display: isOpen ? "none" : "block" }}
+				/>
+				<CloseButton
+					id={closeButtonId}
+					onClick={closeSidebar}
+					style={{ zIndex: 2, display: isOpen ? "block" : "none" }}
+				/>
 				<WeatherWidget style={{ zIndex: 2 }} />
 			</div>
 			<SidebarContent header="Proggikset" />

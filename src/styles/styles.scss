@@ -178,7 +178,7 @@ $mobile-bar-height: 70px;
 	height: 100%;
 }
 
-.hamburger-icon {
+.menu-button {
 	/* Reset the button styling */
 	background: none;
 	color: inherit;
@@ -197,8 +197,9 @@ $mobile-bar-height: 70px;
 	align-items: center;
 }
 
-.hamburger-icon:hover {
+.menu-button:hover {
 	cursor: pointer;
+	color: darken($orange-color, 10%);
 }
 
 .sidebar-content {

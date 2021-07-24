@@ -58,13 +58,26 @@ export function OpenButton({ href, target, verb }) {
 	);
 }
 
-export function HamburgerButton({ onClick, style, className }) {
+export function HamburgerButton({ id, onClick, style, className }) {
 	return (
 		<button
-			className={`hamburger-icon ${className}`}
+			id={id}
+			className={`menu-button ${className}`}
 			onClick={onClick}
 			style={style}>
 			<FontAwesomeIcon icon="bars" />
+		</button>
+	);
+}
+
+export function CloseButton({ id, onClick, style, className }) {
+	return (
+		<button
+			id={id}
+			className={`menu-button ${className}`}
+			onClick={onClick}
+			style={style}>
+			<FontAwesomeIcon icon="times" />
 		</button>
 	);
 }
