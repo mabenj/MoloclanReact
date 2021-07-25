@@ -1,4 +1,3 @@
-import React from "react";
 import { CopyButton, OpenButton } from "../Buttons";
 import { trimProtocolAndQueryString } from "../../Utils";
 
