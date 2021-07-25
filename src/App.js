@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { createBrowserHistory } from "history";
 import Header from "./components/Navigation/Header";
 import Footer from "./components/Navigation/Footer";
 import Gallery from "./pages/Gallery";
@@ -8,10 +7,10 @@ import Jari from "./pages/Jari";
 import Home from "./pages/Home";
 import GuiPack from "./pages/GuiPack";
 import NotFound from "./pages/NotFound";
-import ReactGA from "react-ga";
 import MainContainer from "./components/MainContainer";
 import ScrollToTop from "./components/Navigation/ScrollToTop";
 import useDocumentTitle from "./hooks/useDocumentTitle";
+import { initializeGA, withTracker } from "./analyticsTracker";
 
 import "./styles/styles.scss";
 
@@ -99,17 +98,12 @@ const pageDefinitions = [
 	}
 ];
 
-ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
-const history = createBrowserHistory();
-history.listen((location) => {
-	ReactGA.set({ page: location.pathname });
-	ReactGA.pageview(location.pathname);
-});
+initializeGA(process.env.REACT_APP_GA_TRACKING_ID);
 
 function App() {
 	return (
 		<>
-			<Router history={history}>
+			<Router>
 				{/* Scrolls to top when page changes */}
 				<ScrollToTop />
 				<Header />
@@ -138,4 +132,4 @@ const Page = ({ title, component }) => {
 	return component();
 };
 
-export default App;
+export default withTracker(App);
