@@ -1,14 +1,24 @@
-import React from "react";
-import DiscordTableData from "./DiscordTableData.json";
+import discordTableData from "./discordTableData.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
+
+interface IDiscordTableRow {
+	displayName: string;
+	ts3: boolean | string;
+	discord: boolean | string;
+	skype: boolean | string;
+}
+
+const tableRows = discordTableData as IDiscordTableRow[];
 
 const TsIcon = () => {
 	return <FontAwesomeIcon icon={["fab", "teamspeak"]} />;
 };
 
 const DiscordIcon = () => {
-	return <FontAwesomeIcon icon={["fa", "poop"]} style={{ color: "#7a5901" }} />;
+	return (
+		<FontAwesomeIcon icon={["fas", "poop"]} style={{ color: "#7a5901" }} />
+	);
 };
 
 const SkypeIcon = () => {
@@ -37,10 +47,10 @@ export default function DiscordCard() {
 					</tr>
 				</thead>
 				<tbody>
-					{DiscordTableData.rows.map(({ displayName, valueMapping }) => {
-						const ts3Value = getCellDisplayValue(valueMapping.ts3);
-						const discordValue = getCellDisplayValue(valueMapping.discord);
-						const skypeValue = getCellDisplayValue(valueMapping.skype);
+					{tableRows.map(({ displayName, ts3, discord, skype }) => {
+						const ts3Value = getCellComponent(ts3);
+						const discordValue = getCellComponent(discord);
+						const skypeValue = getCellComponent(skype);
 						return (
 							<tr key={displayName}>
 								<td>{displayName}</td>
@@ -56,13 +66,13 @@ export default function DiscordCard() {
 	);
 }
 
-function getCellDisplayValue(cellValue) {
+function getCellComponent(cellValue: string | boolean): JSX.Element {
 	switch (cellValue) {
 		case true:
 			return <FontAwesomeIcon icon="check-circle" className="success-color" />;
 		case false:
 			return <FontAwesomeIcon icon="times-circle" className="error-color" />;
 		default:
-			return cellValue;
+			return <>{cellValue}</>;
 	}
 }
