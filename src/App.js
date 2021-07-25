@@ -12,6 +12,7 @@ import ReactGA from "react-ga";
 import MainContainer from "./components/MainContainer";
 import ScrollToTop from "./components/Navigation/ScrollToTop";
 import useDocumentTitle from "./hooks/useDocumentTitle";
+import usePageTracking from "./hooks/usePageTracking";
 
 import "./styles/styles.scss";
 
@@ -107,6 +108,7 @@ history.listen((location) => {
 });
 
 function App() {
+	usePageTracking();
 	return (
 		<>
 			<Router history={history}>
