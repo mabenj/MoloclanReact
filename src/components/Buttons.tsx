@@ -53,7 +53,7 @@ export function CopyButton({ targetUrl }: CopyButtonProps) {
 type OpenButtonProps = {
 	href: string;
 	verb: string;
-	target?: "_self" | "_blank" | "_parent" | "_top";
+	target?: "_self" | "_blank";
 };
 
 export function OpenButton({ href, target, verb }: OpenButtonProps) {
@@ -74,25 +74,33 @@ export function OpenButton({ href, target, verb }: OpenButtonProps) {
 	);
 }
 
-export function HamburgerButton({ id, onClick, style, className }) {
+type HamburgerButtonProps = {
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
+	className?: string;
+};
+
+export function HamburgerButton(props: HamburgerButtonProps) {
 	return (
 		<button
-			id={id}
-			className={`menu-button ${className}`}
-			onClick={onClick}
-			style={style}>
+			{...props}
+			className={`menu-button ${props.className}`}
+			onClick={props.onClick}>
 			<FontAwesomeIcon icon="bars" />
 		</button>
 	);
 }
 
-export function CloseButton({ id, onClick, style, className }) {
+type CloseButtonProps = {
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
+	className?: string;
+};
+
+export function CloseButton(props: CloseButtonProps) {
 	return (
 		<button
-			id={id}
-			className={`menu-button ${className}`}
-			onClick={onClick}
-			style={style}>
+			{...props}
+			className={`menu-button ${props.className}`}
+			onClick={props.onClick}>
 			<FontAwesomeIcon icon="times" />
 		</button>
 	);
