@@ -55,7 +55,7 @@ const SidebarContent = ({ header }) => {
 					<span>{header}</span>
 				</li>
 				{sidebarItems.map((item) => (
-					<li key={item.to}>
+					<li key={item.displayName}>
 						<NavLink
 							to={item.to}
 							className="hvr-bounce-to-right navigation-link"
