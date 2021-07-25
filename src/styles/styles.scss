@@ -118,14 +118,23 @@ code {
 	.navigation-link {
 		color: $light-grey-color;
 		margin: 0 10px;
+
+		.navigation-link-caret {
+			font-size: 8px;
+			vertical-align: middle;
+			margin-left: 5px;
+		}
 	}
 
 	.navigation-link.active {
 		color: $orange-color;
-		/* Top only */
-		/* box-shadow: inset 0px 2px 0px -1px $orange-color; */
-		/* Bottom only */
-		box-shadow: inset 0px -2px 0px -1px $orange-color;
+
+		.navigation-link-text {
+			/* Top only */
+			/* box-shadow: inset 0px 2px 0px -1px $orange-color; */
+			/* Bottom only */
+			box-shadow: inset 0px -2px 0px -1px $orange-color;
+		}
 	}
 }
 
@@ -409,6 +418,46 @@ main {
 
 	.react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
 		box-shadow: none;
+	}
+}
+
+.dropdown {
+	position: relative;
+}
+
+.dropdown:hover {
+	.dropdown-content {
+		display: block;
+	}
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: rgba($dark-color, 0.9);
+	border-radius: 0 0 7px 7px;
+	overflow: hidden;
+	// font-size: 16px;
+
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		white-space: nowrap;
+
+		a {
+			display: block;
+			padding: 15px 20px;
+			color: $text-color;
+			text-decoration: none;
+		}
+
+		a:hover {
+			color: $orange-color;
+			background-color: lighten($black-color, 5%);
+		}
 	}
 }
 

@@ -2,13 +2,52 @@ import React, { useState } from "react";
 import { Row, Col, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { HamburgerButton } from "../Buttons";
 import Chicken from "../Chicken";
+import { HashLink } from "react-router-hash-link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const linkDefinitions = [
 	{ to: "/", displayName: "MOLO", exact: true },
-	{ to: "/servut", displayName: "SERVUT" },
-	{ to: "/galleria", displayName: "GALLERIA" },
+	{
+		to: "/servut",
+		displayName: "SERVUT",
+		subLinks: [
+			{
+				displayName: "Tessu",
+				hash: "teamspeak3"
+			},
+			{
+				displayName: "Minecraft",
+				hash: "minecraft"
+			},
+			{
+				displayName: "Discord",
+				hash: "discord"
+			}
+		]
+	},
+	{
+		to: "/galleria",
+		displayName: "GALLERIA",
+		subLinks: [
+			{
+				displayName: "Rust-häröilyt",
+				hash: "rust"
+			},
+			{
+				displayName: "Paint-teokset",
+				hash: "photoshop"
+			},
+			{
+				displayName: "Screenshotteja",
+				hash: "screenshots"
+			},
+			{
+				displayName: "Kummallisuuksia",
+				hash: "weird"
+			}
+		]
+	},
 	{ to: "/jari", displayName: "JARI" }
 ];
 
@@ -63,17 +102,42 @@ const Brand = ({ className }) => {
 const Links = ({ className }) => {
 	return (
 		<Nav className={className}>
-			<HamburgerButton className="navigation-hamburger d-md-none" />
-			{linkDefinitions.map((link) => (
-				<NavLink
-					exact={link.exact}
-					to={link.to}
-					className="navigation-link"
-					key={link.to}>
-					{link.displayName}
-				</NavLink>
+			{linkDefinitions.map((linkDefinition) => (
+				<Link key={linkDefinition.to} {...linkDefinition} />
 			))}
 		</Nav>
+	);
+};
+
+const Link = ({ exact, to, displayName, subLinks }) => {
+	const hasSubLinks = !!subLinks && subLinks.length > 0;
+	return (
+		<div className="dropdown">
+			<NavLink
+				exact={exact}
+				to={to}
+				className="navigation-link dropdown-button">
+				<span className="navigation-link-text">{displayName}</span>
+
+				{hasSubLinks ? (
+					<FontAwesomeIcon
+						className="navigation-link-caret"
+						icon="caret-down"
+					/>
+				) : null}
+			</NavLink>
+			{hasSubLinks ? (
+				<div className="dropdown-content">
+					<ul className="list-unstyled">
+						{subLinks.map(({ displayName, hash }) => (
+							<li key={hash}>
+								<HashLink to={`${to}#${hash}`}>{displayName}</HashLink>
+							</li>
+						))}
+					</ul>
+				</div>
+			) : null}
+		</div>
 	);
 };
 

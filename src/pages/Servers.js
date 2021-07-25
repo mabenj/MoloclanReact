@@ -19,7 +19,7 @@ const MINECRAFT_MAP_URL = "https://moloclan.fi/map";
 export default function Servers() {
 	return (
 		<>
-			<Wrapper>
+			<Wrapper id="teamspeak3">
 				<ServerSection
 					serverComponent={<TSViewer />}
 					infoComponent={
@@ -34,7 +34,7 @@ export default function Servers() {
 				/>
 			</Wrapper>
 
-			<Wrapper>
+			<Wrapper id="minecraft">
 				<ServerSection
 					serverComponent={<MinecraftCard />}
 					infoComponent={<ServerIPInfo urlArray={MINECRAFT_URL_ARRAY} />}
@@ -53,7 +53,7 @@ export default function Servers() {
 				/>
 			</Wrapper>
 
-			<Wrapper>
+			<Wrapper id="discord">
 				<ServerSection
 					serverComponent={<DiscordCard />}
 					displayName="Discord"

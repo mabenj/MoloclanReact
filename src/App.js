@@ -1,4 +1,4 @@
-import { Route, Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Header from "./components/Navigation/Header";
 import Footer from "./components/Navigation/Footer";
@@ -29,7 +29,8 @@ import {
 	faPoop,
 	faDrumstickBite,
 	faSave,
-	faTimes
+	faTimes,
+	faCaretDown
 } from "@fortawesome/free-solid-svg-icons";
 // Brands
 import {
@@ -55,7 +56,8 @@ library.add(
 	faSkype,
 	faDrumstickBite,
 	faSave,
-	faTimes
+	faTimes,
+	faCaretDown
 );
 
 const pageDefinitions = [
