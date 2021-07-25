@@ -14,7 +14,7 @@ export default function WeatherWidget({ className, style }) {
 			setClientCity(city);
 			setWeatherInfo(weatherInfo);
 			const now = new Date();
-			setIsNight(!isDateBetween(now, weatherInfo.sunrise, weatherInfo.sunset));
+			setIsNight(!isTimeBetween(now, weatherInfo.sunrise, weatherInfo.sunset));
 		}
 		fetchLocationAndWeather();
 	}, []);
@@ -34,7 +34,7 @@ export default function WeatherWidget({ className, style }) {
 	);
 }
 
-function isDateBetween(date, timeString1, timeString2) {
+function isTimeBetween(date, timeString1, timeString2) {
 	const minutes1 = getMinutesSinceMidNight(timeString1);
 	const minutes2 = getMinutesSinceMidNight(timeString2);
 	const dateMinutes = date.getHours() * 60 + date.getMinutes();
@@ -45,7 +45,7 @@ function getMinutesSinceMidNight(timeString) {
 	const [time, AmPm] = timeString.split(" ");
 	let [hours, minutes] = time.split(":");
 	if (AmPm.toLowerCase() === "pm") {
-		hours += 12;
+		hours = parseInt(hours) + 12;
 	}
-	return hours * 60 + minutes;
+	return parseInt(hours) * 60 + parseInt(minutes);
 }
