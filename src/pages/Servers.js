@@ -1,4 +1,3 @@
-import React from "react";
 import ServerSection from "../components/ServerPage/ServerSection";
 import ServerIPInfo from "../components/ServerPage/ServerIPInfo";
 import TSViewer from "../components/TSViewer/TSViewer";
