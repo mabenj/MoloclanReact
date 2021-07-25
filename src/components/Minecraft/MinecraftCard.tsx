@@ -1,12 +1,25 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import minecraftService from "../../services/minecraftService";
 
 import "../../styles/mc.scss";
+
 const AVATAR_WIDTH = 40;
 const MAX_NUMBER_OF_PLAYERS_TO_TAKE = 12;
 
+type Player = {
+	name: string;
+	skinSource: string;
+};
+
+type ServerInfo = {
+	isOnline: boolean;
+	players: Player[];
+	playerCounts: Number;
+	favIcon: string;
+};
+
 export default function MinecraftCard() {
-	const [players, setPlayers] = useState([{ name: "", skinSource: "" }]);
+	const [players, setPlayers] = useState<Player[]>([]);
 	const [playerCount, setPlayerCount] = useState(0);
 	const [isOffline, setIsOffline] = useState(false);
 	const [favIcon, setFavIcon] = useState("");
@@ -14,7 +27,8 @@ export default function MinecraftCard() {
 	useEffect(() => {
 		minecraftService
 			.getServerInfo(MAX_NUMBER_OF_PLAYERS_TO_TAKE, AVATAR_WIDTH)
-			.then(({ isOnline, players, playerCount, favIcon }) => {
+			// @ts-ignore //TODO
+			.then(({ isOnline, players, playerCount, favIcon }: ServerInfo) => {
 				setPlayers(players);
 				setPlayerCount(playerCount);
 				setIsOffline(!isOnline);
@@ -37,11 +51,11 @@ export default function MinecraftCard() {
 	);
 }
 
-const Container = ({ children }) => {
+const Container: React.FC = ({ children }) => {
 	return <div className="rounded mc-container">{children}</div>;
 };
 
-const BackgroundContainer = ({ children }) => {
+const BackgroundContainer: React.FC = ({ children }) => {
 	return <div className="mc-bg-container">{children}</div>;
 };
 
@@ -49,7 +63,11 @@ const BackgroundImage = () => {
 	return <div className="mc-bg-image" />;
 };
 
-const Title = ({ favIcon }) => {
+type TitleProps = {
+	favIcon: string;
+};
+
+const Title = ({ favIcon }: TitleProps) => {
 	return (
 		<span className={"mc-title"}>
 			<h4 className="ml-2">MOLOCRAFT</h4>
@@ -58,7 +76,17 @@ const Title = ({ favIcon }) => {
 	);
 };
 
-const PlayerList = ({ players, totalPlayerCount, isOffline }) => {
+type PlayerListProps = {
+	players: Player[];
+	totalPlayerCount: Number;
+	isOffline: boolean;
+};
+
+const PlayerList = ({
+	players,
+	totalPlayerCount,
+	isOffline
+}: PlayerListProps) => {
 	return (
 		<div className="mc-playerlist">
 			<StatusText
@@ -78,7 +106,13 @@ const PlayerList = ({ players, totalPlayerCount, isOffline }) => {
 	);
 };
 
-const StatusText = ({ isOffline, playerCount, className }) => {
+type StatusTextProps = {
+	isOffline: boolean;
+	playerCount: Number;
+	className?: string;
+};
+
+const StatusText = ({ isOffline, playerCount, className }: StatusTextProps) => {
 	return (
 		<h4 className={`ml-2 pt-2 ${className}`}>
 			{isOffline ? (
