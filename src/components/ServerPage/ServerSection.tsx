@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Nbsp } from "../../Utils";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 interface IServerSection {
@@ -28,7 +27,12 @@ const ServerSection: React.FC<IServerSection> = ({
 		<>
 			<h3>
 				{header}
-				{faIcon ? Nbsp() + <FontAwesomeIcon icon={faIcon} /> : null}
+				{faIcon ? (
+					<>
+						&nbsp;
+						<FontAwesomeIcon icon={faIcon} />
+					</>
+				) : null}
 			</h3>
 			<Row style={styleRow}>
 				<Col

@@ -30,7 +30,7 @@ export default function Servers() {
 							linkVerb="Joinaa"
 						/>
 					}
-					displayName="TeamSpeak&nbsp;3"
+					header="TeamSpeak&nbsp;3"
 					faIcon={TEAMSPEAK_FA_ICON}
 				/>
 			</Wrapper>
@@ -39,7 +39,7 @@ export default function Servers() {
 				<ServerSection
 					serverComponent={<MinecraftCard />}
 					infoComponent={<ServerIPInfo urlArray={MINECRAFT_URL_ARRAY} />}
-					displayName="Minecraft"
+					header="Minecraft"
 				/>
 				<ServerSection
 					serverComponent={<MinecraftMap mapUrl={MINECRAFT_MAP_URL} />}
@@ -57,7 +57,7 @@ export default function Servers() {
 			<Wrapper id="discord">
 				<ServerSection
 					serverComponent={<DiscordCard />}
-					displayName="Discord"
+					header="Discord"
 					faIcon={DISCORD_FA_ICON}
 				/>
 			</Wrapper>
