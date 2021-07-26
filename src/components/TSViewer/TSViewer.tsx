@@ -1,29 +1,39 @@
 import React, { useEffect } from "react";
-import TSViewerUrls from "./TSViewerUrls.json";
+import TSVConfig from "./tsviewer-config.json";
 import { waitForElemAndDelete } from "../../Utils";
+
+interface ITSViewerConfig {
+	loaderUrl: string;
+	viewerUrl: string;
+	id: number;
+}
+
+const config = TSVConfig as ITSViewerConfig;
 
 const elementsToDelete = [
 	"[title='TSViewer for TeamSpeak 3 by TSViewer.com']",
 	"[title='TSViewer for Android']"
 ];
 
-export default function TSViewer() {
+const TSViewer: React.FC = () => {
 	useEffect(() => {
 		const script = document.createElement("script");
 		script.async = true;
-		script.src = TSViewerUrls.loaderUrl;
+		script.src = config.loaderUrl;
 		script.onload = () => {
-			const ts3v_url_1 = TSViewerUrls.viewerUrl;
-			// eslint-disable-next-line no-undef
-			ts3v_display.init(ts3v_url_1, 1121036, 100);
+			const ts3v_url_1 = config.viewerUrl;
+			// @ts-ignore
+			ts3v_display.init(ts3v_url_1, config.id, 100);
 			elementsToDelete.forEach(waitForElemAndDelete);
 		};
 		document.body.appendChild(script);
 	}, []);
 
 	return (
-		<div id="ts3viewer_1121036" className="TSViewer">
+		<div id={`ts3viewer_${config.id}`} className="TSViewer">
 			{" "}
 		</div>
 	);
-}
+};
+
+export default TSViewer;
