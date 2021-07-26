@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextSivut: React.FC = (props) => {
+const TextSivut: React.FC<React.HTMLAttributes<any>> = (props) => {
 	return (
 		<path
 			{...props}

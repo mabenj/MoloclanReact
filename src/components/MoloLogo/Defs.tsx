@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Defs() {
+const Defs: React.FC = () => {
 	return (
 		<defs>
 			<pattern
@@ -19,4 +19,6 @@ export default function Defs() {
 			/>
 		</defs>
 	);
-}
+};
+
+export default Defs;

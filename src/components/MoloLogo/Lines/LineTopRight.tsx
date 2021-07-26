@@ -1,6 +1,6 @@
 import React from "react";
 
-const LineTopRight: React.FC = (props) => {
+const LineTopRight: React.FC<React.HTMLAttributes<any>> = (props) => {
 	return (
 		<line
 			{...props}
