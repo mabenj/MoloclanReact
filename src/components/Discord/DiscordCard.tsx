@@ -11,24 +11,33 @@ interface IDiscordTableRow {
 
 const tableRows = discordTableData as IDiscordTableRow[];
 
-const TsIcon = () => {
-	return <FontAwesomeIcon icon={["fab", "teamspeak"]} />;
+const TsIcon: React.FC = (props) => {
+	return <FontAwesomeIcon {...props} icon={["fab", "teamspeak"]} />;
 };
 
-const DiscordIcon = () => {
+const DiscordIcon: React.FC = (props) => {
 	return (
-		<FontAwesomeIcon icon={["fas", "poop"]} style={{ color: "#7a5901" }} />
+		<FontAwesomeIcon
+			{...props}
+			icon={["fas", "poop"]}
+			style={{ color: "#7a5901" }}
+		/>
 	);
 };
 
-const SkypeIcon = () => {
-	return <FontAwesomeIcon icon={["fab", "skype"]} />;
+const SkypeIcon: React.FC = (props) => {
+	return <FontAwesomeIcon {...props} icon={["fab", "skype"]} />;
 };
 
-export default function DiscordCard() {
+export const DiscordCard: React.FC = (props) => {
 	return (
 		<>
-			<Table striped borderless responsive className="rounded discord-table">
+			<Table
+				{...props}
+				striped
+				borderless
+				responsive
+				className="rounded discord-table">
 				<thead>
 					<tr>
 						<th></th>
@@ -64,7 +73,9 @@ export default function DiscordCard() {
 			</Table>
 		</>
 	);
-}
+};
+
+export default DiscordCard;
 
 function getCellComponent(cellValue: string | boolean): JSX.Element {
 	switch (cellValue) {
