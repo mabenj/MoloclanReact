@@ -5,16 +5,16 @@ import { trimProtocolAndQueryString } from "../Utils";
 
 const TOOLTIP_DURATION = 1000;
 
-type CopyButtonProps = {
-	targetUrl: string;
-};
+interface ICopyButton {
+	targetText: string;
+}
 
-export function CopyButton({ targetUrl }: CopyButtonProps) {
+export const CopyButton: React.FC<ICopyButton> = ({ targetText }) => {
 	const [showTooltip, setShowTooltip] = useState(false);
-	const targetRef = useRef(null);
+	const targetRef = useRef<HTMLSpanElement>(null);
 
-	const handleCopy = (e: React.MouseEvent) => {
-		const textToCopy = trimProtocolAndQueryString(targetUrl);
+	const handleCopy: React.MouseEventHandler<HTMLElement> = (_e) => {
+		const textToCopy = trimProtocolAndQueryString(targetText);
 		navigator.clipboard.writeText(textToCopy);
 		setShowTooltip(true);
 		setTimeout(() => {
@@ -26,7 +26,7 @@ export function CopyButton({ targetUrl }: CopyButtonProps) {
 		<>
 			<OverlayTrigger
 				placement="top"
-				overlay={<Tooltip id={targetUrl}>Kopioi tää</Tooltip>}
+				overlay={<Tooltip id={targetText}>Kopioi tää</Tooltip>}
 				rootClose>
 				<Button
 					as="span"
@@ -41,22 +41,26 @@ export function CopyButton({ targetUrl }: CopyButtonProps) {
 
 			<Overlay target={targetRef.current} show={showTooltip} placement="top">
 				{(props) => (
-					<Tooltip id={targetUrl} {...props}>
+					<Tooltip id={targetText} {...props}>
 						Kopioitu'd :D
 					</Tooltip>
 				)}
 			</Overlay>
 		</>
 	);
-}
+};
 
-type OpenButtonProps = {
+interface IOpenButton {
 	href: string;
 	verb: string;
 	target?: "_self" | "_blank";
-};
+}
 
-export function OpenButton({ href, target, verb }: OpenButtonProps) {
+export const OpenButton: React.FC<IOpenButton> = ({
+	href,
+	target = "_blank",
+	verb
+}) => {
 	return (
 		<>
 			<OverlayTrigger
@@ -66,20 +70,20 @@ export function OpenButton({ href, target, verb }: OpenButtonProps) {
 					as="span"
 					variant=""
 					className="custom-btn"
-					onClick={() => window.open(href, target ? target : "_blank")}>
+					onClick={() => window.open(href, target)}>
 					<FontAwesomeIcon icon="external-link-alt" />
 				</Button>
 			</OverlayTrigger>
 		</>
 	);
-}
-
-type HamburgerButtonProps = {
-	onClick: React.MouseEventHandler<HTMLButtonElement>;
-	className?: string;
 };
 
-export function HamburgerButton(props: HamburgerButtonProps) {
+interface IHamburgerButton {
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
+	className?: string;
+}
+
+export const HamburgerButton: React.FC<IHamburgerButton> = (props) => {
 	return (
 		<button
 			{...props}
@@ -88,14 +92,14 @@ export function HamburgerButton(props: HamburgerButtonProps) {
 			<FontAwesomeIcon icon="bars" />
 		</button>
 	);
-}
-
-type CloseButtonProps = {
-	onClick: React.MouseEventHandler<HTMLButtonElement>;
-	className?: string;
 };
 
-export function CloseButton(props: CloseButtonProps) {
+interface ICloseButton {
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
+	className?: string;
+}
+
+export const CloseButton: React.FC<ICloseButton> = (props) => {
 	return (
 		<button
 			{...props}
@@ -104,4 +108,4 @@ export function CloseButton(props: CloseButtonProps) {
 			<FontAwesomeIcon icon="times" />
 		</button>
 	);
-}
+};
