@@ -1,15 +1,17 @@
 import React from "react";
 
-export default function LineTopLeft(props) {
+const LineTopLeft: React.FC = (props) => {
 	return (
 		<line
+			{...props}
 			id="line-tl"
 			x1="41"
 			y1="33.5"
 			x2="144"
 			y2="33.5"
 			strokeWidth="5"
-			className={props.className}
 		/>
 	);
-}
+};
+
+export default LineTopLeft;

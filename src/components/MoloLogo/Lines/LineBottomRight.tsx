@@ -1,15 +1,17 @@
 import React from "react";
 
-export default function LineBottomRight(props) {
+const LineBottomRight: React.FC = (props) => {
 	return (
 		<line
+			{...props}
 			id="line-br"
 			x1="323"
 			y1="210.5"
 			x2="489"
 			y2="210.5"
 			strokeWidth="5"
-			className={props.className}
 		/>
 	);
-}
+};
+
+export default LineBottomRight;
