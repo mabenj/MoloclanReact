@@ -8,9 +8,9 @@ import Home from "./pages/Home";
 import GuiPack from "./pages/GuiPack";
 import NotFound from "./pages/NotFound";
 import MainContainer from "./components/MainContainer";
-import ScrollToTop from "./components/Navigation/ScrollToTop";
 import useDocumentTitle from "./hooks/useDocumentTitle";
 import usePageTracking from "./hooks/usePageTracking";
+import useScrollToTop from "./hooks/useScrollToTop";
 
 import "./styles/styles.scss";
 
@@ -102,8 +102,6 @@ function App() {
 	return (
 		<>
 			<Router>
-				{/* Scrolls to top when page changes */}
-				<ScrollToTop />
 				<Header />
 				<MainContainer>
 					<Switch>
@@ -126,6 +124,7 @@ function App() {
 }
 
 const Page = ({ title, component }) => {
+	useScrollToTop();
 	usePageTracking();
 	useDocumentTitle(title);
 	return component();
