@@ -1,0 +1,51 @@
+[
+	{
+		"to": "/",
+		"displayName": "MOLO",
+		"exact": true
+	},
+	{
+		"to": "/servut",
+		"displayName": "SERVUT",
+		"subLinks": [
+			{
+				"displayName": "Tessu",
+				"hash": "teamspeak3"
+			},
+			{
+				"displayName": "Minecraft",
+				"hash": "minecraft"
+			},
+			{
+				"displayName": "Discord",
+				"hash": "discord"
+			}
+		]
+	},
+	{
+		"to": "/galleria",
+		"displayName": "GALLERIA",
+		"subLinks": [
+			{
+				"displayName": "Rust-häröilyt",
+				"hash": "rust"
+			},
+			{
+				"displayName": "Paint-teokset",
+				"hash": "photoshop"
+			},
+			{
+				"displayName": "Screenshotteja",
+				"hash": "screenshots"
+			},
+			{
+				"displayName": "Kummallisuuksia",
+				"hash": "weird"
+			}
+		]
+	},
+	{
+		"to": "/jari",
+		"displayName": "JARI"
+	}
+]

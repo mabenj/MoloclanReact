@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { HTMLAttributes, useState } from "react";
 import { Row, Col, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Sidebar from "./Sidebar";
@@ -6,52 +6,21 @@ import Chicken from "../Chicken";
 import { HashLink } from "react-router-hash-link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const linkDefinitions = [
-	{ to: "/", displayName: "MOLO", exact: true },
-	{
-		to: "/servut",
-		displayName: "SERVUT",
-		subLinks: [
-			{
-				displayName: "Tessu",
-				hash: "teamspeak3"
-			},
-			{
-				displayName: "Minecraft",
-				hash: "minecraft"
-			},
-			{
-				displayName: "Discord",
-				hash: "discord"
-			}
-		]
-	},
-	{
-		to: "/galleria",
-		displayName: "GALLERIA",
-		subLinks: [
-			{
-				displayName: "Rust-häröilyt",
-				hash: "rust"
-			},
-			{
-				displayName: "Paint-teokset",
-				hash: "photoshop"
-			},
-			{
-				displayName: "Screenshotteja",
-				hash: "screenshots"
-			},
-			{
-				displayName: "Kummallisuuksia",
-				hash: "weird"
-			}
-		]
-	},
-	{ to: "/jari", displayName: "JARI" }
-];
+import navLinkDefinitions from "./nav-link-definitions.json";
 
-export default function Header() {
+interface ILinkDefinition {
+	to: string;
+	displayName: string;
+	exact?: boolean;
+	subLinks: {
+		displayName: string;
+		hash: string;
+	}[];
+}
+
+const linkDefinitions = navLinkDefinitions as ILinkDefinition[];
+
+const Header: React.FC = () => {
 	return (
 		<>
 			<NavbarMobile className="d-md-none" />
@@ -68,9 +37,9 @@ export default function Header() {
 			</Row>
 		</>
 	);
-}
+};
 
-const Navigation = () => {
+const Navigation: React.FC = () => {
 	return (
 		<div className="navigation-bar-middle">
 			<Brand className="navigation-brand" />
@@ -80,7 +49,7 @@ const Navigation = () => {
 	);
 };
 
-const Brand = ({ className }) => {
+const Brand: React.FC<HTMLAttributes<any>> = ({ className }) => {
 	return (
 		<Nav className={className}>
 			<NavLink to="/">
@@ -99,7 +68,7 @@ const Brand = ({ className }) => {
 	);
 };
 
-const Links = ({ className }) => {
+const Links: React.FC<HTMLAttributes<any>> = ({ className }) => {
 	return (
 		<Nav className={className}>
 			{linkDefinitions.map((linkDefinition) => (
@@ -109,7 +78,12 @@ const Links = ({ className }) => {
 	);
 };
 
-const Link = ({ exact, to, displayName, subLinks }) => {
+const Link: React.FC<ILinkDefinition> = ({
+	exact,
+	to,
+	displayName,
+	subLinks
+}) => {
 	const hasSubLinks = !!subLinks && subLinks.length > 0;
 	return (
 		<div className="dropdown">
@@ -141,12 +115,12 @@ const Link = ({ exact, to, displayName, subLinks }) => {
 	);
 };
 
-const NavbarMobile = ({ className }) => {
+const NavbarMobile: React.FC<HTMLAttributes<any>> = ({ className }) => {
 	const [expanded, setExpanded] = useState(false);
 
 	return (
 		<Navbar
-			expand="xxl"
+			expand="xl"
 			variant="dark"
 			onToggle={() => setExpanded((prev) => !prev)}
 			expanded={expanded}
@@ -172,3 +146,5 @@ const NavbarMobile = ({ className }) => {
 		</Navbar>
 	);
 };
+
+export default Header;
