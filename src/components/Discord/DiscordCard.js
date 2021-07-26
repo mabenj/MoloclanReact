@@ -1,5 +1,5 @@
 import React from "react";
-import DiscordTableData from "./DiscordTableData.json";
+import DiscordTableData from "./discord-table-data.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table } from "react-bootstrap";
 
