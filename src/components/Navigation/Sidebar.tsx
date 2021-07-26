@@ -1,24 +1,36 @@
-import React, { useState } from "react";
+import { HTMLAttributes, useState } from "react";
 import { NavLink } from "react-router-dom";
 import WeatherWidget from "../WeatherWidget";
 import { HamburgerButton, CloseButton } from "../Buttons";
 import { animateCSS } from "../../Utils";
 
+import sidebarLinkDefinitions from "./sidebar-link-definitions.json";
+
+interface ISidebarLink {
+	displayName: string;
+	pathname: string;
+	target?: "_blank" | "_self";
+}
+
+const sidebarItems = sidebarLinkDefinitions as ISidebarLink[];
+
 const openButtonId = "sidebar-open-btn";
 const closeButtonId = "sidebar-close-btn";
 
-export default function Sidebar({ className }) {
+const Sidebar: React.FC<HTMLAttributes<any>> = ({ className }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	const openSidebar = (e) => {
+	const openSidebar: React.MouseEventHandler<HTMLButtonElement> = (_e) => {
 		setIsOpen(true);
-		document.querySelector(".sidebar-content").style.width = "20%";
+		document.querySelector<HTMLDivElement>(".sidebar-content")!.style.width =
+			"20%";
 		animateCSS(`#${closeButtonId}`, "flipInY");
 	};
 
-	const closeSidebar = (e) => {
+	const closeSidebar: React.MouseEventHandler<HTMLButtonElement> = (_e) => {
 		setIsOpen(false);
-		document.querySelector(".sidebar-content").style.width = 0;
+		document.querySelector<HTMLDivElement>(".sidebar-content")!.style.width =
+			"0px";
 		animateCSS(`#${openButtonId}`, "flipInY");
 	};
 
@@ -42,26 +54,30 @@ export default function Sidebar({ className }) {
 				/>
 				<WeatherWidget style={{ zIndex: 2 }} />
 			</div>
-			<SidebarContent header="Proggikset" />
+			<SidebarContent links={sidebarItems} />
 		</div>
 	);
+};
+
+interface ISidebarContent {
+	links: ISidebarLink[];
 }
 
-const SidebarContent = ({ header }) => {
+const SidebarContent: React.FC<ISidebarContent> = ({ links }) => {
 	return (
 		<div className="sidebar-content" style={{ position: "fixed", zIndex: 1 }}>
 			<ul className="mt-5">
 				<li>
-					<span>{header}</span>
+					<span>Proggikset</span>
 				</li>
-				{sidebarItems.map((item) => (
-					<li key={item.displayName}>
+				{links.map(({ displayName, pathname, target = "_self" }) => (
+					<li key={pathname}>
 						<NavLink
-							to={item.to}
+							to={{ pathname }}
 							className="hvr-bounce-to-right navigation-link"
-							target={item.target}
+							target={target}
 							rel="noreferrer">
-							{item.displayName}
+							{displayName}
 						</NavLink>
 					</li>
 				))}
@@ -70,20 +86,4 @@ const SidebarContent = ({ header }) => {
 	);
 };
 
-const sidebarItems = [
-	{
-		to: "/gui-pack",
-		target: "",
-		displayName: "Minecraft GUI Pack"
-	},
-	{
-		to: { pathname: "https://jariclub.moloclan.fi/" },
-		target: "_blank",
-		displayName: "Jari Club nettidomain"
-	},
-	{
-		to: { pathname: "https://old.moloclan.fi/" },
-		target: "_blank",
-		displayName: "Vanha moloclan.fi"
-	}
-];
+export default Sidebar;

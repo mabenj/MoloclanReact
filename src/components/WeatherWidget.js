@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import locationService from "../services/locationService";
 import weatherService from "../services/weatherService";
 
-export default function WeatherWidget({ className, style }) {
+export default function WeatherWidget({ style }) {
 	const [clientCity, setClientCity] = useState("");
 	const [weatherInfo, setWeatherInfo] = useState({});
 	const [isNight, setIsNight] = useState(false);
@@ -24,7 +24,7 @@ export default function WeatherWidget({ className, style }) {
 	}
 
 	return (
-		<div className={`ml-3 ${className}`} style={style}>
+		<div className="ml-3" style={style}>
 			<span className="light-grey-color text-nowrap">
 				{clientCity}&nbsp;&nbsp;&nbsp;
 				{isNight ? weatherInfo.moonIcon : weatherInfo.weatherIcon}&nbsp;
