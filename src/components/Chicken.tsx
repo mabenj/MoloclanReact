@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
-import ChickenImages from "../img/MediaSources/flying-chicken-sources.json";
+import chickenImageSources from "../img/MediaSources/flying-chicken-sources.json";
 import Toggle from "react-toggle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const style = {
+interface IChicken {
+	src: string;
+	desc: string;
+	width: number;
+	height: number;
+}
+
+const chickens = chickenImageSources as IChicken[];
+
+const style: React.CSSProperties = {
 	position: "absolute",
 	right: "40px",
 	top: "-5px"
 };
 
-export default function Chicken() {
+const Chicken: React.FC = () => {
 	const [isFlying, setIsFlying] = useState(false);
 
 	return (
@@ -28,22 +37,26 @@ export default function Chicken() {
 			<ChickenImg isFlying={isFlying} />
 		</div>
 	);
+};
+
+interface IChickenImg {
+	isFlying: boolean;
 }
 
-const ChickenImg = ({ isFlying }) => {
-	const [currentChicken, setCurrentChicken] = useState({});
+const ChickenImg: React.FC<IChickenImg> = ({ isFlying }) => {
+	const [currentChicken, setCurrentChicken] = useState<IChicken>(chickens[0]);
 	const [maxX, setMaxX] = useState(0);
 	const [maxY, setMaxY] = useState(0);
 	const [currentX, setCurrentX] = useState(0);
 	const [currentY, setCurrentY] = useState(0);
-	const [down, setDown] = useState(true);
-	const [right, setRight] = useState(true);
-	const step = 4;
-	const updateMillis = 15;
+	const [down, setDown] = useState(Math.random() > 0.5);
+	const [right, setRight] = useState(Math.random() > 0.5);
+
+	const STEP = 4;
+	const FREQ_MS = 15;
 
 	useEffect(() => {
-		const chicken =
-			ChickenImages[Math.floor(Math.random() * ChickenImages.length)];
+		const chicken = chickens[Math.floor(Math.random() * chickens.length)];
 		const maxWidth = window.innerWidth - chicken.width;
 		const maxHeight = window.innerHeight - chicken.height;
 		setMaxX(maxWidth);
@@ -63,20 +76,24 @@ const ChickenImg = ({ isFlying }) => {
 			if (isFlying) {
 				let tempRight = right;
 				let tempDown = down;
-				if (currentX >= maxX || currentX <= 0) {
-					tempRight = currentX <= 0;
+				let tempX = currentX;
+				let tempY = currentY;
+
+				if (tempX >= maxX || tempX <= 0) {
+					tempRight = tempX <= 0;
 					updateChicken();
 				}
-				if (currentY >= maxY || currentY <= 0) {
-					tempDown = currentY <= 0;
+				if (tempY >= maxY || tempY <= 0) {
+					tempDown = tempY <= 0;
 					updateChicken();
 				}
-				setCurrentX((prev) => (tempRight ? prev + step : prev - step));
-				setCurrentY((prev) => (tempDown ? prev + step : prev - step));
+
+				setCurrentX((prev) => (tempRight ? prev + STEP : prev - STEP));
+				setCurrentY((prev) => (tempDown ? prev + STEP : prev - STEP));
 				setDown(tempDown);
 				setRight(tempRight);
 			}
-		}, updateMillis);
+		}, FREQ_MS);
 		return () => {
 			clearTimeout(timeOut);
 		};
@@ -91,10 +108,9 @@ const ChickenImg = ({ isFlying }) => {
 	};
 
 	const updateChicken = () => {
-		let chicken =
-			ChickenImages[Math.floor(Math.random() * ChickenImages.length)];
+		let chicken = chickens[Math.floor(Math.random() * chickens.length)];
 		while (chicken === currentChicken) {
-			chicken = ChickenImages[Math.floor(Math.random() * ChickenImages.length)];
+			chicken = chickens[Math.floor(Math.random() * chickens.length)];
 		}
 		const maxWidth = window.innerWidth - chicken.width;
 		const maxHeight = window.innerHeight - chicken.height;
@@ -103,7 +119,7 @@ const ChickenImg = ({ isFlying }) => {
 		setCurrentChicken(chicken);
 	};
 
-	const chickenStyle = {
+	const chickenStyle: React.CSSProperties = {
 		display: isFlying ? "initial" : "none",
 		transform: `translate3d(${currentX}px, ${currentY}px, 0)`,
 		position: "fixed",
@@ -122,3 +138,5 @@ const ChickenImg = ({ isFlying }) => {
 		/>
 	);
 };
+
+export default Chicken;
