@@ -1,0 +1,17 @@
+[
+	{
+		"pathname": "/gui-pack",
+		"target": "",
+		"displayName": "Minecraft GUI Pack"
+	},
+	{
+		"pathname": "https://jariclub.moloclan.fi/",
+		"target": "_blank",
+		"displayName": "Jari Club nettidomain"
+	},
+	{
+		"pathname": "https://old.moloclan.fi/",
+		"target": "_blank",
+		"displayName": "Vanha moloclan.fi"
+	}
+]

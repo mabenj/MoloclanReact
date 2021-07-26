@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, HTMLAttributes } from "react";
 import { Button, Overlay, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { trimProtocolAndQueryString } from "../Utils";
@@ -78,12 +78,7 @@ export const OpenButton: React.FC<IOpenButton> = ({
 	);
 };
 
-interface IHamburgerButton {
-	onClick: React.MouseEventHandler<HTMLButtonElement>;
-	className?: string;
-}
-
-export const HamburgerButton: React.FC<IHamburgerButton> = (props) => {
+export const HamburgerButton: React.FC<HTMLAttributes<any>> = (props) => {
 	return (
 		<button
 			{...props}
@@ -94,12 +89,7 @@ export const HamburgerButton: React.FC<IHamburgerButton> = (props) => {
 	);
 };
 
-interface ICloseButton {
-	onClick: React.MouseEventHandler<HTMLButtonElement>;
-	className?: string;
-}
-
-export const CloseButton: React.FC<ICloseButton> = (props) => {
+export const CloseButton: React.FC<HTMLAttributes<any>> = (props) => {
 	return (
 		<button
 			{...props}
