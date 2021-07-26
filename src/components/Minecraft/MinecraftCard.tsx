@@ -1,39 +1,27 @@
 import { useState, useEffect } from "react";
-import minecraftService from "../../services/minecraftService";
+import minecraftService, { IPlayer } from "../../services/minecraftService";
 
 import "../../styles/mc.scss";
 
 const AVATAR_WIDTH = 40;
-const MAX_NUMBER_OF_PLAYERS_TO_TAKE = 12;
+const PLAYERS_TO_TAKE = 12;
 
-type Player = {
-	name: string;
-	skinSource: string;
-};
-
-type ServerInfo = {
-	isOnline: boolean;
-	players: Player[];
-	playerCounts: Number;
-	favIcon: string;
-};
-
-export default function MinecraftCard() {
-	const [players, setPlayers] = useState<Player[]>([]);
+const MinecraftCard: React.FC = () => {
+	const [players, setPlayers] = useState<IPlayer[]>([]);
 	const [playerCount, setPlayerCount] = useState(0);
 	const [isOffline, setIsOffline] = useState(false);
 	const [favIcon, setFavIcon] = useState("");
 
 	useEffect(() => {
-		minecraftService
-			.getServerInfo(MAX_NUMBER_OF_PLAYERS_TO_TAKE, AVATAR_WIDTH)
-			// @ts-ignore //TODO
-			.then(({ isOnline, players, playerCount, favIcon }: ServerInfo) => {
-				setPlayers(players);
-				setPlayerCount(playerCount);
-				setIsOffline(!isOnline);
-				setFavIcon(favIcon);
-			});
+		async function fetchServerInfo(): Promise<void> {
+			const { isOnline, players, playerCount, favIcon } =
+				await minecraftService.getServerInfo(PLAYERS_TO_TAKE, AVATAR_WIDTH);
+			setPlayers(players);
+			setPlayerCount(playerCount);
+			setIsOffline(!isOnline);
+			setFavIcon(favIcon);
+		}
+		fetchServerInfo();
 	}, []);
 
 	return (
@@ -49,46 +37,49 @@ export default function MinecraftCard() {
 			/>
 		</Container>
 	);
+};
+
+export default MinecraftCard;
+
+const Container: React.FC = (props) => {
+	return <div {...props} className="rounded mc-container"></div>;
+};
+
+const BackgroundContainer: React.FC = (props) => {
+	return <div {...props} className="mc-bg-container"></div>;
+};
+
+const BackgroundImage: React.FC = (props) => {
+	return <div {...props} className="mc-bg-image" />;
+};
+
+interface ITitle {
+	favIcon: string;
 }
 
-const Container: React.FC = ({ children }) => {
-	return <div className="rounded mc-container">{children}</div>;
-};
-
-const BackgroundContainer: React.FC = ({ children }) => {
-	return <div className="mc-bg-container">{children}</div>;
-};
-
-const BackgroundImage = () => {
-	return <div className="mc-bg-image" />;
-};
-
-type TitleProps = {
-	favIcon: string;
-};
-
-const Title = ({ favIcon }: TitleProps) => {
+const Title: React.FC<ITitle> = ({ favIcon, ...props }) => {
 	return (
-		<span className={"mc-title"}>
+		<span {...props} className={"mc-title"}>
 			<h4 className="ml-2">MOLOCRAFT</h4>
 			<img className="mc-fav-icon" src={favIcon} alt="favicon" />
 		</span>
 	);
 };
 
-type PlayerListProps = {
-	players: Player[];
-	totalPlayerCount: Number;
+interface IPlayerList {
+	players: IPlayer[];
+	totalPlayerCount: number;
 	isOffline: boolean;
-};
+}
 
-const PlayerList = ({
+const PlayerList: React.FC<IPlayerList> = ({
 	players,
 	totalPlayerCount,
-	isOffline
-}: PlayerListProps) => {
+	isOffline,
+	...props
+}) => {
 	return (
-		<div className="mc-playerlist">
+		<div {...props} className="mc-playerlist">
 			<StatusText
 				isOffline={isOffline}
 				playerCount={totalPlayerCount}
@@ -106,13 +97,17 @@ const PlayerList = ({
 	);
 };
 
-type StatusTextProps = {
+interface IStatusText {
 	isOffline: boolean;
-	playerCount: Number;
+	playerCount: number;
 	className?: string;
-};
+}
 
-const StatusText = ({ isOffline, playerCount, className }: StatusTextProps) => {
+const StatusText: React.FC<IStatusText> = ({
+	isOffline,
+	playerCount,
+	className
+}) => {
 	return (
 		<h4 className={`ml-2 pt-2 ${className}`}>
 			{isOffline ? (

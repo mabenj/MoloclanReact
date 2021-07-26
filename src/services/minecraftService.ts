@@ -1,9 +1,6 @@
 import axios from "axios";
 
-// const SERVER_IP = "maailmanloppu.fi	";
 const SERVER_IP = "104.152.140.171";
-// const SERVER_IP = "217.79.241.195";
-// const SERVER_IP = "mc.moloclan.fi";
 const QUERY_URL = `https://api.minetools.eu/query/${SERVER_IP}/25565`;
 const FAVICON_URL = `https://api.minetools.eu/favicon/${SERVER_IP}/25565`;
 const FAVICON_URL_FALLBACK = "https://i.imgur.com/8XKJwE8t.jpg";
@@ -13,17 +10,34 @@ const HEROBRINE_AVATAR_URL =
 	"https://lh3.googleusercontent.com/vlHjs581Tvn1vxp0upYCuX6xNvfHk-49vjnh-v0XAkW9Vs2ETzwSGqPOOnmZTTk6bNw4Y185XWaafYFFQR8VdA";
 const AVATAR_API_URL = "https://minotar.net/body/";
 
-const getServerInfo = async (numberOfPlayersToTake, avatarWidth) => {
+export interface IPlayer {
+	name: string;
+	skinSource: string;
+}
+
+interface IServerInfo {
+	isOnline: boolean;
+	players: IPlayer[];
+	playerCount: number;
+	favIcon: string;
+}
+
+const getServerInfo = async (
+	numberOfPlayersToTake: number,
+	avatarWidth: number
+): Promise<IServerInfo> => {
 	try {
 		const { data } = await axios.get(QUERY_URL);
 		const isOnline = data.status !== "ERR";
-		const result = {
+		const result: IServerInfo = {
 			isOnline: isOnline,
 			players:
-				data.Playerlist?.slice(0, numberOfPlayersToTake)?.map((playerName) => ({
-					name: playerName,
-					skinSource: `${AVATAR_API_URL}${playerName}/${avatarWidth}.png`
-				})) || [],
+				data.Playerlist?.slice(0, numberOfPlayersToTake)?.map(
+					(playerName: string): IPlayer => ({
+						name: playerName,
+						skinSource: `${AVATAR_API_URL}${playerName}/${avatarWidth}.png`
+					})
+				) || [],
 			playerCount: data.Players,
 			favIcon: isOnline ? FAVICON_URL : FAVICON_URL_FALLBACK
 		};
@@ -40,7 +54,13 @@ const getServerInfo = async (numberOfPlayersToTake, avatarWidth) => {
 		}
 		return result;
 	} catch (message) {
-		return console.error(message);
+		console.error(message);
+		return {
+			isOnline: false,
+			players: [],
+			playerCount: 0,
+			favIcon: FAVICON_URL_FALLBACK
+		};
 	}
 };
 
