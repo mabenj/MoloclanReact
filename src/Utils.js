@@ -7,7 +7,12 @@ export function trimProtocol(url) {
 }
 
 export function trimProtocolAndQueryString(url) {
-	return trimProtocol(url).split("?")[0];
+	let trimmed = trimProtocol(url).split("?")[0];
+	trimmed =
+		trimmed[trimmed.length - 1] === "/"
+			? trimmed.substring(0, trimmed.length - 1)
+			: trimmed;
+	return trimmed;
 }
 
 export function Nbsp() {
