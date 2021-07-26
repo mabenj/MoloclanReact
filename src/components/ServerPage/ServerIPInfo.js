@@ -24,7 +24,7 @@ export default function ServerIPInfo({ urlArray, isLink, linkVerb, header }) {
 					)}
 					<span>
 						{isLink ? <OpenButton href={url} verb={linkVerb} /> : null}
-						<CopyButton targetUrl={url} />
+						<CopyButton targetText={url} />
 					</span>
 				</div>
 			))}
