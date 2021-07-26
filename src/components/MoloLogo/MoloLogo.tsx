@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import MoloBigText from "./MoloBigText";
 import Defs from "./Defs";
 import Texts from "./Texts/TextsContainer";
@@ -21,7 +21,7 @@ const BIG_TEXT_ANIMATIONS = [
 	"hvr-wobble-to-top-right"
 ];
 
-export default function MoloLogo() {
+const MoloLogo: React.FC = () => {
 	const [bigTextClass, setBigTextClass] = useState("big-text");
 	const [upperClass, setUpperClass] = useState("upper");
 	const [lowerClass, setLowerClass] = useState("lower");
@@ -37,7 +37,7 @@ export default function MoloLogo() {
 		setBigTextClass(`${BIG_TEXT_ANIMATIONS[bigTextAnimationIndex]}`);
 	}, [bigTextAnimationIndex]);
 
-	function startAnimation() {
+	function startAnimation(): void {
 		setBigTextAnimationIndex((prev) => {
 			let newIndex = Math.floor(Math.random() * BIG_TEXT_ANIMATIONS.length);
 			while (newIndex === prev) {
@@ -50,7 +50,7 @@ export default function MoloLogo() {
 		setIsUpperBackward(Math.random() < 0.5);
 	}
 
-	function endAnimation() {
+	function endAnimation(): void {
 		setUpperClass(`upper`);
 		setLowerClass(`lower`);
 	}
@@ -85,4 +85,6 @@ export default function MoloLogo() {
 			</div>
 		</>
 	);
-}
+};
+
+export default MoloLogo;

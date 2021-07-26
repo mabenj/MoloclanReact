@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextD: React.FC = (props) => {
+const TextD: React.FC<React.HTMLAttributes<any>> = (props) => {
 	return (
 		<path
 			{...props}

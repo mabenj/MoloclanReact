@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextViralliset: React.FC = (props) => {
+const TextViralliset: React.FC<React.HTMLAttributes<any>> = (props) => {
 	return (
 		<path
 			{...props}
