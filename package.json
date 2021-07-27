@@ -21,7 +21,7 @@
 		"axios": "^0.21.1",
 		"bootstrap": "^4.6.0",
 		"fslightbox-react": "^1.6.2",
-		"google-maps-react": "^2.0.6",
+		"google-map-react": "^2.1.10",
 		"react": "^17.0.2",
 		"react-bootstrap": "^1.5.2",
 		"react-device-detect": "^1.17.0",
@@ -38,6 +38,7 @@
 	},
 	"devDependencies": {
 		"@types/fslightbox-react": "^1.4.1",
+		"@types/google-map-react": "^2.1.2",
 		"@types/react-router-hash-link": "^2.4.1",
 		"@types/react-toggle": "^4.0.3",
 		"node-sass": "^6.0.0",
