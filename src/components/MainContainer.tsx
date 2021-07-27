@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
-export default function MainContainer(props) {
+const Y_OFFSET_MULTIPLIER = 0.1;
+
+const MainContainer = ({ children }: { children: React.ReactNode }) => {
 	useEffect(() => {
 		const [initialX, initialY] = getBodyBackgroundPositionInitialXY();
 		window.addEventListener("scroll", () => handleScroll(initialX, initialY));
@@ -13,12 +15,12 @@ export default function MainContainer(props) {
 
 	return (
 		<main>
-			<Container fluid="md">{props.children}</Container>
+			<Container fluid="md">{children}</Container>
 		</main>
 	);
-}
+};
 
-function getBodyBackgroundPositionInitialXY() {
+function getBodyBackgroundPositionInitialXY(): number[] {
 	const initialBgPosition = window.getComputedStyle(
 		document.body
 	).backgroundPosition;
@@ -27,8 +29,10 @@ function getBodyBackgroundPositionInitialXY() {
 	return [initialX, initialY];
 }
 
-function handleScroll(initialX, initialY) {
-	const bgOffsetY = -window.pageYOffset * 0.05;
+function handleScroll(initialX: number, initialY: number): void {
+	const bgOffsetY = -window.pageYOffset * Y_OFFSET_MULTIPLIER;
 	const newY = initialY + bgOffsetY;
 	document.body.style.backgroundPosition = `${initialX}px ${newY}px`;
 }
+
+export default MainContainer;
