@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from "axios";
 import sessionStorageService from "../services/sessionStorageService";
 
@@ -10,14 +10,20 @@ const API_URL5 = "https://www.geoplugin.net/json.gp";
 
 const STORAGE_KEY = "molo_loc_info";
 
-const getClientLocationInfo = async () => {
+export interface ILocationInfo {
+	city: string;
+	lat: number;
+	lon: number;
+}
+
+const getClientLocationInfo = async (): Promise<ILocationInfo> => {
 	const stored = sessionStorageService.getItemOrNull(STORAGE_KEY);
 	if (stored) {
-		return stored;
+		return stored as ILocationInfo;
 	}
 
 	const { data } = await axios.get(API_URL4);
-	const locationInfo = {
+	const locationInfo: ILocationInfo = {
 		city: data.city,
 		lat: data.latitude,
 		lon: data.longitude

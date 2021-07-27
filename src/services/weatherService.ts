@@ -1,40 +1,57 @@
 import axios from "axios";
 import sessionStorageService from "../services/sessionStorageService";
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const API_URL_TEMPLATE =
 	"https://fcc-weather-api.glitch.me/api/current?lat={latitude}&lon={longitude}";
 const API_URL_TEMPLATE2 = "https://wttr.in/{latitude},{longitude}?format=j1";
+const API_URL_TEMPLATE3 = "https://wttr.in/?format=j1";
 
 const STORAGE_KEY = "molo_weather_info";
 
-const getWeatherInfo = async (latitude, longitude) => {
+export interface IWeatherInfo {
+	temperature: number;
+	weatherIcon: string;
+	moonIcon: string;
+	sunrise: string;
+	sunset: string;
+	area: string;
+}
+
+const getWeatherInfo = async (
+	latitude: number,
+	longitude: number
+): Promise<IWeatherInfo> => {
 	const stored = sessionStorageService.getItemOrNull(STORAGE_KEY);
 	if (stored) {
-		return stored;
+		return stored as IWeatherInfo;
 	}
 
 	const { data } = await axios.get(createApiUrl(latitude, longitude));
-	const weatherInfo = {
+	const weatherInfo: IWeatherInfo = {
 		temperature: data.current_condition[0].temp_C,
 		weatherIcon: getWeatherIcon(data.current_condition[0].weatherCode),
 		moonIcon:
-			MOON_PHASES[data.weather[0]?.astronomy[0]?.moon_phase?.toLowerCase()],
+			MOON_PHASES[data.weather[0].astronomy[0].moon_phase.toLowerCase()],
 		sunrise: data.weather[0]?.astronomy[0]?.sunrise,
-		sunset: data.weather[0]?.astronomy[0]?.sunset
+		sunset: data.weather[0]?.astronomy[0]?.sunset,
+		area: data.nearest_area[0].areaName[0].value
 	};
 	sessionStorageService.setItem(STORAGE_KEY, weatherInfo);
 	return weatherInfo;
 };
 
-const createApiUrl = (latitude, longitude) => {
-	return API_URL_TEMPLATE2.replace("{latitude}", latitude).replace(
+const createApiUrl = (latitude: number, longitude: number): string => {
+	if (!latitude || !longitude) {
+		return API_URL_TEMPLATE3;
+	}
+	return API_URL_TEMPLATE2.replace("{latitude}", latitude.toString()).replace(
 		"{longitude}",
-		longitude
+		longitude.toString()
 	);
 };
 
-const getWeatherIcon = (weatherCode) => {
+const getWeatherIcon = (weatherCode: number): string => {
 	const weatherString = WWO_CODE[weatherCode];
 	const weatherIcon = WEATHER_SYMBOL[weatherString];
 	return weatherIcon ? weatherIcon : WEATHER_SYMBOL["Unknown"];
@@ -44,7 +61,7 @@ const weatherService = { getWeatherInfo };
 export default weatherService;
 
 // https://github.com/chubin/wttr.in/blob/master/lib/constants.py
-const WWO_CODE = {
+const WWO_CODE: { [key: number]: string } = {
 	113: "Sunny",
 	116: "PartlyCloudy",
 	119: "Cloudy",
@@ -95,7 +112,7 @@ const WWO_CODE = {
 	395: "HeavySnowShowers"
 };
 
-const WEATHER_SYMBOL = {
+const WEATHER_SYMBOL: { [key: string]: string } = {
 	Unknown: "✨",
 	Cloudy: "☁️",
 	Fog: "🌫",
@@ -117,7 +134,7 @@ const WEATHER_SYMBOL = {
 	VeryCloudy: "☁️"
 };
 
-const MOON_PHASES = {
+const MOON_PHASES: { [key: string]: string } = {
 	new: "🌑",
 	"new moon": "🌑",
 	"waxing crescent": "🌒",

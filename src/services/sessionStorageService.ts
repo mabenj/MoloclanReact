@@ -1,9 +1,9 @@
-export function getItemOrNull(key) {
+export function getItemOrNull(key: string) {
 	const stored = sessionStorage.getItem(key);
 	return stored ? JSON.parse(stored) : null;
 }
 
-export function setItem(key, item) {
+export function setItem(key: string, item: any): void {
 	sessionStorage.setItem(key, JSON.stringify(item));
 }
 
