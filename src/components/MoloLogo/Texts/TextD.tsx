@@ -1,6 +1,6 @@
-import React from "react";
+import { IMoloLogoProps } from "../MoloLogoProps";
 
-const TextD: React.FC<React.HTMLAttributes<any>> = (props) => {
+const TextD = (props: IMoloLogoProps) => {
 	return (
 		<path
 			{...props}

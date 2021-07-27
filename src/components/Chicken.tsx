@@ -18,7 +18,7 @@ const style: React.CSSProperties = {
 	top: "-5px"
 };
 
-const Chicken: React.FC = () => {
+const Chicken = () => {
 	const [isFlying, setIsFlying] = useState(false);
 
 	return (
@@ -39,11 +39,7 @@ const Chicken: React.FC = () => {
 	);
 };
 
-interface IChickenImg {
-	isFlying: boolean;
-}
-
-const ChickenImg: React.FC<IChickenImg> = ({ isFlying }) => {
+const ChickenImg = ({ isFlying }: { isFlying: boolean }) => {
 	const [currentChicken, setCurrentChicken] = useState<IChicken>(chickens[0]);
 	const [maxX, setMaxX] = useState(0);
 	const [maxY, setMaxY] = useState(0);

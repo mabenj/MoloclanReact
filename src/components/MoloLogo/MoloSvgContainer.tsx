@@ -1,6 +1,6 @@
-import React from "react";
+import { IMoloLogoProps } from "./MoloLogoProps";
 
-const MoloSvgContainer: React.FC<React.HTMLAttributes<any>> = (props) => {
+const MoloSvgContainer = (props: IMoloLogoProps) => {
 	return (
 		<div id="banner-container">
 			<svg id="banner-svg" viewBox="0 0 530 250" fill="none">

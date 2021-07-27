@@ -1,18 +1,16 @@
 import { CopyButton, OpenButton } from "../Buttons";
 import { trimProtocolAndQueryString } from "../../Utils";
 
-interface IServerIPInfo {
-	urlArray: string[];
-	isLink: boolean;
-	linkVerb: string;
-	header?: string;
-}
-
-const ServerIPInfo: React.FC<IServerIPInfo> = ({
+const ServerIPInfo = ({
 	urlArray,
 	isLink,
 	linkVerb,
 	header = "IP-Osoite"
+}: {
+	urlArray: string[];
+	isLink: boolean;
+	linkVerb: string;
+	header?: string;
 }) => {
 	return (
 		<>

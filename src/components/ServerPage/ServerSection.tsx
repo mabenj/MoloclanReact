@@ -3,18 +3,16 @@ import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-interface IServerSection {
-	header: string;
-	serverComponent: JSX.Element;
-	infoComponent?: JSX.Element;
-	faIcon?: IconProp;
-}
-
-const ServerSection: React.FC<IServerSection> = ({
+const ServerSection = ({
 	serverComponent,
 	infoComponent,
 	header,
 	faIcon
+}: {
+	header: string;
+	serverComponent: JSX.Element;
+	infoComponent?: JSX.Element;
+	faIcon?: IconProp;
 }) => {
 	const styleRow: React.CSSProperties = {
 		marginTop: "30px"

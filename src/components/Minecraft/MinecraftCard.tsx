@@ -6,7 +6,7 @@ import "../../styles/mc.scss";
 const AVATAR_WIDTH = 40;
 const PLAYERS_TO_TAKE = 12;
 
-const MinecraftCard: React.FC = () => {
+const MinecraftCard = () => {
 	const [players, setPlayers] = useState<IPlayer[]>([]);
 	const [playerCount, setPlayerCount] = useState(0);
 	const [isOffline, setIsOffline] = useState(false);
@@ -41,45 +41,38 @@ const MinecraftCard: React.FC = () => {
 
 export default MinecraftCard;
 
-const Container: React.FC = (props) => {
-	return <div {...props} className="rounded mc-container"></div>;
+const Container = ({ children }: { children?: React.ReactNode }) => {
+	return <div children={children} className="rounded mc-container"></div>;
 };
 
-const BackgroundContainer: React.FC = (props) => {
-	return <div {...props} className="mc-bg-container"></div>;
+const BackgroundContainer = ({ children }: { children?: React.ReactNode }) => {
+	return <div children={children} className="mc-bg-container"></div>;
 };
 
-const BackgroundImage: React.FC = (props) => {
-	return <div {...props} className="mc-bg-image" />;
+const BackgroundImage = () => {
+	return <div className="mc-bg-image" />;
 };
 
-interface ITitle {
-	favIcon: string;
-}
-
-const Title: React.FC<ITitle> = ({ favIcon, ...props }) => {
+const Title = ({ favIcon }: { favIcon: string }) => {
 	return (
-		<span {...props} className={"mc-title"}>
+		<span className={"mc-title"}>
 			<h4 className="ml-2">MOLOCRAFT</h4>
 			<img className="mc-fav-icon" src={favIcon} alt="favicon" />
 		</span>
 	);
 };
 
-interface IPlayerList {
+const PlayerList = ({
+	players,
+	totalPlayerCount,
+	isOffline
+}: {
 	players: IPlayer[];
 	totalPlayerCount: number;
 	isOffline: boolean;
-}
-
-const PlayerList: React.FC<IPlayerList> = ({
-	players,
-	totalPlayerCount,
-	isOffline,
-	...props
 }) => {
 	return (
-		<div {...props} className="mc-playerlist">
+		<div className="mc-playerlist">
 			<StatusText
 				isOffline={isOffline}
 				playerCount={totalPlayerCount}
@@ -97,16 +90,14 @@ const PlayerList: React.FC<IPlayerList> = ({
 	);
 };
 
-interface IStatusText {
-	isOffline: boolean;
-	playerCount: number;
-	className?: string;
-}
-
-const StatusText: React.FC<IStatusText> = ({
+const StatusText = ({
 	isOffline,
 	playerCount,
 	className
+}: {
+	isOffline: boolean;
+	playerCount: number;
+	className?: string;
 }) => {
 	return (
 		<h4 className={`ml-2 pt-2 ${className}`}>

@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from "react";
+import { useState } from "react";
 import { Row, Col, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import Sidebar from "./Sidebar";
@@ -20,7 +20,7 @@ interface ILinkDefinition {
 
 const linkDefinitions = navLinkDefinitions as ILinkDefinition[];
 
-const Header: React.FC = () => {
+const Header = () => {
 	return (
 		<>
 			<NavbarMobile className="d-md-none" />
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
 	);
 };
 
-const Navigation: React.FC = () => {
+const Navigation = () => {
 	return (
 		<div className="navigation-bar-middle">
 			<Brand className="navigation-brand" />
@@ -49,7 +49,7 @@ const Navigation: React.FC = () => {
 	);
 };
 
-const Brand: React.FC<HTMLAttributes<any>> = ({ className }) => {
+const Brand = ({ className }: { className?: string }) => {
 	return (
 		<Nav className={className}>
 			<NavLink to="/">
@@ -68,7 +68,7 @@ const Brand: React.FC<HTMLAttributes<any>> = ({ className }) => {
 	);
 };
 
-const Links: React.FC<HTMLAttributes<any>> = ({ className }) => {
+const Links = ({ className }: { className: string }) => {
 	return (
 		<Nav className={className}>
 			{linkDefinitions.map((linkDefinition) => (
@@ -78,12 +78,7 @@ const Links: React.FC<HTMLAttributes<any>> = ({ className }) => {
 	);
 };
 
-const Link: React.FC<ILinkDefinition> = ({
-	exact,
-	to,
-	displayName,
-	subLinks
-}) => {
+const Link = ({ exact, to, displayName, subLinks }: ILinkDefinition) => {
 	const hasSubLinks = !!subLinks && subLinks.length > 0;
 	return (
 		<div className="dropdown">
@@ -115,7 +110,7 @@ const Link: React.FC<ILinkDefinition> = ({
 	);
 };
 
-const NavbarMobile: React.FC<HTMLAttributes<any>> = ({ className }) => {
+const NavbarMobile = ({ className }: { className: string }) => {
 	const [expanded, setExpanded] = useState(false);
 
 	return (

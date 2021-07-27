@@ -21,7 +21,7 @@ const BIG_TEXT_ANIMATIONS = [
 	"hvr-wobble-to-top-right"
 ];
 
-const MoloLogo: React.FC = () => {
+const MoloLogo = () => {
 	const [bigTextClass, setBigTextClass] = useState("big-text");
 	const [upperClass, setUpperClass] = useState("upper");
 	const [lowerClass, setLowerClass] = useState("lower");

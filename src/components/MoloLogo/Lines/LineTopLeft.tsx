@@ -1,6 +1,6 @@
-import React from "react";
+import { IMoloLogoProps } from "../MoloLogoProps";
 
-const LineTopLeft: React.FC<React.HTMLAttributes<any>> = (props) => {
+const LineTopLeft = (props: IMoloLogoProps) => {
 	return (
 		<line
 			{...props}
