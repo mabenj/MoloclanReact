@@ -1,4 +1,3 @@
-import React from "react";
 import Wrapper from "../components/Wrapper";
 import GallerySection from "../components/GallerySection";
 import RustImagesJson from "../img/MediaSources/gallery-rust-sources.json";

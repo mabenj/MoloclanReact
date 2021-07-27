@@ -3,11 +3,7 @@ import Dynmap from "../../img/dynmap.jpg";
 
 const HOVER_ZOOM_SCALE = 1.1;
 
-interface IMinecraftMap {
-	mapUrl: string;
-}
-
-const MinecraftMap: React.FC<IMinecraftMap> = ({ mapUrl }) => {
+const MinecraftMap = ({ mapUrl }: { mapUrl: string }) => {
 	const [isHovering, setIsHovering] = useState(false);
 
 	const mapImageStyle: React.CSSProperties = {

@@ -37,6 +37,7 @@
 		"web-vitals": "^1.1.1"
 	},
 	"devDependencies": {
+		"@types/fslightbox-react": "^1.4.1",
 		"@types/react-router-hash-link": "^2.4.1",
 		"@types/react-toggle": "^4.0.3",
 		"node-sass": "^6.0.0",

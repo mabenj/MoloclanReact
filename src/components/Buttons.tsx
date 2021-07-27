@@ -5,11 +5,7 @@ import { trimProtocolAndQueryString } from "../Utils";
 
 const TOOLTIP_DURATION = 1000;
 
-interface ICopyButton {
-	targetText: string;
-}
-
-export const CopyButton: React.FC<ICopyButton> = ({ targetText }) => {
+export const CopyButton = ({ targetText }: { targetText: string }) => {
 	const [showTooltip, setShowTooltip] = useState(false);
 	const targetRef = useRef<HTMLSpanElement>(null);
 
@@ -50,16 +46,14 @@ export const CopyButton: React.FC<ICopyButton> = ({ targetText }) => {
 	);
 };
 
-interface IOpenButton {
+export const OpenButton = ({
+	href,
+	verb,
+	target = "_blank"
+}: {
 	href: string;
 	verb: string;
 	target?: "_self" | "_blank";
-}
-
-export const OpenButton: React.FC<IOpenButton> = ({
-	href,
-	target = "_blank",
-	verb
 }) => {
 	return (
 		<>
@@ -78,7 +72,7 @@ export const OpenButton: React.FC<IOpenButton> = ({
 	);
 };
 
-export const HamburgerButton: React.FC<HTMLAttributes<any>> = (props) => {
+export const HamburgerButton = (props: HTMLAttributes<any>) => {
 	return (
 		<button
 			{...props}
@@ -89,7 +83,7 @@ export const HamburgerButton: React.FC<HTMLAttributes<any>> = (props) => {
 	);
 };
 
-export const CloseButton: React.FC<HTMLAttributes<any>> = (props) => {
+export const CloseButton = (props: HTMLAttributes<any>) => {
 	return (
 		<button
 			{...props}

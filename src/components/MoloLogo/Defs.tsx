@@ -1,6 +1,5 @@
-import React from "react";
 
-const Defs: React.FC = () => {
+const Defs = () => {
 	return (
 		<defs>
 			<pattern

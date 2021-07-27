@@ -1,6 +1,6 @@
-import React from "react";
+import { IMoloLogoProps } from "../MoloLogoProps";
 
-const TextSivut: React.FC<React.HTMLAttributes<any>> = (props) => {
+const TextSivut = (props: IMoloLogoProps) => {
 	return (
 		<path
 			{...props}

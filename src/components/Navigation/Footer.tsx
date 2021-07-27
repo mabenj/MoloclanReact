@@ -1,9 +1,8 @@
-import React from "react";
 import GoogleMap from "../GoogleMap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Row, Col } from "react-bootstrap";
 
-const Footer: React.FC = () => {
+const Footer = () => {
 	return (
 		<footer className="footer-main">
 			<div className="container p-4">
@@ -28,7 +27,7 @@ const Footer: React.FC = () => {
 	);
 };
 
-const Contact: React.FC = () => {
+const Contact = () => {
 	return (
 		<>
 			<h4 className="text-white pb-2">
@@ -48,7 +47,7 @@ const Contact: React.FC = () => {
 	);
 };
 
-const Other: React.FC = () => {
+const Other = () => {
 	return (
 		<>
 			<h4 className="text-white pb-2">
@@ -85,7 +84,7 @@ const Other: React.FC = () => {
 	);
 };
 
-const CopyRight: React.FC = () => {
+const CopyRight = () => {
 	return (
 		<div className="text-white text-center mt-5">
 			<i>

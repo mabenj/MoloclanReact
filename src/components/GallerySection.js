@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import { useState } from "react";
 import Gallery from "react-photo-gallery";
 import FsLightbox from "fslightbox-react";
 import { getImgurSpecialUrl } from "../Utils";

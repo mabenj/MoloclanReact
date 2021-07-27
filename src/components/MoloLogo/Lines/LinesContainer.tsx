@@ -1,6 +1,6 @@
-import React from "react";
+import { IMoloLogoProps } from "../MoloLogoProps";
 
-const LinesContainer: React.FC = (props) => {
+const LinesContainer = (props: IMoloLogoProps) => {
 	return <g {...props} id="banner-lines"></g>;
 };
 

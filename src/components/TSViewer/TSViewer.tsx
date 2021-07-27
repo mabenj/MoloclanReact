@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import TSVConfig from "./tsviewer-config.json";
 import { waitForElemAndDelete } from "../../Utils";
 
@@ -15,7 +15,7 @@ const elementsToDelete = [
 	"[title='TSViewer for Android']"
 ];
 
-const TSViewer: React.FC = () => {
+const TSViewer = () => {
 	useEffect(() => {
 		const script = document.createElement("script");
 		script.async = true;

@@ -1,4 +1,4 @@
-import { HTMLAttributes, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import WeatherWidget from "../WeatherWidget";
 import { HamburgerButton, CloseButton } from "../Buttons";
@@ -17,7 +17,7 @@ const sidebarItems = sidebarLinkDefinitions as ISidebarLink[];
 const openButtonId = "sidebar-open-btn";
 const closeButtonId = "sidebar-close-btn";
 
-const Sidebar: React.FC<HTMLAttributes<any>> = ({ className }) => {
+const Sidebar = ({ className }: { className: string }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const openSidebar: React.MouseEventHandler<HTMLButtonElement> = (_e) => {
@@ -59,11 +59,7 @@ const Sidebar: React.FC<HTMLAttributes<any>> = ({ className }) => {
 	);
 };
 
-interface ISidebarContent {
-	links: ISidebarLink[];
-}
-
-const SidebarContent: React.FC<ISidebarContent> = ({ links }) => {
+const SidebarContent = ({ links }: { links: ISidebarLink[] }) => {
 	return (
 		<div className="sidebar-content" style={{ position: "fixed", zIndex: 1 }}>
 			<ul className="mt-5">
