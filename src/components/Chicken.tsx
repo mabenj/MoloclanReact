@@ -125,7 +125,7 @@ const ChickenImg = ({ isFlying }: { isFlying: boolean }) => {
 
 	return (
 		<img
-			src={getImgurUrl(currentChicken.id, "", "png")}
+			src={getImgurUrl(currentChicken.id, "", ".png")}
 			alt={currentChicken.desc}
 			style={chickenStyle}
 		/>

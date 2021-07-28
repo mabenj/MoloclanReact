@@ -107,8 +107,8 @@ const sections: IGallerySectionProps[] = [
 		direction: "row"
 	},
 	{
-		header: "Kummallisuuksia",
-		id: "weird",
+		header: "MOLO TV",
+		id: "mtv",
 		media: videosMedia,
 		direction: "column"
 	}
