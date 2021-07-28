@@ -119,11 +119,14 @@ const WEATHER_SYMBOL = {
 
 const MOON_PHASES = {
 	new: "🌑",
+	"new moon": "🌑",
 	"waxing crescent": "🌒",
 	"first quarter": "🌓",
 	"waxing gibbous": "🌔",
 	full: "🌕",
+	"full moon": "🌕",
 	"waning gibbous": "🌖",
 	"third quarter": "🌗",
+	"last quarter": "🌗",
 	"waning crescent": "🌘"
 };
