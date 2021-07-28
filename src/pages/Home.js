@@ -40,14 +40,15 @@ export default function Home() {
 			<MoloLogo />
 			<Wrapper>
 				<h1>MOLO Clan</h1>
-				<p className="lead">Maxakin lempparitunarit</p>
+				<p className="lead">Joukko keskittymishäiriöisiä pummeja</p>
 				<p>
-					MOLO on noin vuonna 2015 alkunsa saanut Rust-klaani. Pian perustamisen
-					jälkeen klaani keräsi itselleen hyvinkin laajan pelaajakunnan (lue{" "}
+					MOLO on noin vuonna 2015 alkunsa saanut juutalais-kristillinen
+					Rust-klaani. Pian perustamisen jälkeen klaani keräsi itselleen
+					hyvinkin laajan pelaajakunnan (lue{" "}
 					<em>
 						<abbr
 							className="initialism text-lowercase"
-							title="semmonen kauhee lauma videopelaajia">
+							title="lauma kiukkuisia videopelaajia">
 							zerg
 						</abbr>
 					</em>
@@ -79,7 +80,7 @@ export default function Home() {
 							Osa klaanin jäsenistöstä on jatkanut toimintaa perustamalla kehnoa
 							menestystä nauttivan startup-markkinointiyrityksen:
 							<em> Markkinarako Oy</em>. Yrityksen liikevaihto vuonna 2019 oli
-							noin 5€ ja vuonna 2020 se oli vastaavasti noin 3€.
+							noin 5€.
 						</p>
 					</Col>
 					<Col lg>
