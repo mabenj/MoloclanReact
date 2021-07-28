@@ -19,13 +19,30 @@ export function Nbsp() {
 	return "\u00A0";
 }
 
-export function getImgurSpecialUrl(url, suffix) {
-	if (!url) {
-		return url;
+export function getImgurUrl(id, suffix, extension) {
+	if (!id) {
+		throw Error("No id specified");
 	}
-	const noExtension = url.substring(0, url.lastIndexOf("."));
-	const extension = url.substring(url.lastIndexOf("."));
-	return `${noExtension}${suffix}${extension}`;
+	const url = `https://i.imgur.com/${id}${suffix ? suffix : ""}.${
+		extension ? extension : "jpg"
+	}`;
+	return url;
+}
+
+export function getYoutubeUrl(id) {
+	if (!id) {
+		throw Error("No id specified");
+	}
+	const url = `https://www.youtube-nocookie.com/embed/${id}?modestbranding=1&rel=0`;
+	return url;
+}
+
+export function getYoutubeThumbnailUrl(id) {
+	if (!id) {
+		throw Error("No id specified");
+	}
+	const url = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+	return url;
 }
 
 // https://stackoverflow.com/a/61511955

@@ -1,60 +1,70 @@
 [
 	{
-		"src": "https://i.imgur.com/bITSvqx.jpg",
+		"id": "bITSvqx",
+		"type": "imgur",
 		"desc": "COD4 RM Zakhaev",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/g2eKgom.jpg",
+		"id": "g2eKgom",
+		"type": "imgur",
 		"desc": "COD 4 RM Rappukäytävä",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/gdfTPtr.jpg",
+		"id": "gdfTPtr",
+		"type": "imgur",
 		"desc": "COD 4 RM Uudet tapetit",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/cvQ7QMg.jpg",
+		"id": "cvQ7QMg",
+		"type": "imgur",
 		"desc": "GTA V Bensis",
 		"width": 2560,
 		"height": 1440
 	},
 	{
-		"src": "https://i.imgur.com/jebgSG7.jpg",
+		"id": "jebgSG7",
+		"type": "imgur",
 		"desc": "Kaken passatti GTA V",
 		"width": 3840,
 		"height": 2160
 	},
 	{
-		"src": "https://i.imgur.com/d3VYPyt.jpg",
+		"id": "d3VYPyt",
+		"type": "imgur",
 		"desc": "Lambo skutsissa GTA V",
 		"width": 3840,
 		"height": 2160
 	},
 	{
-		"src": "https://i.imgur.com/nDXpMVx.jpg",
+		"id": "nDXpMVx",
+		"type": "imgur",
 		"desc": "Lambo Lapissa GTA V",
 		"width": 3840,
 		"height": 2160
 	},
 	{
-		"src": "https://i.imgur.com/exyU9uC.png",
+		"id": "exyU9uC",
+		"type": "imgur",
 		"desc": "Skrinnaa öögaa GTA V",
 		"width": 2560,
 		"height": 1440
 	},
 	{
-		"src": "https://i.imgur.com/4PoUDKa.jpg",
+		"id": "4PoUDKa",
+		"type": "imgur",
 		"desc": "Lambo kadulla GTA V",
 		"width": 3840,
 		"height": 2160
 	},
 	{
-		"src": "https://i.imgur.com/Ea3JrZG.jpg",
+		"id": "Ea3JrZG",
+		"type": "imgur",
 		"desc": "Keltanen auto GTA V",
 		"width": 3840,
 		"height": 2160

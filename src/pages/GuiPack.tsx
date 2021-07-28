@@ -1,8 +1,11 @@
 import Wrapper from "../components/Wrapper";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ImageSources from "../img/MediaSources/gui-pack-images-sources.json";
-import GallerySection from "../components/GallerySection";
+import imageSources from "../img/MediaSources/gui-pack-images-sources.json";
+import GallerySection from "../components/Gallery/GallerySection";
+import IMediaSource from "../img/MediaSources/IMediaSource";
+
+const images = imageSources as IMediaSource[];
 
 const DL_LINK =
 	"https://drive.google.com/uc?export=download&id=1XtGaMgX7xDzrKSGYGvLHWIMSIVJZHdBs";
@@ -27,18 +30,18 @@ export default function GuiPack() {
 					<p>
 						GUI Pack on Minecraft-resurssipaketti. GUI Pack muuttaa ainoastaan
 						pelin valikkojen, fonttien ja muun käyttöliittymän piirteitä. Ajatus{" "}
-						<i>hentai</i>-tauluista ja -skineistä voidaan siis unohtaa.
+						<em>hentai</em>-tauluista ja -skineistä voidaan siis unohtaa.
 					</p>
 					<p>
 						GUI Packin väsäämisestä on kulunut jo useampi vuosi, joten pelin
 						uusimpien ja hienoimpien tekstuureiden kanssa saattaa mahdollisesti,
 						ehkä jopa luultavasti tai kaiketi olla joitain
 						yhteensopivuusongelmia,{" "}
-						<span style={{ fontSize: "12px" }}>
+						<small>
 							joista MOLO Gaming™ -organisaatio, sen toimihenkilöt saatikka
 							tytäryhtiöt, kuten Markkinarako Oy eivät ole lakiteknisesti
 							vastuussa.
-						</span>
+						</small>
 					</p>
 				</Col>
 				<Col>
@@ -53,7 +56,9 @@ export default function GuiPack() {
 							Lataa <em>GUI-Pack.zip</em>
 						</li>
 						<li>Käynnistä mine</li>
-						<li>Avaa "Options"</li>
+						<li>
+							Avaa <em>Options</em>
+						</li>
 						<li>
 							Avaa <em>Resource packs</em>, jonka jälkeen paina{" "}
 							<em>Open Pack Folder</em>
@@ -86,18 +91,17 @@ export default function GuiPack() {
 			</Row>
 			<Row className="mt-2">
 				<Col>
-					<Button variant="warning" href={DL_LINK} download>
+					<a className="btn btn-warning" href={DL_LINK} role="button" download>
 						<FontAwesomeIcon icon="save" />
 						&nbsp;&nbsp;Lataa
-					</Button>
+					</a>
 				</Col>
 			</Row>
 			<Row className="mt-5">
 				<Col>
 					<GallerySection
-						header="Kuvii"
 						id="images"
-						media={ImageSources}
+						media={images}
 						direction="row"
 						thumbnailSize="huge"
 					/>

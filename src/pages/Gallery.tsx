@@ -1,15 +1,24 @@
 import Wrapper from "../components/Wrapper";
-import GallerySection from "../components/GallerySection";
-import RustImagesJson from "../img/MediaSources/gallery-rust-sources.json";
-import PhotoshopImagesJson from "../img/MediaSources/gallery-photoshop-sources.json";
-import ScreenshotImagesJson from "../img/MediaSources/gallery-screenshots-sources.json";
-import MiscJson from "../img/MediaSources/gallery-misc-sources.json";
+import GallerySection, {
+	IGallerySectionProps
+} from "../components/Gallery/GallerySection";
 import { ListGroup } from "react-bootstrap";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import { scrollToElementSmooth } from "../Utils";
 import { Button } from "react-bootstrap";
 
-const headerStyle = {
+import IMediaSource from "../img/MediaSources/IMediaSource";
+import rustImagesJson from "../img/MediaSources/gallery-rust-sources.json";
+import photoshopImagesJson from "../img/MediaSources/gallery-photoshop-sources.json";
+import screenshotImagesJson from "../img/MediaSources/gallery-screenshots-sources.json";
+import videosJson from "../img/MediaSources/gallery-misc-sources.json";
+
+const rustMedia = rustImagesJson as IMediaSource[];
+const photoshopMedia = photoshopImagesJson as IMediaSource[];
+const screenshotsMedia = screenshotImagesJson as IMediaSource[];
+const videosMedia = videosJson as IMediaSource[];
+
+const headerStyle: React.CSSProperties = {
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center"
@@ -23,13 +32,7 @@ export default function Gallery() {
 			<Wrapper>{isMobile ? <MobileHeader /> : <DesktopHeader />}</Wrapper>
 			{sections.map((section) => (
 				<Wrapper key={section.id}>
-					<GallerySection
-						key={section.id}
-						header={section.displayName}
-						id={section.id}
-						media={section.media}
-						direction={section.direction}
-					/>
+					<GallerySection {...section} />
 				</Wrapper>
 			))}
 		</>
@@ -49,7 +52,7 @@ const DesktopHeader = () => {
 								variant=""
 								className="text-decoration-none orange-color orange-color-hover"
 								onClick={() => scrollToElementSmooth(`#${section.id}`)}>
-								{section.displayName}
+								{section.header}
 							</Button>
 						</li>
 					))}
@@ -75,7 +78,7 @@ const MobileHeader = () => {
 							variant=""
 							className="text-decoration-none orange-color orange-color-hover"
 							onClick={() => scrollToElementSmooth(`#${section.id}`)}>
-							{section.displayName}
+							{section.header}
 						</Button>
 					</ListGroup.Item>
 				))}
@@ -84,29 +87,29 @@ const MobileHeader = () => {
 	);
 };
 
-const sections = [
+const sections: IGallerySectionProps[] = [
 	{
-		displayName: "Rust-häröilyt",
+		header: "Rust-häröilyt",
 		id: "rust",
-		media: RustImagesJson,
+		media: rustMedia,
 		direction: "row"
 	},
 	{
-		displayName: "Paint-teokset",
+		header: "Paint-teokset",
 		id: "photoshop",
-		media: PhotoshopImagesJson,
+		media: photoshopMedia,
 		direction: "row"
 	},
 	{
-		displayName: "8k Screenshotteja",
+		header: "8k Screenshotteja",
 		id: "screenshots",
-		media: ScreenshotImagesJson,
+		media: screenshotsMedia,
 		direction: "row"
 	},
 	{
-		displayName: "Kummallisuuksia",
+		header: "Kummallisuuksia",
 		id: "weird",
-		media: MiscJson,
+		media: videosMedia,
 		direction: "column"
 	}
 ];

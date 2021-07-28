@@ -1,144 +1,168 @@
 [
 	{
-		"src": "https://i.imgur.com/RuladR6.jpg",
+		"id": "RuladR6",
+		"type": "imgur",
 		"desc": "Muistakaa votea",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/Fd11TaO.jpg",
+		"id": "Fd11TaO",
+		"type": "imgur",
 		"desc": "Grillaamassa",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/lxGg8fr.jpg",
+		"id": "lxGg8fr",
+		"type": "imgur",
 		"desc": "Jari ottaa dunkkuun",
 		"width": 1416,
 		"height": 919
 	},
 	{
-		"src": "https://i.imgur.com/UqIhYxH.jpg",
+		"id": "UqIhYxH",
+		"type": "imgur",
 		"desc": "Pojat venyttelemässä",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/mOp0EYb.jpg",
+		"id": "mOp0EYb",
+		"type": "imgur",
 		"desc": "Lazy Dick",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/cLepzGK.jpg",
+		"id": "cLepzGK",
+		"type": "imgur",
 		"desc": "Lazy Dick yöllä",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/aYaF4gs.jpg",
+		"id": "aYaF4gs",
+		"type": "imgur",
 		"desc": "Jarin pantomiimiesitys",
 		"width": 841,
 		"height": 883
 	},
 	{
-		"src": "https://i.imgur.com/7B7GR9F.jpg",
+		"id": "7B7GR9F",
+		"type": "imgur",
 		"desc": "Perunamaa",
 		"width": 1600,
 		"height": 900
 	},
 	{
-		"src": "https://i.imgur.com/5e0Xcmz.png",
+		"id": "5e0Xcmz",
+		"type": "imgur",
 		"desc": "MOLO-base pienoismalli",
 		"width": 798,
 		"height": 443
 	},
 	{
-		"src": "https://i.imgur.com/qTK04tS.jpg",
+		"id": "qTK04tS",
+		"type": "imgur",
 		"desc": "Kylttejä",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/7Ah2eth.jpg",
+		"id": "7Ah2eth",
+		"type": "imgur",
 		"desc": "Jari heittää keihästä",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/pml0iYC.jpg",
+		"id": "pml0iYC",
+		"type": "imgur",
 		"desc": "Siittä juliste :D",
 		"width": 1962,
 		"height": 2672
 	},
 	{
-		"src": "https://i.imgur.com/ig7w0TH.jpg",
+		"id": "ig7w0TH",
+		"type": "imgur",
 		"desc": "Felbels",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/Ifmlv11.jpg",
+		"id": "Ifmlv11",
+		"type": "imgur",
 		"desc": "Pojat jonossa",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/ZQk0nWj.jpg",
+		"id": "ZQk0nWj",
+		"type": "imgur",
 		"desc": "Kaken sytkäri",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/XcDJqpB.jpg",
+		"id": "XcDJqpB",
+		"type": "imgur",
 		"desc": "Sytkäri jäi päälle",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/EET9woM.jpg",
+		"id": "EET9woM",
+		"type": "imgur",
 		"desc": "Aurinko laskee",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/ymwGrUY.jpg",
+		"id": "ymwGrUY",
+		"type": "imgur",
 		"desc": "Pepe-seinä",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/KOIK0wO.jpg",
+		"id": "KOIK0wO",
+		"type": "imgur",
 		"desc": "Luola-Paavo",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/C53SBzQ.jpg",
+		"id": "C53SBzQ",
+		"type": "imgur",
 		"desc": "Bumba",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/WJuI6rS.jpg",
+		"id": "WJuI6rS",
+		"type": "imgur",
 		"desc": "AFK-klaani otti dunkkuun",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/yicJZaN.jpg",
+		"id": "yicJZaN",
+		"type": "imgur",
 		"desc": "AFK-klaani otti dunkkuun part 2",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/EsPyC1Z.jpg",
+		"id": "EsPyC1Z",
+		"type": "imgur",
 		"desc": "AFK-klaani otti dunkkuun part 3",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/UE8ayAk.png",
+		"id": "UE8ayAk",
+		"type": "imgur",
 		"desc": "Raapustus",
 		"width": 1920,
 		"height": 1080

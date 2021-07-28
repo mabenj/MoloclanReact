@@ -2,10 +2,10 @@
 import { useState } from "react";
 import Gallery from "react-photo-gallery";
 import FsLightbox from "fslightbox-react";
-import { getImgurSpecialUrl } from "../Utils";
+import { getImgurSpecialUrl } from "../../Utils";
 import { isOpera, isEdge, isChrome, isChromium } from "react-device-detect";
 import Tilty from "react-tilty";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const hasBackdropBlurBug = isOpera || isEdge || isChrome || isChromium;
 const USE_LIGHTBOX_VIDEO_PLAYER = false;

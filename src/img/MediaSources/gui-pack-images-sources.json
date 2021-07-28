@@ -1,30 +1,35 @@
 [
 	{
-		"src": "https://i.imgur.com/fs2LcD2.png",
+		"id": "fs2LcD2",
+		"type": "imgur",
 		"desc": "Enchanttaus",
 		"width": 620,
 		"height": 620
 	},
 	{
-		"src": "https://i.imgur.com/hhibZxd.png",
+		"id": "hhibZxd",
+		"type": "imgur",
 		"desc": "Inva",
 		"width": 1202,
 		"height": 578
 	},
 	{
-		"src": "https://i.imgur.com/Tqql3ic.png",
+		"id": "Tqql3ic",
+		"type": "imgur",
 		"desc": "Hotbar",
 		"width": 592,
 		"height": 166
 	},
 	{
-		"src": "https://i.imgur.com/6JP38am.png",
+		"id": "6JP38am",
+		"type": "imgur",
 		"desc": "Päävalikko",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/SJeyq08.png",
+		"id": "SJeyq08",
+		"type": "imgur",
 		"desc": "Asetukset-valikko",
 		"width": 1074,
 		"height": 839

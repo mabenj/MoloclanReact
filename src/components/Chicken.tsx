@@ -2,15 +2,10 @@ import React, { useState, useEffect } from "react";
 import chickenImageSources from "../img/MediaSources/flying-chicken-sources.json";
 import Toggle from "react-toggle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import IMediaSource from "../img/MediaSources/IMediaSource";
+import { getImgurUrl } from "../Utils";
 
-interface IChicken {
-	src: string;
-	desc: string;
-	width: number;
-	height: number;
-}
-
-const chickens = chickenImageSources as IChicken[];
+const chickens = chickenImageSources as IMediaSource[];
 
 const style: React.CSSProperties = {
 	position: "absolute",
@@ -40,7 +35,9 @@ const Chicken = () => {
 };
 
 const ChickenImg = ({ isFlying }: { isFlying: boolean }) => {
-	const [currentChicken, setCurrentChicken] = useState<IChicken>(chickens[0]);
+	const [currentChicken, setCurrentChicken] = useState<IMediaSource>(
+		chickens[0]
+	);
 	const [maxX, setMaxX] = useState(0);
 	const [maxY, setMaxY] = useState(0);
 	const [currentX, setCurrentX] = useState(0);
@@ -128,7 +125,7 @@ const ChickenImg = ({ isFlying }: { isFlying: boolean }) => {
 
 	return (
 		<img
-			src={currentChicken.src}
+			src={getImgurUrl(currentChicken.id, "", "png")}
 			alt={currentChicken.desc}
 			style={chickenStyle}
 		/>

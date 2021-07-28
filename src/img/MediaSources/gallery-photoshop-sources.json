@@ -1,108 +1,126 @@
 [
 	{
-		"src": "https://i.imgur.com/inbUuE6.jpg",
+		"id": "inbUuE6",
+		"type": "imgur",
 		"desc": "Aqua(sanna)mariini Revenge",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/m7ojj3D.jpg",
+		"id": "m7ojj3D",
+		"type": "imgur",
 		"desc": "Toine mariini revengi",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/0keSKUn.png",
+		"id": "0keSKUn",
+		"type": "imgur",
 		"desc": "Like and subscibe",
 		"width": 592,
 		"height": 600
 	},
 	{
-		"src": "https://i.imgur.com/KeFWAK2.jpg",
+		"id": "KeFWAK2",
+		"type": "imgur",
 		"desc": "Los Santos pinkki taustis",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/XxKo9ER.jpg",
+		"id": "XxKo9ER",
+		"type": "imgur",
 		"desc": "Fire elementaalinen",
 		"width": 3840,
 		"height": 2160
 	},
 	{
-		"src": "https://i.imgur.com/zQ3B2Pj.jpg",
+		"id": "zQ3B2Pj",
+		"type": "imgur",
 		"desc": "Mecca Industriaali",
 		"width": 3840,
 		"height": 2160
 	},
 	{
-		"src": "https://i.imgur.com/JAolyTO.jpg",
+		"id": "JAolyTO",
+		"type": "imgur",
 		"desc": "Mehndi",
 		"width": 3840,
 		"height": 2160
 	},
 	{
-		"src": "https://i.imgur.com/wbuCNdg.jpg",
+		"id": "wbuCNdg",
+		"type": "imgur",
 		"desc": "Molo valuu",
 		"width": 3000,
 		"height": 3000
 	},
 	{
-		"src": "https://i.imgur.com/qSXh7iF.jpg",
+		"id": "qSXh7iF",
+		"type": "imgur",
 		"desc": "Kirja",
 		"width": 4074,
 		"height": 2953
 	},
 	{
-		"src": "https://i.imgur.com/avlFOmn.jpg",
+		"id": "avlFOmn",
+		"type": "imgur",
 		"desc": "Juliste seinälle",
 		"width": 1962,
 		"height": 2672
 	},
 	{
-		"src": "https://i.imgur.com/gOIEZZ5.jpg",
+		"id": "gOIEZZ5",
+		"type": "imgur",
 		"desc": "Ak-47: Kyrvä :D",
 		"width": 1296,
 		"height": 910
 	},
 	{
-		"src": "https://i.imgur.com/s094zmd.png",
+		"id": "s094zmd",
+		"type": "imgur",
 		"desc": "Värikkäämpi mologo",
 		"width": 317,
 		"height": 313
 	},
 	{
-		"src": "https://i.imgur.com/DxS4ksd.jpg",
+		"id": "DxS4ksd",
+		"type": "imgur",
 		"desc": "Raapustus",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/k1xkJ86.jpg",
+		"id": "k1xkJ86",
+		"type": "imgur",
 		"desc": "Witcher 3 tuplamonitori",
 		"width": 3840,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/FaDifr8.jpg",
+		"id": "FaDifr8",
+		"type": "imgur",
 		"desc": "Witcher 3 soolomonitori",
 		"width": 1920,
 		"height": 1080
 	},
 	{
-		"src": "https://i.imgur.com/9HSrKV0.png",
+		"id": "9HSrKV0",
+		"type": "imgur",
 		"desc": "Yeah boy palaa",
 		"width": 654,
 		"height": 654
 	},
 	{
-		"src": "https://i.imgur.com/pObTgYc.png",
+		"id": "pObTgYc",
+		"type": "imgur",
 		"desc": "Jare :D",
 		"width": 444,
 		"height": 444
 	},
 	{
-		"src": "https://i.imgur.com/4Avgudf.png",
+		"id": "4Avgudf",
+		"type": "imgur",
 		"desc": "Batista",
 		"width": 220,
 		"height": 337

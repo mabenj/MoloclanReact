@@ -1,36 +1,42 @@
 [
 	{
-		"src": "https://i.imgur.com/C5XRcIz.png",
+		"id": "C5XRcIz",
+		"type": "imgur",
 		"desc": "jliha1",
 		"width": 238,
 		"height": 189
 	},
 	{
-		"src": "https://i.imgur.com/DdMOlE7.png",
+		"id": "DdMOlE7",
+		"type": "imgur",
 		"desc": "jliha2",
 		"width": 238,
 		"height": 189
 	},
 	{
-		"src": "https://i.imgur.com/IRV8ZOL.png",
+		"id": "IRV8ZOL",
+		"type": "imgur",
 		"desc": "jliha3",
 		"width": 238,
 		"height": 189
 	},
 	{
-		"src": "https://i.imgur.com/Tgneqcg.png",
+		"id": "Tgneqcg",
+		"type": "imgur",
 		"desc": "jliha4",
 		"width": 238,
 		"height": 189
 	},
 	{
-		"src": "https://i.imgur.com/WWpUIWI.png",
+		"id": "WWpUIWI",
+		"type": "imgur",
 		"desc": "jliha5",
 		"width": 238,
 		"height": 189
 	},
 	{
-		"src": "https://i.imgur.com/U9Lnq0f.png",
+		"id": "U9Lnq0f",
+		"type": "imgur",
 		"desc": "jliha6",
 		"width": 238,
 		"height": 189

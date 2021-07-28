@@ -1,72 +1,84 @@
 [
 	{
-		"youtubeId": "MwPGvPh8ZHs",
+		"id": "MwPGvPh8ZHs",
+		"type": "youtube",
 		"desc": "CSGO Cache perseilyt squekyssä",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "LAlBXPz2S84",
+		"id": "LAlBXPz2S84",
+		"type": "youtube",
 		"desc": "Kerge panee miinoja",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "27N-h_iWUig",
+		"id": "27N-h_iWUig",
+		"type": "youtube",
 		"desc": "Jaria koijataan",
 		"width": 9,
 		"height": 16
 	},
 	{
-		"youtubeId": "7hnuWwWI3Cc",
+		"id": "7hnuWwWI3Cc",
+		"type": "youtube",
 		"desc": "Cat vibing to kake",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "fJ-ZnoCiF70",
+		"id": "fJ-ZnoCiF70",
+		"type": "youtube",
 		"desc": "MW lobby-sekoilut",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "PCnQiJDft4Y",
+		"id": "PCnQiJDft4Y",
+		"type": "youtube",
 		"desc": "Pituushyppyä",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "2yXJCbiNVbw",
+		"id": "2yXJCbiNVbw",
+		"type": "youtube",
 		"desc": "Suklaatehdas",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "T63f9E6N_eo",
+		"id": "T63f9E6N_eo",
+		"type": "youtube",
 		"desc": "Mini coopperi lähtee",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "flmOtMu_f9w",
+		"id": "flmOtMu_f9w",
+		"type": "youtube",
 		"desc": "Lentsikka lähtee",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "cll-k13REkk",
+		"id": "cll-k13REkk",
+		"type": "youtube",
 		"desc": "Ronaldo painaa saksarin",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "SKUTANG8NYo",
+		"id": "SKUTANG8NYo",
+		"type": "youtube",
 		"desc": "Dutch hyppää kyytiin",
 		"width": 16,
 		"height": 9
 	},
 	{
-		"youtubeId": "igxnDzvT3Lc",
+		"id": "igxnDzvT3Lc",
+		"type": "youtube",
 		"desc": "Vessa",
 		"width": 16,
 		"height": 9
