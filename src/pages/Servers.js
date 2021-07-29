@@ -13,6 +13,7 @@ const TEAMSPEAK_URL_ARRAY = [
 const MINECRAFT_URL_ARRAY = ["mine.moloclan.fi", "mc.moloclan.fi"];
 const TEAMSPEAK_FA_ICON = ["fab", "teamspeak"];
 const DISCORD_FA_ICON = ["fab", "discord"];
+const MINECRAFT_FA_ICON = ["fac", "minecraft"];
 const MINECRAFT_MAP_URL =
 	"https://map.hearthcraft.net/?worldname=SMP_Map3_9&mapname=flat&zoom=4&x=113&y=64&z=95" ||
 	"https://moloclan.fi/map";
@@ -40,6 +41,7 @@ export default function Servers() {
 					serverComponent={<MinecraftCard />}
 					infoComponent={<ServerIPInfo urlArray={MINECRAFT_URL_ARRAY} />}
 					header="Minecraft"
+					faIcon={MINECRAFT_FA_ICON}
 				/>
 				<ServerSection
 					serverComponent={<MinecraftMap mapUrl={MINECRAFT_MAP_URL} />}

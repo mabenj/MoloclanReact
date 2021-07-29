@@ -29,7 +29,8 @@ import {
 	faDrumstickBite,
 	faSave,
 	faTimes,
-	faCaretDown
+	faCaretDown,
+	faCubes
 } from "@fortawesome/free-solid-svg-icons";
 // Brands
 import {
@@ -37,6 +38,8 @@ import {
 	faDiscord,
 	faSkype
 } from "@fortawesome/free-brands-svg-icons";
+// Custom
+import { facMinecraft } from "./CustomFontAwesomeIcons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 library.add(
@@ -56,7 +59,9 @@ library.add(
 	faDrumstickBite,
 	faSave,
 	faTimes,
-	faCaretDown
+	faCaretDown,
+	faCubes,
+	facMinecraft
 );
 
 const pageDefinitions = [
