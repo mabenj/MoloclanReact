@@ -1,9 +1,14 @@
 import React from "react";
 
 const Wrapper = ({
-	children
+	children,
+	id
 }: { children: React.ReactNode } & React.HTMLAttributes<any>) => {
-	return <div className="wrapper back-blur">{children}</div>;
+	return (
+		<div id={id} className="wrapper back-blur">
+			{children}
+		</div>
+	);
 };
 
 export default Wrapper;

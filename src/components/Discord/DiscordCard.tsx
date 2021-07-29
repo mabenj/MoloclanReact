@@ -32,15 +32,15 @@ export const DiscordCard = () => {
 				<thead>
 					<tr>
 						<th></th>
-						<th id="ts3" className="text-center">
+						<th id="ts3-header" className="text-center">
 							TS&nbsp;3&nbsp;&nbsp;
 							<TsIcon />
 						</th>
-						<th id="discord" className="text-center">
+						<th id="discord-header" className="text-center">
 							Discord&nbsp;&nbsp;
 							<DiscordIcon />
 						</th>
-						<th id="skype" className="text-center">
+						<th id="skype-header" className="text-center">
 							Skype&nbsp;&nbsp;
 							<SkypeIcon />
 						</th>
