@@ -98,9 +98,13 @@ const Link = ({ exact, to, displayName, subLinks }: ILinkDefinition) => {
 			{hasSubLinks ? (
 				<div className="dropdown-content">
 					<ul className="list-unstyled">
-						{subLinks.map(({ displayName, hash }) => (
-							<li key={hash}>
-								<HashLink to={`${to}#${hash}`}>{displayName}</HashLink>
+						{subLinks.map(({ displayName, hash }, index) => (
+							<li key={hash} className="hvr-bounce-to-right">
+								<HashLink
+									to={`${to}#${hash}`}
+									className={index !== 0 ? "" : `first`}>
+									{displayName}
+								</HashLink>
 							</li>
 						))}
 					</ul>

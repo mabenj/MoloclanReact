@@ -16,6 +16,7 @@ $ts-viewer-bg-color: hsla(0, 0%, 29%, 0.514);
 $discord-table-bg-color: hsla(0, 0%, 29%, 0.514);
 $discord-table-bg-color-hover: hsla(0, 0%, 66%, 0.123);
 $sidebar-bg-color: hsla(0, 0%, 11%, 0.925);
+$navigation-dropdown-bg-color: hsla(0, 0%, 11%, 0.925);
 $gallery-caption-color: hsla(180, 100%, 97%, 0.685);
 $gallery-caption-bg-color: hsla(0, 0%, 5%, 0.575);
 $success-color: hsl(144, 100%, 39%);
@@ -434,7 +435,7 @@ main {
 .dropdown-content {
 	display: none;
 	position: absolute;
-	background-color: rgba($black-color, 0.8);
+	background-color: $navigation-dropdown-bg-color;
 	border-radius: 0 0 7px 7px;
 	overflow: hidden;
 	font-size: 0.9rem;
@@ -445,17 +446,22 @@ main {
 
 	li {
 		white-space: nowrap;
+		padding: 0 15px;
 
 		a {
 			display: block;
-			padding: 15px 20px;
+			padding: 15px 5px;
 			color: $text-color;
 			text-decoration: none;
+			border-top: 1px solid rgba($text-color, 0.2);
+		}
+
+		a.first {
+			border-top: none;
 		}
 
 		a:hover {
 			color: $orange-color;
-			background-color: lighten($black-color, 5%);
 		}
 	}
 }
@@ -464,8 +470,7 @@ main {
 
 /* Bounce To Right */
 .hvr-bounce-to-right {
-	display: inline-block;
-	vertical-align: middle;
+	display: block;
 	transform: perspective(1px) translateZ(0);
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 	position: relative;
