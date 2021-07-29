@@ -9,8 +9,8 @@ const ServerSection = ({
 	header,
 	faIcon
 }: {
-	header: string;
 	serverComponent: JSX.Element;
+	header?: string;
 	infoComponent?: JSX.Element;
 	faIcon?: IconProp;
 }) => {
@@ -24,7 +24,7 @@ const ServerSection = ({
 	return (
 		<>
 			<h3>
-				{header}
+				{header || null}
 				{faIcon ? (
 					<>
 						&nbsp;

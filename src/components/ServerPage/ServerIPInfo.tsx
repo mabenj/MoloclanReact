@@ -3,13 +3,13 @@ import { trimProtocolAndQueryString } from "../../Utils";
 
 const ServerIPInfo = ({
 	urlArray,
-	isLink,
-	linkVerb,
+	isLink = false,
+	linkVerb = "",
 	header = "IP-Osoite"
 }: {
 	urlArray: string[];
-	isLink: boolean;
-	linkVerb: string;
+	linkVerb?: string;
+	isLink?: boolean;
 	header?: string;
 }) => {
 	return (

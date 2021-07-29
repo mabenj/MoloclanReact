@@ -5,15 +5,18 @@ import MinecraftCard from "../components/Minecraft/MinecraftCard";
 import MinecraftMap from "../components/Minecraft/MinecraftMap";
 import DiscordCard from "../components/Discord/DiscordCard";
 import Wrapper from "../components/Wrapper";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const TEAMSPEAK_URL_ARRAY = [
 	"ts3server://tessu.moloclan.fi?port=7010",
 	"ts3server://ts.moloclan.fi?port=7010"
 ];
 const MINECRAFT_URL_ARRAY = ["mine.moloclan.fi", "mc.moloclan.fi"];
-const TEAMSPEAK_FA_ICON = ["fab", "teamspeak"];
-const DISCORD_FA_ICON = ["fab", "discord"];
-const MINECRAFT_FA_ICON = ["fac", "minecraft"];
+
+const TEAMSPEAK_FA_ICON: IconProp = ["fab", "teamspeak"];
+const DISCORD_FA_ICON: IconProp = ["fab", "discord"];
+const MINECRAFT_FA_ICON: IconProp = ["fac", "minecraft"];
+
 const MINECRAFT_MAP_URL =
 	"https://map.hearthcraft.net/?worldname=SMP_Map3_9&mapname=flat&zoom=4&x=113&y=64&z=95" ||
 	"https://moloclan.fi/map";
