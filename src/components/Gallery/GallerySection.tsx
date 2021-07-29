@@ -1,4 +1,4 @@
-import IExternalMediaSource from "../../img/MediaSources/IMediaSource";
+import IExternalMediaSource from "../../MediaSources/IMediaSource";
 import Lightbox from "./Lightbox";
 import useLightbox from "../../hooks/useLightbox";
 import GalleryTiles from "./GalleryTiles";

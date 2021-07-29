@@ -8,7 +8,7 @@ import {
 	getYoutubeUrl,
 	getYoutubeThumbnailUrl
 } from "../../Utils";
-import IExternalMediaSource from "../../img/MediaSources/IMediaSource";
+import IExternalMediaSource from "../../MediaSources/IMediaSource";
 // @ts-ignore //TODO
 import Tilty from "react-tilty";
 import useWindowDimensions from "../../hooks/useWindowDimensions";

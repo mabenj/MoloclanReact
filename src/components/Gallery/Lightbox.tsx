@@ -1,5 +1,5 @@
 import FsLightbox from "fslightbox-react";
-import IExternalMediaSource from "../../img/MediaSources/IMediaSource";
+import IExternalMediaSource from "../../MediaSources/IMediaSource";
 import { getImgurUrl, getYoutubeUrl } from "../../Utils";
 import { isOpera, isEdge, isChrome, isChromium } from "react-device-detect";
 

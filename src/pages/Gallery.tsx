@@ -7,11 +7,11 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import { scrollToElementSmooth } from "../Utils";
 import { Button } from "react-bootstrap";
 
-import IMediaSource from "../img/MediaSources/IMediaSource";
-import rustImagesJson from "../img/MediaSources/gallery-rust-sources.json";
-import photoshopImagesJson from "../img/MediaSources/gallery-photoshop-sources.json";
-import screenshotImagesJson from "../img/MediaSources/gallery-screenshots-sources.json";
-import videosJson from "../img/MediaSources/gallery-misc-sources.json";
+import IMediaSource from "../MediaSources/IMediaSource";
+import rustImagesJson from "../MediaSources/gallery-rust-sources.json";
+import photoshopImagesJson from "../MediaSources/gallery-photoshop-sources.json";
+import screenshotImagesJson from "../MediaSources/gallery-screenshots-sources.json";
+import videosJson from "../MediaSources/gallery-misc-sources.json";
 
 const rustMedia = rustImagesJson as IMediaSource[];
 const photoshopMedia = photoshopImagesJson as IMediaSource[];

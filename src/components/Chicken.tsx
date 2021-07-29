@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import chickenImageSources from "../img/MediaSources/flying-chicken-sources.json";
+import chickenImageSources from "../MediaSources/flying-chicken-sources.json";
 import Toggle from "react-toggle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import IMediaSource from "../img/MediaSources/IMediaSource";
+import IMediaSource from "../MediaSources/IMediaSource";
 import { getImgurUrl } from "../Utils";
 
 const chickens = chickenImageSources as IMediaSource[];
