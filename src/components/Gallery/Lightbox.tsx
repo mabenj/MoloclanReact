@@ -39,7 +39,6 @@ const Lightbox = ({
 			sourceIndex={index}
 			onClose={HAS_BACKDROP_FILTER_BUG ? addBackDropBlur : undefined}
 			onOpen={HAS_BACKDROP_FILTER_BUG ? hideBackDropBlur : undefined}
-			// @ts-ignore
 			exitFullscreenOnClose
 		/>
 	);
