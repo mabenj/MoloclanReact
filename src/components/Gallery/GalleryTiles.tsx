@@ -6,8 +6,20 @@ import Gallery, {
 import MediaComponent, { IMediaComponentProps } from "./MediaComponent";
 import IExternalMediaSource from "../../MediaSources/IExternalMediaSource";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
+import {
+	getImgurUrl,
+	getYoutubeThumbnailUrl,
+	getYoutubeUrl
+} from "../../Utils";
 
 const MOBILE_BREAKPOINT = 768;
+
+const THUMBNAILS: { [key: string]: string } = {
+	small: "t",
+	medium: "m",
+	large: "l",
+	huge: "h"
+};
 
 interface IGalleryTilesProps {
 	sourceImages: IExternalMediaSource[];
@@ -56,6 +68,7 @@ const RenderImage = <T extends CustomRenderImageProps>({
 	left
 }: RenderImageProps<T>) => {
 	const props: IMediaComponentProps = {
+		src: photo.src,
 		desc: photo.alt || "",
 		width: photo.width,
 		height: photo.height,
@@ -85,15 +98,28 @@ const formatGalleryMedia = (
 				media.provider === "youtube" && !youtubeAsIframe ? "jpg" : media.type,
 
 			// PhotoProps
-			src: "", // Will be determined in MediaComponent
+			src: "",
 			width: media.width,
 			height: media.height,
 			alt: media.desc,
 			key: media.id
 		};
-		if (media.provider === "youtube" && !youtubeAsIframe) {
-			galleryPhoto.width = 480;
-			galleryPhoto.height = 360;
+		if (media.provider === "youtube") {
+			if (youtubeAsIframe) {
+				galleryPhoto.src = getYoutubeUrl(media.id);
+			} else {
+				galleryPhoto.src = getYoutubeThumbnailUrl(media.id);
+				galleryPhoto.width = 480;
+				galleryPhoto.height = 360;
+			}
+		} else if (media.type === "mp4") {
+			galleryPhoto.src = getImgurUrl(media.id, "", ".mp4");
+		} else {
+			galleryPhoto.src = getImgurUrl(
+				media.id,
+				THUMBNAILS[thumbnailSize],
+				media.type === "png" ? ".png" : ".jpg"
+			);
 		}
 		return galleryPhoto;
 	});

@@ -1,20 +1,9 @@
 import React from "react";
 import Tilty from "react-tilty";
-import {
-	getYoutubeUrl,
-	getYoutubeThumbnailUrl,
-	getImgurUrl
-} from "../../Utils";
 import IExternalMediaSource from "../../MediaSources/IExternalMediaSource";
 
-export const THUMBNAILS: { [key: string]: string } = {
-	small: "t",
-	medium: "m",
-	large: "l",
-	huge: "h"
-};
-
 export interface IMediaComponentProps extends IExternalMediaSource {
+	src: string;
 	direction: "row" | "column";
 	thumbnailSize?: "small" | "medium" | "large" | "huge";
 	style?: React.CSSProperties;
@@ -23,6 +12,8 @@ export interface IMediaComponentProps extends IExternalMediaSource {
 
 const MediaComponent = (props: IMediaComponentProps) => {
 	const baseStyle: React.CSSProperties = {
+		width: props.width,
+		height: props.height,
 		margin: props.style?.margin,
 		position: props.direction === "column" ? "absolute" : "initial",
 		left: props.direction === "column" ? props.style?.left : "initial",
@@ -47,42 +38,26 @@ const MediaComponent = (props: IMediaComponentProps) => {
 
 const MediaVideo = (props: IMediaComponentProps) => {
 	return (
-		<video
-			key={props.id}
-			width={props.width}
-			height={props.height}
-			controls
-			style={props.style}>
-			<source src={getImgurUrl(props.id, "", ".mp4")} type="video/mp4" />
+		<video key={props.id} controls style={props.style}>
+			<source src={props.src} type="video/mp4" />
 			Your browser does not support the video tag.
 		</video>
 	);
 };
 
 const MediaTiltableImage = (props: IMediaComponentProps) => {
-	const src =
-		props.provider === "youtube"
-			? getYoutubeThumbnailUrl(props.id)
-			: getImgurUrl(
-					props.id,
-					THUMBNAILS[props.thumbnailSize || "large"],
-					props.type === "png" ? ".png" : ".jpg"
-			  );
-
 	return (
 		<Tilty
 			key={props.id}
 			max={25}
 			perspective={1500}
 			speed={1000}
-			className="gallery-tilty"
-			style={props.style}>
+			className="gallery-tilty">
 			<img
-				src={src}
+				src={props.src}
 				alt={props.desc}
-				width={props.width}
-				height={props.height}
 				onClick={props.onClick}
+				style={props.style}
 			/>
 			<div className="gallery-tilty-inner rounded">{props.desc}</div>
 		</Tilty>
@@ -91,17 +66,13 @@ const MediaTiltableImage = (props: IMediaComponentProps) => {
 
 const MediaIframe = (props: IMediaComponentProps) => {
 	const iFrameStyle: React.CSSProperties = Object.assign(
-		{
-			border: 0,
-			width: props.width,
-			height: props.height
-		},
+		{ border: 0 },
 		props.style
 	);
 	return (
 		<iframe
 			key={props.id}
-			src={getYoutubeUrl(props.id)}
+			src={props.src}
 			title={props.desc}
 			style={iFrameStyle}
 			allowFullScreen

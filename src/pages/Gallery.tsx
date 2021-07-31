@@ -11,7 +11,7 @@ import IExternalMediaSource from "../MediaSources/IExternalMediaSource";
 import rustImagesJson from "../MediaSources/gallery-rust-sources.json";
 import photoshopImagesJson from "../MediaSources/gallery-photoshop-sources.json";
 import screenshotImagesJson from "../MediaSources/gallery-screenshots-sources.json";
-import videosJson from "../MediaSources/gallery-video-youtube-sources.json";
+import videosJson from "../MediaSources/gallery-video-sources.json";
 
 const rustMedia = rustImagesJson as IExternalMediaSource[];
 const photoshopMedia = photoshopImagesJson as IExternalMediaSource[];
