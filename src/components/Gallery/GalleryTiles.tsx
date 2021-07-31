@@ -56,6 +56,7 @@ type CustomRenderImageProps = {
 	thumbnailSize?: "small" | "medium" | "large" | "huge";
 	provider?: IMediaComponentProps["provider"];
 	type?: IMediaComponentProps["type"];
+	posterSrc?: string;
 };
 
 const RenderImage = <T extends CustomRenderImageProps>({
@@ -69,6 +70,7 @@ const RenderImage = <T extends CustomRenderImageProps>({
 }: RenderImageProps<T>) => {
 	const props: IMediaComponentProps = {
 		src: photo.src,
+		posterSrc: photo.posterSrc,
 		desc: photo.alt || "",
 		width: photo.width,
 		height: photo.height,
@@ -96,6 +98,9 @@ const formatGalleryMedia = (
 			provider: media.provider,
 			type:
 				media.provider === "youtube" && !youtubeAsIframe ? "jpg" : media.type,
+			posterSrc: media.posterSrcId
+				? getImgurUrl(media.posterSrcId, THUMBNAILS[thumbnailSize])
+				: undefined,
 
 			// PhotoProps
 			src: "",

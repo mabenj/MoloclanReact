@@ -5,4 +5,5 @@ export default interface IExternalMediaSource {
 	height: number;
 	provider: "youtube" | "imgur";
 	type: "mp4" | "jpg" | "png" | "iframe";
+	posterSrcId?: "string";
 }

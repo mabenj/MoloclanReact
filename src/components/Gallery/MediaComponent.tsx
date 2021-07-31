@@ -5,6 +5,7 @@ import IExternalMediaSource from "../../MediaSources/IExternalMediaSource";
 export interface IMediaComponentProps extends IExternalMediaSource {
 	src: string;
 	direction: "row" | "column";
+	posterSrc?: string;
 	thumbnailSize?: "small" | "medium" | "large" | "huge";
 	style?: React.CSSProperties;
 	onClick?: (event: React.MouseEvent) => void | null;
@@ -69,7 +70,12 @@ const MediaVideo = (props: IMediaComponentProps) => {
 	};
 	return (
 		<>
-			<video ref={videoRef} key={props.id} controls style={props.style}>
+			<video
+				ref={videoRef}
+				key={props.id}
+				controls
+				poster={props.posterSrc}
+				style={props.style}>
 				<source src={props.src} type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
