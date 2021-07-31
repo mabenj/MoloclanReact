@@ -1,3 +1,4 @@
+import { useState } from "react";
 import IExternalMediaSource from "../../MediaSources/IExternalMediaSource";
 import Lightbox from "./Lightbox";
 import useLightbox from "../../hooks/useLightbox";
@@ -20,9 +21,10 @@ const GallerySection = ({
 	id
 }: IGallerySectionProps) => {
 	const [lightboxToggler, lightboxIndex, openLightbox] = useLightbox();
+	const [loading, setLoading] = useState(true);
 
 	return (
-		<div className="mt-2" id={id}>
+		<div className="mt-2" id={loading ? undefined : id}>
 			{header ? <h3 className="mb-4">{header}</h3> : null}
 			<GalleryTiles
 				sourceImages={media}
@@ -30,6 +32,7 @@ const GallerySection = ({
 				direction={direction}
 				thumbnailSize={thumbnailSize}
 				youtubeAsIframe={!USE_LIGHTBOX_VIDEO_PLAYER}
+				onLoad={() => setLoading(false)}
 			/>
 			<Lightbox
 				toggler={lightboxToggler}

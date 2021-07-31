@@ -11,6 +11,7 @@ import {
 	getYoutubeThumbnailUrl,
 	getYoutubeUrl
 } from "../../Utils";
+import { useEffect } from "react";
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -27,6 +28,7 @@ interface IGalleryTilesProps {
 	direction: "row" | "column";
 	thumbnailSize: "small" | "medium" | "large" | "huge";
 	youtubeAsIframe?: boolean;
+	onLoad: () => void;
 }
 
 const GalleryTiles = ({
@@ -34,10 +36,15 @@ const GalleryTiles = ({
 	onClick,
 	direction,
 	thumbnailSize,
-	youtubeAsIframe = true
+	youtubeAsIframe = true,
+	onLoad
 }: IGalleryTilesProps) => {
 	const { width: windowWidth } = useWindowDimensions();
 	const isMobile = windowWidth < MOBILE_BREAKPOINT;
+
+	useEffect(() => {
+		setTimeout(onLoad, 0);
+	}, [onLoad]);
 
 	return (
 		<Gallery
