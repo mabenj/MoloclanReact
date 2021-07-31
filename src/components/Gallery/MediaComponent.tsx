@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Tilty from "react-tilty";
 import IExternalMediaSource from "../../MediaSources/IExternalMediaSource";
 
@@ -37,7 +37,31 @@ const MediaComponent = (props: IMediaComponentProps) => {
 };
 
 const MediaVideo = (props: IMediaComponentProps) => {
+	const [captionVisible, setCaptionVisible] = useState(true);
+	const videoRef = useRef<HTMLVideoElement>(null);
+
+	useEffect(() => {
+		if (videoRef.current) {
+			videoRef.current.onplay = () => setTimeout(hideCaption, 500);
+			videoRef.current.onpause = showCaption;
+			videoRef.current.onmouseenter = showCaption;
+			videoRef.current.onmouseleave = hideCaption;
+		}
+	}, []);
+
+	const showCaption = () => {
+		setCaptionVisible(true);
+	};
+
+	const hideCaption = () => {
+		if (videoRef.current?.paused) {
+			return;
+		}
+		setCaptionVisible(false);
+	};
+
 	const captionStyle: React.CSSProperties = {
+		opacity: captionVisible ? 1 : 0,
 		margin: parseInt(props.style?.margin?.toString() || "0") + 10,
 		position: props.style?.position,
 		left: props.style?.left,
@@ -45,7 +69,7 @@ const MediaVideo = (props: IMediaComponentProps) => {
 	};
 	return (
 		<>
-			<video key={props.id} controls style={props.style}>
+			<video ref={videoRef} key={props.id} controls style={props.style}>
 				<source src={props.src} type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>

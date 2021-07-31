@@ -346,6 +346,7 @@ main {
 	@extend %gallery-caption;
 	top: 6%;
 	left: 6%;
+	transition: opacity 500ms;
 }
 
 .gallery-section-list-item,
