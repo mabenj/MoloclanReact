@@ -3,5 +3,6 @@ export default interface IExternalMediaSource {
 	desc: string;
 	width: number;
 	height: number;
-	type: "youtube" | "imgur";
+	provider: "youtube" | "imgur";
+	type: "mp4" | "jpg" | "png" | "iframe";
 }

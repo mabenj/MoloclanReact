@@ -22,7 +22,7 @@ export function Nbsp(): string {
 export function getImgurUrl(
 	id: string,
 	suffix: string = "",
-	extension: ".jpg" | ".jpeg" | ".png" | ".gif" = ".jpg"
+	extension: ".jpg" | ".png" | ".mp4" = ".jpg"
 ) {
 	const url = `https://i.imgur.com/${id}${suffix}${extension}`;
 	return url;

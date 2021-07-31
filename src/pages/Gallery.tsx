@@ -7,16 +7,16 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 import { scrollToElementSmooth } from "../Utils";
 import { Button } from "react-bootstrap";
 
-import IMediaSource from "../MediaSources/IMediaSource";
+import IExternalMediaSource from "../MediaSources/IExternalMediaSource";
 import rustImagesJson from "../MediaSources/gallery-rust-sources.json";
 import photoshopImagesJson from "../MediaSources/gallery-photoshop-sources.json";
 import screenshotImagesJson from "../MediaSources/gallery-screenshots-sources.json";
-import videosJson from "../MediaSources/gallery-misc-sources.json";
+import videosJson from "../MediaSources/gallery-video-youtube-sources.json";
 
-const rustMedia = rustImagesJson as IMediaSource[];
-const photoshopMedia = photoshopImagesJson as IMediaSource[];
-const screenshotsMedia = screenshotImagesJson as IMediaSource[];
-const videosMedia = videosJson as IMediaSource[];
+const rustMedia = rustImagesJson as IExternalMediaSource[];
+const photoshopMedia = photoshopImagesJson as IExternalMediaSource[];
+const screenshotsMedia = screenshotImagesJson as IExternalMediaSource[];
+const videosMedia = videosJson as IExternalMediaSource[];
 
 const headerStyle: React.CSSProperties = {
 	display: "flex",

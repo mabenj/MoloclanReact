@@ -3,9 +3,9 @@ import { Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import imageSources from "../MediaSources/gui-pack-images-sources.json";
 import GallerySection from "../components/Gallery/GallerySection";
-import IMediaSource from "../MediaSources/IMediaSource";
+import IExternalMediaSource from "../MediaSources/IExternalMediaSource";
 
-const images = imageSources as IMediaSource[];
+const images = imageSources as IExternalMediaSource[];
 
 const DL_LINK =
 	"https://drive.google.com/uc?export=download&id=1XtGaMgX7xDzrKSGYGvLHWIMSIVJZHdBs";

@@ -1,5 +1,5 @@
 import FsLightbox from "fslightbox-react";
-import IExternalMediaSource from "../../MediaSources/IMediaSource";
+import IExternalMediaSource from "../../MediaSources/IExternalMediaSource";
 import { getImgurUrl, getYoutubeUrl } from "../../Utils";
 import { isOpera, isEdge, isChrome, isChromium } from "react-device-detect";
 
@@ -22,19 +22,14 @@ const Lightbox = ({
 	return (
 		<FsLightbox
 			toggler={toggler}
-			sources={formatLightboxMedia(
-				sourceMedias
-				// sourceMedias.filter(
-				// 	(media) => media.type !== "youtube" || !enableCustomSources
-				// )
-			)}
+			sources={formatLightboxMedia(sourceMedias)}
 			customSources={
 				enableCustomSources
 					? formatLightboxCustomMedia(sourceMedias)
 					: undefined
 			}
 			types={sourceMedias.map((media) =>
-				media.type === "youtube" ? "youtube" : "image"
+				media.provider === "youtube" ? "youtube" : "image"
 			)}
 			sourceIndex={index}
 			onClose={HAS_BACKDROP_FILTER_BUG ? addBackDropBlur : undefined}
@@ -48,7 +43,7 @@ const formatLightboxMedia = (
 	mediaSources: IExternalMediaSource[]
 ): string[] => {
 	return mediaSources.map((media) => {
-		return media.type === "youtube"
+		return media.provider === "youtube"
 			? getYoutubeUrl(media.id)
 			: getImgurUrl(media.id);
 	});
@@ -58,7 +53,7 @@ const formatLightboxCustomMedia = (
 	mediaSources: IExternalMediaSource[]
 ): JSX.Element[] => {
 	return mediaSources
-		.filter((media) => media.type === "youtube")
+		.filter((media) => media.provider === "youtube")
 		.map((media) => {
 			return (
 				<iframe

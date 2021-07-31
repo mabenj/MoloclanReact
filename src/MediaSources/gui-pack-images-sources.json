@@ -1,35 +1,40 @@
 [
 	{
 		"id": "fs2LcD2",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Enchanttaus",
 		"width": 620,
 		"height": 620
 	},
 	{
 		"id": "hhibZxd",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Inva",
 		"width": 1202,
 		"height": 578
 	},
 	{
 		"id": "Tqql3ic",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Hotbar",
 		"width": 592,
 		"height": 166
 	},
 	{
 		"id": "6JP38am",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Päävalikko",
 		"width": 1920,
 		"height": 1080
 	},
 	{
 		"id": "SJeyq08",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Asetukset-valikko",
 		"width": 1074,
 		"height": 839

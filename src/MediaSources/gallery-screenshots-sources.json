@@ -1,70 +1,80 @@
 [
 	{
 		"id": "bITSvqx",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "COD4 RM Zakhaev",
 		"width": 1920,
 		"height": 1080
 	},
 	{
 		"id": "g2eKgom",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "COD 4 RM Rappukäytävä",
 		"width": 1920,
 		"height": 1080
 	},
 	{
 		"id": "gdfTPtr",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "COD 4 RM Uudet tapetit",
 		"width": 1920,
 		"height": 1080
 	},
 	{
 		"id": "cvQ7QMg",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "GTA V Bensis",
 		"width": 2560,
 		"height": 1440
 	},
 	{
 		"id": "jebgSG7",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Kaken passatti GTA V",
 		"width": 3840,
 		"height": 2160
 	},
 	{
 		"id": "d3VYPyt",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Lambo skutsissa GTA V",
 		"width": 3840,
 		"height": 2160
 	},
 	{
 		"id": "nDXpMVx",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Lambo Lapissa GTA V",
 		"width": 3840,
 		"height": 2160
 	},
 	{
 		"id": "exyU9uC",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Skrinnaa öögaa GTA V",
 		"width": 2560,
 		"height": 1440
 	},
 	{
 		"id": "4PoUDKa",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Lambo kadulla GTA V",
 		"width": 3840,
 		"height": 2160
 	},
 	{
 		"id": "Ea3JrZG",
-		"type": "imgur",
+		"provider": "imgur",
+		"type": "jpg",
 		"desc": "Keltanen auto GTA V",
 		"width": 3840,
 		"height": 2160
