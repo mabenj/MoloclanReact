@@ -43,7 +43,7 @@ const GalleryTiles = ({
 	const isMobile = windowWidth < MOBILE_BREAKPOINT;
 
 	useEffect(() => {
-		setTimeout(onLoad, 0);
+		setTimeout(onLoad, 50);
 	}, [onLoad]);
 
 	return (
