@@ -37,11 +37,22 @@ const MediaComponent = (props: IMediaComponentProps) => {
 };
 
 const MediaVideo = (props: IMediaComponentProps) => {
+	const captionStyle: React.CSSProperties = {
+		margin: parseInt(props.style?.margin?.toString() || "0") + 10,
+		position: props.style?.position,
+		left: props.style?.left,
+		top: props.style?.top
+	};
 	return (
-		<video key={props.id} controls style={props.style}>
-			<source src={props.src} type="video/mp4" />
-			Your browser does not support the video tag.
-		</video>
+		<>
+			<video key={props.id} controls style={props.style}>
+				<source src={props.src} type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
+			<div className="gallery-video-caption" style={captionStyle}>
+				{props.desc}
+			</div>
+		</>
 	);
 };
 
@@ -59,7 +70,7 @@ const MediaTiltableImage = (props: IMediaComponentProps) => {
 				onClick={props.onClick}
 				style={props.style}
 			/>
-			<div className="gallery-tilty-inner rounded">{props.desc}</div>
+			<div className="gallery-tilty-inner">{props.desc}</div>
 		</Tilty>
 	);
 };

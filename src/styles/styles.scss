@@ -333,6 +333,21 @@ main {
 	transform: scale(1.1);
 }
 
+%gallery-caption {
+	position: absolute;
+	background-color: $gallery-caption-bg-color;
+	color: $gallery-caption-color;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius: 0.25rem;
+}
+
+.gallery-video-caption {
+	@extend %gallery-caption;
+	top: 6%;
+	left: 6%;
+}
+
 .gallery-section-list-item,
 .gallery-section-list-item.active {
 	background-color: transparent !important;
@@ -346,14 +361,10 @@ main {
 	}
 
 	.gallery-tilty-inner {
+		@extend %gallery-caption;
 		transform: translateZ(40px);
-		position: absolute;
 		bottom: 6%;
 		left: 6%;
-		background-color: $gallery-caption-bg-color;
-		color: $gallery-caption-color;
-		padding-left: 5px;
-		padding-right: 5px;
 	}
 }
 
