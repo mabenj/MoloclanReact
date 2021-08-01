@@ -24,6 +24,7 @@ const Sidebar = ({ className }: { className: string }) => {
 	useEffect(() => {
 		function handleClickOutside(e: Event) {
 			if (
+				isOpen &&
 				e.target instanceof HTMLElement &&
 				!containerRef.current?.contains(e.target)
 			) {
@@ -35,7 +36,7 @@ const Sidebar = ({ className }: { className: string }) => {
 		return () => {
 			document.removeEventListener("mousedown", handleClickOutside);
 		};
-	}, [containerRef]);
+	}, [containerRef, isOpen]);
 
 	const openSidebar = () => {
 		setIsOpen(true);
