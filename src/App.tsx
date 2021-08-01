@@ -70,7 +70,11 @@ function App() {
 								key={path}
 								path={path}
 								exact={exact}
-								render={() => <Page title={title}>{component}</Page>}
+								render={() => (
+									<Page key={Math.random()} title={title}>
+										{component}
+									</Page>
+								)}
 							/>
 						))}
 					</Switch>
