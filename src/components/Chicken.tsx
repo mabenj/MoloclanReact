@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import chickenImageSources from "../MediaSources/flying-chicken-sources.json";
 import Toggle from "react-toggle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -56,13 +56,12 @@ const ChickenImg = ({ isFlying }: { isFlying: boolean }) => {
 		directionY: Math.random() > 0.5 ? "north" : "south"
 	});
 
-	const STEP = 12;
-	const FREQ_MS = 60;
+	const STEP = 1.5;
 
 	useEffect(() => {
 		const chicken = chickens[Math.floor(Math.random() * chickens.length)];
-		const maxWidth = window.innerWidth - chicken.width;
-		const maxHeight = window.innerHeight - chicken.height;
+		const maxWidth = window.innerWidth - currentChicken.width;
+		const maxHeight = window.innerHeight - currentChicken.height;
 		setPositionData((prev) => ({
 			...prev,
 			maxX: maxWidth,
@@ -71,74 +70,72 @@ const ChickenImg = ({ isFlying }: { isFlying: boolean }) => {
 			currentY: Math.random() * maxHeight
 		}));
 		setCurrentChicken(chicken);
-		window.addEventListener("resize", () => updateMaxXY(maxWidth, maxHeight));
+		window.addEventListener("resize", () => updateMaxXY());
 		return () => {
-			window.removeEventListener("resize", () =>
-				updateMaxXY(maxWidth, maxHeight)
-			);
+			window.removeEventListener("resize", () => updateMaxXY());
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	useEffect(() => {
-		const timeOut = setTimeout(() => {
-			if (isFlying) {
-				let tempDirectionX = positionData.directionX;
-				let tempDirectionY = positionData.directionY;
-				let tempX = positionData.currentX;
-				let tempY = positionData.currentY;
+	useLayoutEffect(() => {
+		let rafId: number;
+		if (isFlying) {
+			const animate = () => {
+				setPositionData((prev) => {
+					let tempDirectionX = prev.directionX;
+					let tempDirectionY = prev.directionY;
+					let tempX = prev.currentX;
+					let tempY = prev.currentY;
 
-				if (tempX >= positionData.maxX || tempX <= 0) {
-					tempDirectionX = tempX <= 0 ? "east" : "west";
-					updateChicken();
-				}
-				if (tempY >= positionData.maxY || tempY <= 0) {
-					tempDirectionY = tempY <= 0 ? "south" : "north";
-					updateChicken();
-				}
+					if (tempX >= prev.maxX || tempX <= 0) {
+						tempDirectionX = tempX <= 0 ? "east" : "west";
+						updateChicken();
+					}
+					if (tempY >= prev.maxY || tempY <= 0) {
+						tempDirectionY = tempY <= 0 ? "south" : "north";
+						updateChicken();
+					}
 
-				setPositionData((prev) => ({
-					...prev,
-					currentX:
-						tempDirectionX === "east"
-							? prev.currentX + STEP
-							: prev.currentX - STEP,
-					currentY:
-						tempDirectionY === "south"
-							? prev.currentY + STEP
-							: prev.currentY - STEP,
-					directionX: tempDirectionX,
-					directionY: tempDirectionY
-				}));
-			}
-		}, FREQ_MS);
-		return () => {
-			clearTimeout(timeOut);
-		};
+					return {
+						...prev,
+						currentX:
+							tempDirectionX === "east"
+								? prev.currentX + STEP
+								: prev.currentX - STEP,
+						currentY:
+							tempDirectionY === "south"
+								? prev.currentY + STEP
+								: prev.currentY - STEP,
+						directionX: tempDirectionX,
+						directionY: tempDirectionY
+					};
+				});
+				rafId = requestAnimationFrame(animate);
+			};
+
+			rafId = requestAnimationFrame(animate);
+		}
+		return () => cancelAnimationFrame(rafId);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [
-		isFlying,
-		positionData.currentX,
-		positionData.currentY,
-		positionData.directionX,
-		positionData.directionY,
-		positionData.maxX,
-		positionData.maxY
-	]);
+	}, [isFlying]);
 
-	const updateMaxXY = (maxX: number, maxY: number) => {
+	const updateMaxXY = () => {
+		const maxX = window.innerWidth - currentChicken.width;
+		const maxY = window.innerHeight - currentChicken.height;
 		setPositionData((prev) => ({ ...prev, maxX, maxY }));
 	};
 
 	const updateChicken = () => {
-		let chicken = chickens[Math.floor(Math.random() * chickens.length)];
-		while (chicken === currentChicken) {
-			chicken = chickens[Math.floor(Math.random() * chickens.length)];
-		}
-		const maxWidth = window.innerWidth - chicken.width;
-		const maxHeight = window.innerHeight - chicken.height;
-		updateMaxXY(maxWidth, maxHeight);
-		setCurrentChicken(chicken);
+		setCurrentChicken((prev) => {
+			let chicken = chickens[Math.floor(Math.random() * chickens.length)];
+			while (chicken === prev) {
+				chicken = chickens[Math.floor(Math.random() * chickens.length)];
+			}
+			const maxX = window.innerWidth - currentChicken.width;
+			const maxY = window.innerHeight - currentChicken.height;
+			setPositionData((prev) => ({ ...prev, maxX, maxY }));
+			return chicken;
+		});
 	};
 
 	const chickenStyle: React.CSSProperties = {
@@ -149,8 +146,7 @@ const ChickenImg = ({ isFlying }: { isFlying: boolean }) => {
 		top: 0,
 		right: 0,
 		bottom: 0,
-		cursor: "not-allowed",
-		transition: `transform ${FREQ_MS}ms linear`
+		cursor: "not-allowed"
 	};
 
 	return (
