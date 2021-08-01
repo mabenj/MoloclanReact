@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import WeatherWidget from "../WeatherWidget";
 import { HamburgerButton, CloseButton } from "../Buttons";
@@ -19,15 +19,32 @@ const closeButtonId = "sidebar-close-btn";
 
 const Sidebar = ({ className }: { className: string }) => {
 	const [isOpen, setIsOpen] = useState(false);
+	const containerRef = useRef<HTMLDivElement>(null);
 
-	const openSidebar: React.MouseEventHandler<HTMLButtonElement> = (_e) => {
+	useEffect(() => {
+		function handleClickOutside(e: Event) {
+			if (
+				e.target instanceof HTMLElement &&
+				!containerRef.current?.contains(e.target)
+			) {
+				closeSidebar();
+			}
+		}
+
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [containerRef]);
+
+	const openSidebar = () => {
 		setIsOpen(true);
 		document.querySelector<HTMLDivElement>(".sidebar-content")!.style.width =
 			"20%";
 		animateCSS(`#${closeButtonId}`, "flipInY");
 	};
 
-	const closeSidebar: React.MouseEventHandler<HTMLButtonElement> = (_e) => {
+	const closeSidebar = () => {
 		setIsOpen(false);
 		document.querySelector<HTMLDivElement>(".sidebar-content")!.style.width =
 			"0px";
@@ -35,7 +52,7 @@ const Sidebar = ({ className }: { className: string }) => {
 	};
 
 	return (
-		<div className={`sidebar ${className}`}>
+		<div ref={containerRef} className={`sidebar ${className}`}>
 			<div
 				className=""
 				style={{
