@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Dynmap from "../../img/dynmap.jpg";
+import Dynmap from "../../img/molocraft-dynmap.png";
 
 const HOVER_ZOOM_SCALE = 1.1;
 

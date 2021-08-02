@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_IP = "104.152.140.171";
+const SERVER_IP = "mc.moloclan.fi" || "104.152.140.171";
 const QUERY_URL = `https://api.minetools.eu/query/${SERVER_IP}/25565`;
 const FAVICON_URL = `https://api.minetools.eu/favicon/${SERVER_IP}/25565`;
 const FAVICON_URL_FALLBACK = "https://i.imgur.com/8XKJwE8t.jpg";
