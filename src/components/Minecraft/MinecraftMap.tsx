@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const DYNMAP_IMG_SRC = "https://i.imgur.com/tKn38o6.png";
+const DYNMAP_IMG_SRC = "https://i.imgur.com/kGlqBBD.png";
 const HOVER_ZOOM_SCALE = 1.1;
 
 const MinecraftMap = ({ mapUrl }: { mapUrl: string }) => {
