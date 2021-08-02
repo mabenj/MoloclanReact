@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Dynmap from "../../img/molocraft-dynmap.png";
 
+const DYNMAP_IMG_SRC = "https://i.imgur.com/tKn38o6.png";
 const HOVER_ZOOM_SCALE = 1.1;
 
 const MinecraftMap = ({ mapUrl }: { mapUrl: string }) => {
@@ -19,7 +19,8 @@ const MinecraftMap = ({ mapUrl }: { mapUrl: string }) => {
 		<a href={mapUrl} target="_blank" rel="noreferrer">
 			<div className="rounded" style={imageContainerStyle}>
 				<img
-					src={Dynmap}
+					src={DYNMAP_IMG_SRC}
+					width={"100%"}
 					alt="molocraft map"
 					className="img-fluid"
 					style={mapImageStyle}
