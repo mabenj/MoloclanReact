@@ -10,6 +10,8 @@ const HEROBRINE_AVATAR_URL =
 	"https://lh3.googleusercontent.com/vlHjs581Tvn1vxp0upYCuX6xNvfHk-49vjnh-v0XAkW9Vs2ETzwSGqPOOnmZTTk6bNw4Y185XWaafYFFQR8VdA";
 const AVATAR_API_URL = "https://minotar.net/body/";
 
+const HEROBRINE_PROB = 0.1;
+
 export interface IPlayer {
 	name: string;
 	skinSource: string;
@@ -42,7 +44,7 @@ const getServerInfo = async (
 			favIcon: isOnline ? FAVICON_URL : FAVICON_URL_FALLBACK
 		};
 		if (result.isOnline && result.playerCount === 0) {
-			const showHerobrine = Math.random() < 0.3;
+			const showHerobrine = Math.random() < HEROBRINE_PROB;
 			if (showHerobrine) {
 				return {
 					isOnline: true,
