@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import chickenImageSources from "../MediaSources/flying-chicken-sources.json";
 import Toggle from "react-toggle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,6 +6,8 @@ import IExternalMediaSource from "../MediaSources/IExternalMediaSource";
 import { getImgurUrl } from "../Utils";
 
 const chickens = chickenImageSources as IExternalMediaSource[];
+
+const FPS = 60;
 
 const style: React.CSSProperties = {
 	position: "absolute",
@@ -56,7 +58,11 @@ const ChickenImg = ({ isFlying }: { isFlying: boolean }) => {
 		directionY: Math.random() > 0.5 ? "north" : "south"
 	});
 
-	const STEP = 1.5;
+	const fpsInterval = useRef(1000 / FPS);
+	const then = useRef(window.performance.now());
+	const paused = useRef(!isFlying);
+
+	const STEP = 3;
 
 	useEffect(() => {
 		const chicken = chickens[Math.floor(Math.random() * chickens.length)];
@@ -77,44 +83,54 @@ const ChickenImg = ({ isFlying }: { isFlying: boolean }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	useLayoutEffect(() => {
-		let rafId: number;
-		if (isFlying) {
-			const animate = () => {
-				setPositionData((prev) => {
-					let tempDirectionX = prev.directionX;
-					let tempDirectionY = prev.directionY;
-					let tempX = prev.currentX;
-					let tempY = prev.currentY;
-
-					if (tempX >= prev.maxX || tempX <= 0) {
-						tempDirectionX = tempX <= 0 ? "east" : "west";
-						updateChicken();
-					}
-					if (tempY >= prev.maxY || tempY <= 0) {
-						tempDirectionY = tempY <= 0 ? "south" : "north";
-						updateChicken();
-					}
-
-					return {
-						...prev,
-						currentX:
-							tempDirectionX === "east"
-								? prev.currentX + STEP
-								: prev.currentX - STEP,
-						currentY:
-							tempDirectionY === "south"
-								? prev.currentY + STEP
-								: prev.currentY - STEP,
-						directionX: tempDirectionX,
-						directionY: tempDirectionY
-					};
-				});
-				rafId = requestAnimationFrame(animate);
-			};
-
-			rafId = requestAnimationFrame(animate);
+	const animate = (newTime: number) => {
+		if (paused.current) {
+			return;
 		}
+
+		requestAnimationFrame(animate);
+
+		const now = newTime;
+		const elapsed = now - then.current;
+
+		if (elapsed > fpsInterval.current) {
+			then.current = now - (elapsed % fpsInterval.current);
+
+			setPositionData((prev) => {
+				let tempDirectionX = prev.directionX;
+				let tempDirectionY = prev.directionY;
+				let tempX = prev.currentX;
+				let tempY = prev.currentY;
+
+				if (tempX >= prev.maxX || tempX <= 0) {
+					tempDirectionX = tempX <= 0 ? "east" : "west";
+					updateChicken();
+				}
+				if (tempY >= prev.maxY || tempY <= 0) {
+					tempDirectionY = tempY <= 0 ? "south" : "north";
+					updateChicken();
+				}
+
+				return {
+					...prev,
+					currentX:
+						tempDirectionX === "east"
+							? prev.currentX + STEP
+							: prev.currentX - STEP,
+					currentY:
+						tempDirectionY === "south"
+							? prev.currentY + STEP
+							: prev.currentY - STEP,
+					directionX: tempDirectionX,
+					directionY: tempDirectionY
+				};
+			});
+		}
+	};
+
+	useLayoutEffect(() => {
+		paused.current = !isFlying;
+		let rafId = requestAnimationFrame(animate);
 		return () => cancelAnimationFrame(rafId);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isFlying]);
