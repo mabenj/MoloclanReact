@@ -1,7 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import minecraftService, { IPlayer } from "../../services/minecraftService";
+import { getImgurUrl } from "../../Utils";
 
 import "../../styles/mc.scss";
+
+const BG_IMAGE_ID = "gbizRgN";
+const BG_IMAGE = getImgurUrl(BG_IMAGE_ID, "", ".png");
+const BG_IMAGE_TN = getImgurUrl(BG_IMAGE_ID, "h", ".png");
 
 const AVATAR_WIDTH = 40;
 const PLAYERS_TO_TAKE = 12;
@@ -50,7 +55,20 @@ const BackgroundContainer = ({ children }: { children?: React.ReactNode }) => {
 };
 
 const BackgroundImage = () => {
-	return <div className="mc-bg-image" />;
+	const bgRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		if (!bgRef.current) {
+			return;
+		}
+		bgRef.current.style.backgroundImage = `url('${BG_IMAGE_TN}')`;
+	}, [bgRef]);
+
+	return (
+		<a href={BG_IMAGE} target="_blank" rel="noreferrer">
+			<div ref={bgRef} className="mc-bg-image" />;
+		</a>
+	);
 };
 
 const Title = ({ favIcon }: { favIcon: string }) => {
