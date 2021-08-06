@@ -29,7 +29,10 @@ const WeatherWidget = ({ style }: { style: React.CSSProperties }) => {
 		<div className="ml-3" style={style}>
 			<span className="light-grey-color text-nowrap">
 				{clientArea}&nbsp;&nbsp;&nbsp;
-				{isNight ? weatherInfo.moonIcon : weatherInfo.weatherIcon}&nbsp;
+				{isNight && weatherInfo.weatherIcon === "☀️"
+					? weatherInfo.moonIcon
+					: weatherInfo.weatherIcon}
+				&nbsp;
 				{weatherInfo.temperature}&nbsp;°C
 			</span>
 		</div>
