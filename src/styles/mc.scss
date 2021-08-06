@@ -35,9 +35,10 @@ $sm: 576px;
 }
 
 .mc-bg-container:hover {
+	cursor: pointer;
+
 	.mc-bg-image {
 		transform: scale($hover-scale-bg);
-		cursor: pointer;
 	}
 }
 

@@ -51,7 +51,17 @@ const Container = ({ children }: { children?: React.ReactNode }) => {
 };
 
 const BackgroundContainer = ({ children }: { children?: React.ReactNode }) => {
-	return <div children={children} className="mc-bg-container"></div>;
+	const handleClick = (e: React.MouseEvent) => {
+		e.preventDefault();
+		window.open(BG_IMAGE, "_blank");
+	};
+
+	return (
+		<div
+			onClick={handleClick}
+			children={children}
+			className="mc-bg-container"></div>
+	);
 };
 
 const BackgroundImage = () => {
@@ -64,11 +74,7 @@ const BackgroundImage = () => {
 		bgRef.current.style.backgroundImage = `url('${BG_IMAGE_TN}')`;
 	}, [bgRef]);
 
-	return (
-		<a href={BG_IMAGE} target="_blank" rel="noreferrer">
-			<div ref={bgRef} className="mc-bg-image" />;
-		</a>
-	);
+	return <div ref={bgRef} className="mc-bg-image" />;
 };
 
 const Title = ({ favIcon }: { favIcon: string }) => {
