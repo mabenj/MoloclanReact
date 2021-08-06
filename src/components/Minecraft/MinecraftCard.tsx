@@ -8,6 +8,8 @@ const BG_IMAGE_ID = "gbizRgN";
 const BG_IMAGE = getImgurUrl(BG_IMAGE_ID, "", ".png");
 const BG_IMAGE_TN = getImgurUrl(BG_IMAGE_ID, "h", ".png");
 
+const FALLBACK_FAVICON = "https://i.imgur.com/8XKJwE8t.jpg";
+
 const AVATAR_WIDTH = 40;
 const PLAYERS_TO_TAKE = 12;
 
@@ -15,7 +17,7 @@ const MinecraftCard = () => {
 	const [players, setPlayers] = useState<IPlayer[]>([]);
 	const [playerCount, setPlayerCount] = useState(0);
 	const [isOffline, setIsOffline] = useState(false);
-	const [favIcon, setFavIcon] = useState("");
+	const [favIcon, setFavIcon] = useState(FALLBACK_FAVICON);
 
 	useEffect(() => {
 		async function fetchServerInfo(): Promise<void> {
@@ -24,7 +26,7 @@ const MinecraftCard = () => {
 			setPlayers(players);
 			setPlayerCount(playerCount);
 			setIsOffline(!isOnline);
-			setFavIcon(favIcon);
+			setFavIcon((prev) => favIcon || prev);
 		}
 		fetchServerInfo();
 	}, []);
@@ -106,9 +108,14 @@ const PlayerList = ({
 				{players.map(({ name, skinSource }) => (
 					<span key={name} title={name}>
 						<img src={skinSource} alt={name} width={AVATAR_WIDTH} />
-						<p className="d-inline-block text-truncate">{name}</p>
+						<p className="d-block text-break text-center">{name}</p>
 					</span>
 				))}
+				{players.length === 0 ? (
+					<small className="text-muted">
+						<em>Hiljast o...</em>
+					</small>
+				) : null}
 			</div>
 		</div>
 	);

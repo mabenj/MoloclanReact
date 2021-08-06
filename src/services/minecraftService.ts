@@ -3,14 +3,13 @@ import axios from "axios";
 const SERVER_IP = "mc.moloclan.fi" || "104.152.140.171";
 const QUERY_URL = `https://api.minetools.eu/query/${SERVER_IP}/25565`;
 const FAVICON_URL = `https://api.minetools.eu/favicon/${SERVER_IP}/25565`;
-const FAVICON_URL_FALLBACK = "https://i.imgur.com/8XKJwE8t.jpg";
 const FAVICON_HEROBRINE =
 	"https://pbs.twimg.com/profile_images/1239076087981694976/FYYqp8a4.png";
 const HEROBRINE_AVATAR_URL =
 	"https://lh3.googleusercontent.com/vlHjs581Tvn1vxp0upYCuX6xNvfHk-49vjnh-v0XAkW9Vs2ETzwSGqPOOnmZTTk6bNw4Y185XWaafYFFQR8VdA";
 const AVATAR_API_URL = "https://minotar.net/body/";
 
-const HEROBRINE_PROB = 0.1;
+const HEROBRINE_PROB = 0.05;
 
 export interface IPlayer {
 	name: string;
@@ -21,7 +20,7 @@ interface IServerInfo {
 	isOnline: boolean;
 	players: IPlayer[];
 	playerCount: number;
-	favIcon: string;
+	favIcon: string | undefined;
 }
 
 const getServerInfo = async (
@@ -41,7 +40,7 @@ const getServerInfo = async (
 					})
 				) || [],
 			playerCount: data.Players,
-			favIcon: isOnline ? FAVICON_URL : FAVICON_URL_FALLBACK
+			favIcon: isOnline ? FAVICON_URL : undefined
 		};
 		if (result.isOnline && result.playerCount === 0) {
 			const showHerobrine = Math.random() < HEROBRINE_PROB;
@@ -61,7 +60,7 @@ const getServerInfo = async (
 			isOnline: false,
 			players: [],
 			playerCount: 0,
-			favIcon: FAVICON_URL_FALLBACK
+			favIcon: undefined
 		};
 	}
 };
