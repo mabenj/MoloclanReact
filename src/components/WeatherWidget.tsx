@@ -27,11 +27,19 @@ const WeatherWidget = ({ style }: { style: React.CSSProperties }) => {
 
 	return (
 		<div className="ml-3" style={style}>
-			<span className="light-grey-color text-nowrap">
+			<span
+				className="light-grey-color text-nowrap"
+				style={{ display: "flex", alignItems: "center" }}>
 				{clientArea}&nbsp;&nbsp;&nbsp;
-				{isNight && weatherInfo.weatherIcon === "☀️"
-					? weatherInfo.moonIcon
-					: weatherInfo.weatherIcon}
+				{isNight && weatherInfo.description === "Sunny" ? (
+					weatherInfo.moonIcon
+				) : (
+					<img
+						src={weatherInfo.weatherImage}
+						alt={weatherInfo.description}
+						width={20}
+					/>
+				)}
 				&nbsp;
 				{weatherInfo.temperature}&nbsp;°C
 			</span>

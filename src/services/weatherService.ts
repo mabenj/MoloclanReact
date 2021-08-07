@@ -10,8 +10,10 @@ const API_URL_TEMPLATE3 = "https://wttr.in/?format=j1";
 const STORAGE_KEY = "molo_weather_info";
 
 export interface IWeatherInfo {
+	description: string;
 	temperature: number;
-	weatherIcon: string;
+	weatherSymbol: string;
+	weatherImage: string;
 	moonIcon: string;
 	sunrise: string;
 	sunset: string;
@@ -29,8 +31,10 @@ const getWeatherInfo = async (
 
 	const { data } = await axios.get(createApiUrl(latitude, longitude));
 	const weatherInfo: IWeatherInfo = {
+		description: WWO_CODE[data.current_condition[0].weatherCode],
 		temperature: data.current_condition[0].temp_C,
-		weatherIcon: getWeatherIcon(data.current_condition[0].weatherCode),
+		weatherSymbol: getWeatherSymbol(data.current_condition[0].weatherCode),
+		weatherImage: getWeatherImage(data.current_condition[0].weatherCode),
 		moonIcon:
 			MOON_PHASES[data.weather[0].astronomy[0].moon_phase.toLowerCase()],
 		sunrise: data.weather[0]?.astronomy[0]?.sunrise,
@@ -51,10 +55,15 @@ const createApiUrl = (latitude: number, longitude: number): string => {
 	);
 };
 
-const getWeatherIcon = (weatherCode: number): string => {
+const getWeatherSymbol = (weatherCode: number): string => {
 	const weatherString = WWO_CODE[weatherCode];
 	const weatherIcon = WEATHER_SYMBOL[weatherString];
 	return weatherIcon ? weatherIcon : WEATHER_SYMBOL["Unknown"];
+};
+
+const getWeatherImage = (weatherCode: number): string => {
+	const weatherString = WWO_CODE[weatherCode];
+	return WEATHER_IMAGE[weatherString];
 };
 
 const weatherService = { getWeatherInfo };
@@ -132,6 +141,29 @@ const WEATHER_SYMBOL: { [key: string]: string } = {
 	ThunderyShowers: "⛈",
 	ThunderySnowShowers: "⛈",
 	VeryCloudy: "☁️"
+};
+
+// https://www.ilmatieteenlaitos.fi/saamerkkien-selitykset
+const WEATHER_IMAGE: { [key: string]: string } = {
+	Cloudy: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/7.svg",
+	Fog: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/9.svg",
+	HeavyRain: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/39.svg",
+	HeavyShowers: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/39.svg",
+	HeavySnow: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/59.svg",
+	HeavySnowShowers: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/59.svg",
+	LightRain: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/37.svg",
+	LightShowers: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/37.svg",
+	LightSleet: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/47.svg",
+	LightSleetShowers: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/47.svg",
+	LightSnow: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/57.svg",
+	LightSnowShowers: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/57.svg",
+	PartlyCloudy: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/4.svg",
+	Sunny: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/1.svg",
+	ThunderyHeavyRain: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/77.svg",
+	ThunderyShowers: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/77.svg",
+	ThunderySnowShowers:
+		"https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/77.svg",
+	VeryCloudy: "https://cdn.fmi.fi/symbol-images/smartsymbol/v3/p/7.svg"
 };
 
 const MOON_PHASES: { [key: string]: string } = {
