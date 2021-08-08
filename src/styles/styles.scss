@@ -94,6 +94,28 @@ code {
 	background-color: $orange-color !important;
 }
 
+.nav-bar-mobile {
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	padding-bottom: 30px;
+	transition: height 0.1s;
+}
+
+.nav-bar-mobile-opened {
+	height: 100vh;
+	background: $navigation-bg-color;
+}
+
+.nav-bar-mobile-closed {
+	height: 90px;
+	background: linear-gradient(
+		$navigation-bg-color,
+		60%,
+		rgba($navigation-bg-color, 0)
+	);
+}
+
 .navigation-bar {
 	background: linear-gradient(
 		$navigation-bg-color,
@@ -154,12 +176,12 @@ $mobile-bar-height: 70px;
 		padding: 10px 20px;
 	}
 }
-@media (max-width: $md) {
-	body {
-		padding-top: $mobile-bar-height;
-		background-position: 0 $mobile-bar-height;
-	}
-}
+// @media (max-width: $md) {
+// 	body {
+// 		padding-top: $mobile-bar-height;
+// 		background-position: 0 $mobile-bar-height;
+// 	}
+// }
 
 .navbar-brand {
 	font-size: 2rem;
@@ -171,17 +193,17 @@ $mobile-bar-height: 70px;
 }
 
 // currently not in use (bootstrap navbar from md and down)
-@media (max-width: $md) {
-	.navigation-bar {
-		width: auto;
-		padding-bottom: initial;
-	}
+// @media (max-width: $md) {
+// 	.navigation-bar {
+// 		width: auto;
+// 		padding-bottom: initial;
+// 	}
 
-	.navigation-bar-middle {
-		align-items: center;
-		padding: 0 20px;
-	}
-}
+// 	.navigation-bar-middle {
+// 		align-items: center;
+// 		padding: 0 20px;
+// 	}
+// }
 
 .sidebar {
 	display: flex;

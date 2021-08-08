@@ -7,6 +7,8 @@ import { HashLink } from "react-router-hash-link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import navLinkDefinitions from "./nav-link-definitions.json";
+import { CloseButton, HamburgerButton } from "../Buttons";
+import { animateCSS } from "../../Utils";
 
 interface ILinkDefinition {
 	to: string;
@@ -115,34 +117,76 @@ const Link = ({ exact, to, displayName, subLinks }: ILinkDefinition) => {
 };
 
 const NavbarMobile = ({ className }: { className: string }) => {
-	const [expanded, setExpanded] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
-		<Navbar
-			expand="xl"
-			variant="dark"
-			onToggle={() => setExpanded((prev) => !prev)}
-			expanded={expanded}
-			fixed="top"
-			className={`navigation-bar-mobile ${className}`}>
-			<Brand />
-			<Nav>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav onClick={() => setExpanded(false)}>
-						{linkDefinitions.map((link) => (
-							<NavLink
-								exact={link.exact}
-								to={link.to}
-								className="navigation-link"
-								key={link.to}>
-								{link.displayName}
-							</NavLink>
-						))}
-					</Nav>
-				</Navbar.Collapse>
-			</Nav>
-		</Navbar>
+		<>
+			<div
+				className={`d-flex flex-column d-md-none fixed-top nav-bar-mobile nav-bar-mobile-${
+					isOpen ? "opened" : "closed"
+				}`}>
+				<MobileHead
+					isOpen={isOpen}
+					setOpen={() => setIsOpen(true)}
+					setClosed={() => setIsOpen(false)}
+				/>
+				{isOpen ? <MobileDropdown linkDefinitions={linkDefinitions} /> : null}
+			</div>
+		</>
+	);
+};
+
+const MobileHead = ({
+	isOpen,
+	setOpen,
+	setClosed
+}: {
+	isOpen: boolean;
+	setOpen: () => void;
+	setClosed: () => void;
+}) => {
+	const openButtonId = "navbar-open-btn";
+	const closeButtonId = "navbar-close-btn";
+
+	const openNavbar = () => {
+		setOpen();
+		animateCSS(`#${closeButtonId}`, "flipInY");
+	};
+
+	const closeNavBar = () => {
+		setClosed();
+		animateCSS(`#${openButtonId}`, "flipInY");
+	};
+	return (
+		<div className="w-100 d-flex justify-content-between">
+			<Brand className="navigation-brand ml-4" />
+			<span className="mr-4">
+				<HamburgerButton
+					id={openButtonId}
+					onClick={openNavbar}
+					style={{ display: isOpen ? "none" : "block" }}
+				/>
+				<CloseButton
+					id={closeButtonId}
+					onClick={closeNavBar}
+					style={{ display: isOpen ? "block" : "none" }}
+				/>
+			</span>
+		</div>
+	);
+};
+
+const MobileDropdown = ({
+	linkDefinitions
+}: {
+	linkDefinitions: ILinkDefinition[];
+}) => {
+	return (
+		<>
+			{linkDefinitions.map((link) => (
+				<p>{link.displayName}</p>
+			))}
+		</>
 	);
 };
 
