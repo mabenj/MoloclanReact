@@ -409,6 +409,10 @@ main {
 	}
 }
 
+.text-color {
+	color: $text-color;
+}
+
 .success-color {
 	color: $success-color;
 }
@@ -423,6 +427,10 @@ main {
 
 .orange-color-hover:hover {
 	color: $orange-color;
+}
+
+.dark-orange-color {
+	color: $dark-orange-color;
 }
 
 .light-grey-color {
