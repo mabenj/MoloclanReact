@@ -23,7 +23,9 @@ import {
 	faSave,
 	faTimes,
 	faCaretDown,
-	faCubes
+	faCubes,
+	faAngleDown,
+	faAngleUp
 } from "@fortawesome/free-solid-svg-icons";
 // Brands
 import {
@@ -54,7 +56,9 @@ library.add(
 	faTimes,
 	faCaretDown,
 	faCubes,
-	facMinecraft
+	facMinecraft,
+	faAngleDown,
+	faAngleUp
 );
 ////////////////////////// ICONS END //////////////////////////////////////
 
