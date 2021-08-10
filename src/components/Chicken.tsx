@@ -9,13 +9,7 @@ const chickens = chickenImageSources as IExternalMediaSource[];
 
 const FPS = 60;
 
-const style: React.CSSProperties = {
-	position: "absolute",
-	right: "40px",
-	top: "-5px"
-};
-
-const Chicken = () => {
+const Chicken = ({ style }: { style?: React.CSSProperties }) => {
 	const [isFlying, setIsFlying] = useState(false);
 
 	return (

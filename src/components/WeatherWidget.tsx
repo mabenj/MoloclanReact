@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import locationService from "../services/locationService";
 import weatherService, { IWeatherInfo } from "../services/weatherService";
 
-const WeatherWidget = ({ style }: { style: React.CSSProperties }) => {
+const WeatherWidget = ({ style }: { style?: React.CSSProperties }) => {
 	const [clientArea, setClientArea] = useState("");
 	const [weatherInfo, setWeatherInfo] = useState<IWeatherInfo>(
 		{} as IWeatherInfo

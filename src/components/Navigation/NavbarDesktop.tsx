@@ -7,6 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { ILinkDefinition } from "./Header";
 
+const chickenStyle: React.CSSProperties = {
+	position: "absolute",
+	right: "40px",
+	top: "-5px"
+};
+
 const NavbarDesktop = ({
 	className,
 	links
@@ -23,7 +29,7 @@ const NavbarDesktop = ({
 				<Navigation links={links} />
 			</Col>
 			<Col className="">
-				<Chicken />
+				<Chicken style={chickenStyle} />
 			</Col>
 		</Row>
 	);
@@ -94,7 +100,7 @@ const Link = ({ exact, to, displayName, subLinks }: ILinkDefinition) => {
 			{hasSubLinks ? (
 				<div className="dropdown-content">
 					<ul className="list-unstyled">
-						{subLinks.map(({ displayName, hash }, index) => (
+						{subLinks?.map(({ displayName, hash }, index) => (
 							<li key={hash} className="hvr-bounce-to-right">
 								<HashLink
 									to={`${to}#${hash}`}

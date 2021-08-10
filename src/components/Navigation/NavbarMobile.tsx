@@ -8,6 +8,9 @@ import { CloseButton, HamburgerButton } from "../Buttons";
 import { animateCSS } from "../../Utils";
 import { ILinkDefinition } from "./Header";
 
+import WeatherWidget from "../WeatherWidget";
+import Chicken from "../Chicken";
+
 const NavbarMobile = ({
 	className,
 	links
@@ -29,10 +32,25 @@ const NavbarMobile = ({
 					setClosed={() => setIsOpen(false)}
 				/>
 				{isOpen ? (
-					<MobileDropdown links={links} onClick={() => setIsOpen(false)} />
+					<>
+						<MobileToolbar />
+						<MobileDropdown
+							links={links}
+							handleClick={() => setIsOpen(false)}
+						/>
+					</>
 				) : null}
 			</div>
 		</>
+	);
+};
+
+const MobileToolbar = () => {
+	return (
+		<span className="w-100 px-4 py-2 d-flex justify-content-between">
+			<WeatherWidget />
+			<Chicken />
+		</span>
 	);
 };
 
@@ -58,7 +76,7 @@ const MobileHead = ({
 		animateCSS(`#${openButtonId}`, "flipInY");
 	};
 	return (
-		<div className="w-100 d-flex justify-content-between">
+		<div className={`nav-bar-mobile-head`}>
 			<Brand className="navigation-brand ml-4" />
 			<span className="mr-4">
 				<HamburgerButton
@@ -78,19 +96,18 @@ const MobileHead = ({
 
 const MobileDropdown = ({
 	links,
-	onClick
+	handleClick
 }: {
 	links: ILinkDefinition[];
-	onClick: () => void;
+	handleClick: () => void;
 }) => {
 	return (
 		<div className="d-flex flex-column w-100">
-			{links.map((link, i) => (
+			{links.map((link) => (
 				<MobileNavLink
 					key={link.displayName}
-					onClick={onClick}
+					handleClick={handleClick}
 					link={link}
-					isFirst={i === 0}
 				/>
 			))}
 		</div>
@@ -99,13 +116,11 @@ const MobileDropdown = ({
 
 const MobileNavLink = ({
 	link,
-	onClick,
-	key,
-	isFirst
+	handleClick,
+	key
 }: {
 	link: ILinkDefinition;
-	onClick: () => void;
-	isFirst: boolean;
+	handleClick: () => void;
 	key?: any;
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -116,48 +131,45 @@ const MobileNavLink = ({
 	};
 
 	return (
-		<span
-			className="pl-5"
-			style={{
-				borderBottom: "1px solid hsl(0, 0%, 67%)",
-				borderTop: isFirst ? "1px solid hsl(0, 0%, 67%)" : undefined
-			}}>
-			<span
-				key={key}
-				className="text-color w-100 d-flex justify-content-between align-items-center">
-				<NavLink
-					exact={link.exact}
-					to={link.to}
-					className="text-color py-4 w-75"
-					onClick={onClick}>
-					<h5 className="px-3 py-0 my-0 d-inline-block" style={linkHeaderStyle}>
-						{link.displayName}
-					</h5>
-				</NavLink>
-				{hasSubLinks ? (
-					<div className="p-4 w-25" onClick={() => setIsOpen((prev) => !prev)}>
-						<FontAwesomeIcon
-							icon={`angle-${isOpen ? "up" : "down"}`}
-							style={{
-								fontSize: "1.8rem"
-							}}
-						/>
-					</div>
+		<span key={key} className="px-4">
+			<span className="nav-bar-mobile-link">
+				<span className="nav-bar-mobile-link-header">
+					<NavLink
+						exact={link.exact}
+						to={{ pathname: link.to }}
+						target={link.target}
+						className={`py-4 pl-3 text-color w-${hasSubLinks ? "75" : "100"}`}
+						onClick={handleClick}>
+						<h5 className="px-2 d-inline-block" style={linkHeaderStyle}>
+							{link.displayName}
+						</h5>
+					</NavLink>
+					{hasSubLinks ? (
+						<div
+							className="py-4 pr-3 w-25"
+							onClick={() => setIsOpen((prev) => !prev)}>
+							<FontAwesomeIcon
+								icon={`angle-${isOpen ? "up" : "down"}`}
+								className="nav-bar-mobile-link-caret"
+								pull="right"
+							/>
+						</div>
+					) : null}
+				</span>
+				{hasSubLinks && isOpen ? (
+					<ul className="list-unstyled" onClick={handleClick}>
+						{link.subLinks?.map((subLink) => (
+							<li key={subLink.hash} className="pl-4 py-3">
+								<HashLink
+									to={`${link.to}#${subLink.hash}`}
+									className="text-color d-inline-block w-100">
+									{subLink.displayName}
+								</HashLink>
+							</li>
+						))}
+					</ul>
 				) : null}
 			</span>
-			{hasSubLinks && isOpen ? (
-				<ul className="list-unstyled" onClick={onClick}>
-					{link.subLinks.map((subLink) => (
-						<li key={subLink.hash} className="pl-3 py-3">
-							<HashLink
-								to={`${link.to}#${subLink.hash}`}
-								className="text-color d-inline-block w-100">
-								{subLink.displayName}
-							</HashLink>
-						</li>
-					))}
-				</ul>
-			) : null}
 		</span>
 	);
 };

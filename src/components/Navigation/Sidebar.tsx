@@ -6,7 +6,7 @@ import { animateCSS } from "../../Utils";
 
 import sidebarLinkDefinitions from "./sidebar-link-definitions.json";
 
-interface ISidebarLink {
+export interface ISidebarLink {
 	displayName: string;
 	pathname: string;
 	target?: "_blank" | "_self";

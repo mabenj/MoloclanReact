@@ -99,12 +99,16 @@ code {
 	display: flex;
 	align-items: center;
 	padding-bottom: 30px;
-	transition: height 0.1s;
+	transition: height 0.5s;
 }
 
 .nav-bar-mobile-opened {
-	height: 100vh;
+	min-height: 100vh;
+	height: 100%;
+	overflow-y: scroll;
 	background: $navigation-bg-color;
+	transition: height 0.2s;
+	backdrop-filter: blur(5px);
 }
 
 .nav-bar-mobile-closed {
@@ -114,6 +118,34 @@ code {
 		60%,
 		rgba($navigation-bg-color, 0)
 	);
+}
+
+.nav-bar-mobile-head {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-bar-mobile-link {
+	display: inline-block;
+	width: 100%;
+	border-bottom: 1px solid rgba($text-color, 0.2);
+
+	.nav-bar-mobile-link-header {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.nav-bar-mobile-link-caret {
+			color: $text-color;
+			font-size: 1.8rem;
+		}
+	}
+}
+
+.nav-bar-mobile-link.first {
+	border-top: 1px solid rgba($text-color, 0.2);
 }
 
 .navigation-bar {
@@ -176,12 +208,6 @@ $mobile-bar-height: 70px;
 		padding: 10px 20px;
 	}
 }
-// @media (max-width: $md) {
-// 	body {
-// 		padding-top: $mobile-bar-height;
-// 		background-position: 0 $mobile-bar-height;
-// 	}
-// }
 
 .navbar-brand {
 	font-size: 2rem;
@@ -191,19 +217,6 @@ $mobile-bar-height: 70px;
 .navbar-brand:hover {
 	color: $text-color;
 }
-
-// currently not in use (bootstrap navbar from md and down)
-// @media (max-width: $md) {
-// 	.navigation-bar {
-// 		width: auto;
-// 		padding-bottom: initial;
-// 	}
-
-// 	.navigation-bar-middle {
-// 		align-items: center;
-// 		padding: 0 20px;
-// 	}
-// }
 
 .sidebar {
 	display: flex;
@@ -318,8 +331,6 @@ main {
 
 .back-blur {
 	backdrop-filter: blur(5px);
-	-moz-backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
 	transition: backdrop-filter 1500ms;
 }
 
