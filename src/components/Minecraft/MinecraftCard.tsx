@@ -49,7 +49,7 @@ const MinecraftCard = () => {
 export default MinecraftCard;
 
 const Container = ({ children }: { children?: React.ReactNode }) => {
-	return <div children={children} className="rounded mc-container"></div>;
+	return <div children={children} className="rounded mc-container" />;
 };
 
 const BackgroundContainer = ({ children }: { children?: React.ReactNode }) => {
