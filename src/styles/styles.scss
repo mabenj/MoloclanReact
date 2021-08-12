@@ -319,13 +319,19 @@ main {
 	border-image-width: 1px;
 	border-bottom: 0;
 	border-radius: 0 0 10px 10px;
-	text-align: justify;
+
+	p {
+		text-align: justify;
+	}
 }
 @media (max-width: $lg) {
 	.wrapper {
 		padding: 30px 10px;
-		text-align: initial;
 		margin: 110px 0;
+
+		p {
+			text-align: initial;
+		}
 	}
 }
 

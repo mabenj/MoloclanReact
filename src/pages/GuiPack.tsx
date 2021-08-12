@@ -25,7 +25,7 @@ export default function GuiPack() {
 		<Wrapper>
 			<h1>GUI-Pack</h1>
 			<Row>
-				<Col xs={9}>
+				<Col md={9}>
 					{/* cSpell: disable */}
 					<p>
 						GUI Pack on Minecraft-resurssipaketti. GUI Pack muuttaa ainoastaan
@@ -44,7 +44,7 @@ export default function GuiPack() {
 						</small>
 					</p>
 				</Col>
-				<Col>
+				<Col md={3}>
 					<GuiPackIcon />
 				</Col>
 			</Row>
