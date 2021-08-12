@@ -89,7 +89,7 @@ const RenderImage = <T extends CustomRenderImageProps>({
 		thumbnailSize: photo.thumbnailSize,
 		style: { margin, top, left }
 	};
-	return <MediaComponent {...props} />;
+	return <MediaComponent key={photo.key} {...props} />;
 };
 
 const formatGalleryMedia = (
@@ -114,7 +114,7 @@ const formatGalleryMedia = (
 			width: media.width,
 			height: media.height,
 			alt: media.desc,
-			key: media.id
+			key: media.id + media.desc
 		};
 		if (media.provider === "youtube") {
 			if (youtubeAsIframe) {

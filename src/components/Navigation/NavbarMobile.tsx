@@ -105,7 +105,7 @@ const MobileDropdown = ({
 		<div className="d-flex flex-column w-100">
 			{links.map((link) => (
 				<MobileNavLink
-					key={link.displayName}
+					key={Math.random()}
 					handleClick={handleClick}
 					link={link}
 				/>
@@ -116,12 +116,10 @@ const MobileDropdown = ({
 
 const MobileNavLink = ({
 	link,
-	handleClick,
-	key
+	handleClick
 }: {
 	link: ILinkDefinition;
 	handleClick: () => void;
-	key?: any;
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const hasSubLinks = link.subLinks && link.subLinks.length > 0;
@@ -131,7 +129,7 @@ const MobileNavLink = ({
 	};
 
 	return (
-		<span key={key} className="px-4">
+		<span className="px-4">
 			<span className="nav-bar-mobile-link">
 				<span className="nav-bar-mobile-link-header">
 					<NavLink
@@ -159,7 +157,7 @@ const MobileNavLink = ({
 				{hasSubLinks && isOpen ? (
 					<ul className="list-unstyled" onClick={handleClick}>
 						{link.subLinks?.map((subLink) => (
-							<li key={subLink.hash} className="pl-4 py-3">
+							<li key={link.to + subLink.hash} className="pl-4 py-3">
 								<HashLink
 									to={`${link.to}#${subLink.hash}`}
 									className="text-color d-inline-block w-100">

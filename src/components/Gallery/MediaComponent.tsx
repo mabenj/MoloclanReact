@@ -72,7 +72,6 @@ const MediaVideo = (props: IMediaComponentProps) => {
 		<>
 			<video
 				ref={videoRef}
-				key={props.id}
 				controls
 				poster={props.posterSrc}
 				style={props.style}>
@@ -88,12 +87,7 @@ const MediaVideo = (props: IMediaComponentProps) => {
 
 const MediaTiltableImage = (props: IMediaComponentProps) => {
 	return (
-		<Tilty
-			key={props.id}
-			max={25}
-			perspective={1500}
-			speed={1000}
-			className="gallery-tilty">
+		<Tilty max={25} perspective={1500} speed={1000} className="gallery-tilty">
 			<img
 				src={props.src}
 				alt={props.desc}
@@ -112,7 +106,6 @@ const MediaIframe = (props: IMediaComponentProps) => {
 	);
 	return (
 		<iframe
-			key={props.id}
 			src={props.src}
 			title={props.desc}
 			style={iFrameStyle}
