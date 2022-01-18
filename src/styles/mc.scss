@@ -36,8 +36,6 @@ $sm: 576px;
 }
 
 .mc-bg-container:hover {
-	cursor: pointer;
-
 	.mc-bg-image {
 		transform: scale($hover-scale-bg);
 	}
@@ -56,15 +54,35 @@ $sm: 576px;
 		font-weight: 700;
 	}
 
-	.mc-fav-icon {
-		height: $fav-icon-height;
+	.mc-fav-icon-container {
 		background-color: $fav-icon-bg;
-		border: 1px solid $fav-icon-bg;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+
+		border: 0 solid $fav-icon-bg;
 		border-radius: 99999px;
-		box-shadow: 0 0 10px $fav-icon-bg;
+
 		position: relative;
 		top: 20px;
 		margin-right: 20px;
+		overflow: hidden;
+		z-index: 5;
+	}
+
+	.mc-fav-icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		height: $fav-icon-height;
+		width: $fav-icon-height;
+	}
+
+	.mc-dark-bg {
+		backdrop-filter: blur(1px) brightness(50%);
+		border: 3px solid rgba($fav-icon-bg, 0.5);
+		border-radius: 99999px;
 	}
 }
 
@@ -73,6 +91,11 @@ $sm: 576px;
 	min-height: 100px;
 	height: 100%;
 	width: 100%;
+
+	.mc-playerlist-loader {
+		display: flex;
+		z-index: 2;
+	}
 
 	.mc-playerlist-status {
 		height: 20%;

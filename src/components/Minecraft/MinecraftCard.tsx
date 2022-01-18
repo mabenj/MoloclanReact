@@ -3,9 +3,9 @@ import minecraftService, { IPlayer } from "../../services/minecraftService";
 import { getImgurUrl } from "../../Utils";
 
 import "../../styles/mc.scss";
+import { BarLoader, ClipLoader } from "react-spinners";
 
 const BG_IMAGE_ID = "gbizRgN";
-const BG_IMAGE = getImgurUrl(BG_IMAGE_ID, "", ".png");
 const BG_IMAGE_TN = getImgurUrl(BG_IMAGE_ID, "h", ".png");
 
 const FALLBACK_FAVICON = "https://i.imgur.com/8XKJwE8t.jpg";
@@ -17,6 +17,7 @@ const MinecraftCard = () => {
 	const [players, setPlayers] = useState<IPlayer[]>([]);
 	const [playerCount, setPlayerCount] = useState(0);
 	const [isOffline, setIsOffline] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [favIcon, setFavIcon] = useState(FALLBACK_FAVICON);
 
 	useEffect(() => {
@@ -26,6 +27,8 @@ const MinecraftCard = () => {
 			setPlayers(players);
 			setPlayerCount(playerCount);
 			setIsOffline(!isOnline);
+			await sleep(4000);
+			setIsLoading(false);
 			setFavIcon((prev) => favIcon || prev);
 		}
 		fetchServerInfo();
@@ -35,12 +38,13 @@ const MinecraftCard = () => {
 		<Container>
 			<BackgroundContainer>
 				<BackgroundImage />
-				<Title favIcon={favIcon} />
+				<Title favIcon={favIcon} isLoading={isLoading} />
 			</BackgroundContainer>
 			<PlayerList
 				players={players}
 				totalPlayerCount={playerCount}
 				isOffline={isOffline}
+				isLoading={isLoading}
 			/>
 		</Container>
 	);
@@ -55,7 +59,6 @@ const Container = ({ children }: { children?: React.ReactNode }) => {
 const BackgroundContainer = ({ children }: { children?: React.ReactNode }) => {
 	const handleClick = (e: React.MouseEvent) => {
 		e.preventDefault();
-		window.open(BG_IMAGE, "_blank");
 	};
 
 	return (
@@ -79,11 +82,25 @@ const BackgroundImage = () => {
 	return <div ref={bgRef} className="mc-bg-image" />;
 };
 
-const Title = ({ favIcon }: { favIcon: string }) => {
+const Title = ({
+	favIcon,
+	isLoading
+}: {
+	favIcon: string;
+	isLoading: boolean;
+}) => {
 	return (
 		<span className={"mc-title"}>
 			<h4 className="ml-2">MOLOCRAFT</h4>
-			<img className="mc-fav-icon" src={favIcon} alt="favicon" />
+			<div
+				className="mc-fav-icon-container"
+				style={{
+					backgroundImage: `url('${favIcon}')`
+				}}>
+				<div className={`mc-fav-icon ${isLoading ? "mc-dark-bg" : ""}`}>
+					<ClipLoader loading={isLoading} size={45} color="white" />
+				</div>
+			</div>
 		</span>
 	);
 };
@@ -91,14 +108,19 @@ const Title = ({ favIcon }: { favIcon: string }) => {
 const PlayerList = ({
 	players,
 	totalPlayerCount,
-	isOffline
+	isOffline,
+	isLoading
 }: {
 	players: IPlayer[];
 	totalPlayerCount: number;
 	isOffline: boolean;
+	isLoading: boolean;
 }) => {
 	return (
 		<div className="mc-playerlist">
+			<div className="mc-playerlist-loader">
+				<BarLoader loading={isLoading} color="white" width="100%" height={5} />
+			</div>
 			<StatusText
 				isOffline={isOffline}
 				playerCount={totalPlayerCount}
@@ -111,11 +133,11 @@ const PlayerList = ({
 						<p className="d-block text-break text-center">{name}</p>
 					</span>
 				))}
-				{players.length === 0 ? (
+				{players.length === 0 && !isLoading && (
 					<small className="text-muted">
 						<em>Hiljast o...</em>
 					</small>
-				) : null}
+				)}
 			</div>
 		</div>
 	);
@@ -144,4 +166,8 @@ const StatusText = ({
 			)}
 		</h4>
 	);
+};
+
+const sleep = (milliseconds: number) => {
+	return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };
