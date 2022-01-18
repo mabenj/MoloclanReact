@@ -3,36 +3,6 @@ import { Link } from "react-router-dom";
 import MoloLogo from "../components/MoloLogo/MoloLogo";
 import Wrapper from "../components/Wrapper";
 
-const OfflineRaidMeme = () => (
-	<img
-		className="d-block rounded mx-auto my-5 front-page-image"
-		src="https://i.imgur.com/qT3VtMt.jpg"
-		alt="molo offline raid meme"
-	/>
-);
-
-const RoofCampImage = () => (
-	<div
-		style={{
-			display: "flex",
-			flexDirection: "column",
-			alignItems: "center"
-		}}>
-		<figure>
-			<img
-				className="rounded front-page-image"
-				width="400px"
-				src="https://i.imgur.com/3WC3Ddp.jpg"
-				alt="Roof camper by veys_ryu"
-			/>
-			<figcaption className="text-muted">
-				{/* cSpell: disable */}
-				Kala Harri wipen viimeineisenä päivänä <br />- heinäkuu 2016, väritetty
-			</figcaption>
-		</figure>
-	</div>
-);
-
 export default function Home() {
 	return (
 		<>
@@ -66,7 +36,12 @@ export default function Home() {
 					pelaamisen ja sen myötä aamuyön pikkutunneille sijoittuvien{" "}
 					<em>offline</em>-raidien järjestämisen.
 				</p>
-				<OfflineRaidMeme />
+				<FrontPageImage
+					src="https://i.imgur.com/qT3VtMt.jpg"
+					alt="molo offline raid meme"
+					caption="Kuvituskuva offline-raidista"
+					className="my-5"
+				/>
 
 				<Row>
 					<Col lg>
@@ -82,8 +57,17 @@ export default function Home() {
 							noin 5€.
 						</p>
 					</Col>
-					<Col lg>
-						<RoofCampImage />
+					<Col lg={5}>
+						<FrontPageImage
+							src="https://i.imgur.com/3WC3Ddp.jpg"
+							alt="Roof camper by veys_ryu"
+							caption={
+								<>
+									Kala Harri wipen viimeineisenä päivänä <br />- heinäkuu 2016,
+									väritetty
+								</>
+							}
+						/>
 					</Col>
 				</Row>
 				{/* cSpell: enable */}
@@ -91,3 +75,30 @@ export default function Home() {
 		</>
 	);
 }
+
+const FrontPageImage = ({
+	src,
+	alt,
+	caption,
+	className
+}: {
+	src: string;
+	alt: string;
+	caption: React.ReactNode;
+	className?: string;
+}) => {
+	return (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center"
+			}}
+			className={className}>
+			<figure>
+				<img className="rounded" width="100%" src={src} alt={alt} />
+				<figcaption className="text-muted">{caption}</figcaption>
+			</figure>
+		</div>
+	);
+};

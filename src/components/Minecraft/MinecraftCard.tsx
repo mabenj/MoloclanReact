@@ -27,7 +27,6 @@ const MinecraftCard = () => {
 			setPlayers(players);
 			setPlayerCount(playerCount);
 			setIsOffline(!isOnline);
-			await sleep(4000);
 			setIsLoading(false);
 			setFavIcon((prev) => favIcon || prev);
 		}
@@ -166,8 +165,4 @@ const StatusText = ({
 			)}
 		</h4>
 	);
-};
-
-const sleep = (milliseconds: number) => {
-	return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };

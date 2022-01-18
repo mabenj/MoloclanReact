@@ -29,7 +29,7 @@ const Footer = () => {
 
 const Contact = () => {
 	return (
-		<>
+		<div className="footer-block">
 			<h4 className="text-white pb-2">
 				Pääkonttori&nbsp;
 				<FontAwesomeIcon icon={["far", "building"]} />
@@ -43,13 +43,13 @@ const Contact = () => {
 					<li className="text-white">+358 420 609 000</li>
 				</ul>
 			</address>
-		</>
+		</div>
 	);
 };
 
 const Other = () => {
 	return (
-		<>
+		<div className="footer-block">
 			<h4 className="text-white pb-2">
 				Sivubisnekset&nbsp;
 				<FontAwesomeIcon icon="hand-holding-usd" />
@@ -80,7 +80,7 @@ const Other = () => {
 					</a>
 				</li>
 			</ul>
-		</>
+		</div>
 	);
 };
 

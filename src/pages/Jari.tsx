@@ -65,7 +65,10 @@ export default function Jari() {
 						</abbr>{" "}
 						ja mellakkakilven kanssa sekoilu ruotsalaisen Anomalyn striimissä.
 						Lisää Jarista ja Jarin kohelluksista löydät Jarin{" "}
-						<a href="https://jarioy.club/" target="_blank" rel="noreferrer">
+						<a
+							href="https://jariclub.moloclan.fi/"
+							target="_blank"
+							rel="noreferrer">
 							fanisivustolta
 						</a>{" "}
 						ja{" "}
