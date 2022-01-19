@@ -5,10 +5,10 @@ import { getImgurUrl } from "../../Utils";
 import "../../styles/mc.scss";
 import { BarLoader, ClipLoader } from "react-spinners";
 
+const MENTULA_FAV_ICON = "https://i.imgur.com/8XKJwE8t.jpg";
+
 const BG_IMAGE_ID = "gbizRgN";
 const BG_IMAGE_TN = getImgurUrl(BG_IMAGE_ID, "h", ".png");
-
-const FALLBACK_FAVICON = "https://i.imgur.com/8XKJwE8t.jpg";
 
 const AVATAR_WIDTH = 40;
 const PLAYERS_TO_TAKE = 12;
@@ -18,7 +18,7 @@ const MinecraftCard = () => {
 	const [playerCount, setPlayerCount] = useState(0);
 	const [isOffline, setIsOffline] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
-	const [favIcon, setFavIcon] = useState(FALLBACK_FAVICON);
+	const [favIcon, setFavIcon] = useState<string | null>(null);
 
 	useEffect(() => {
 		async function fetchServerInfo(): Promise<void> {
@@ -85,19 +85,40 @@ const Title = ({
 	favIcon,
 	isLoading
 }: {
-	favIcon: string;
+	favIcon: string | null;
 	isLoading: boolean;
 }) => {
+	const [isIconLoaded, setIsIconLoaded] = useState(false);
+	const [favIconImage, setFavIconImage] = useState<HTMLImageElement>();
+
+	useEffect(() => {
+		setIsIconLoaded(!isLoading);
+		if (favIcon === null) return;
+		const image = new Image();
+		image.onload = () => setIsIconLoaded(true);
+		image.src = favIcon;
+		setFavIconImage(image);
+	}, [favIcon, isLoading]);
+
 	return (
 		<span className={"mc-title"}>
 			<h4 className="ml-2">MOLOCRAFT</h4>
 			<div
 				className="mc-fav-icon-container"
 				style={{
-					backgroundImage: `url('${favIcon}')`
+					backgroundImage: `url('${
+						isIconLoaded && favIconImage?.src ? favIconImage?.src : MENTULA_FAV_ICON
+					}')`
 				}}>
-				<div className={`mc-fav-icon ${isLoading ? "mc-dark-bg" : ""}`}>
-					<ClipLoader loading={isLoading} size={45} color="white" />
+				<div
+					className={`mc-fav-icon ${
+						isLoading || !isIconLoaded ? "mc-dark-bg" : ""
+					}`}>
+					<ClipLoader
+						loading={isLoading || !isIconLoaded}
+						size={45}
+						color="white"
+					/>
 				</div>
 			</div>
 		</span>
