@@ -8,18 +8,30 @@ import Wrapper from "../components/Wrapper";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const TEAMSPEAK_URL_ARRAY = [
-	"ts3server://tessu.moloclan.fi?port=7010",
-	"ts3server://ts.moloclan.fi?port=7010"
+	{
+		displayUrl: "*****.moloclan.fi",
+		url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+	}
 ];
-const MINECRAFT_URL_ARRAY = ["mine.moloclan.fi", "mc.moloclan.fi"];
+const MINECRAFT_URL_ARRAY = [
+	{
+		displayUrl: "mine.moloclan.fi",
+		url: "mine.moloclan.fi"
+	},
+	{
+		displayUrl: "mc.moloclan.fi",
+		url: "mc.moloclan.fi"
+	}
+];
 
 const TEAMSPEAK_FA_ICON: IconProp = ["fab", "teamspeak"];
 const DISCORD_FA_ICON: IconProp = ["fab", "discord"];
 const MINECRAFT_FA_ICON: IconProp = ["fac", "minecraft"];
 
-const MINECRAFT_MAP_URL =
-	"https://moloclan.fi/map" ||
-	"https://map.hearthcraft.net/?worldname=SMP_Map3_9&mapname=flat&zoom=4&x=113&y=64&z=95";
+const MINECRAFT_MAP_URL = {
+	displayUrl: "https://moloclan.fi/map",
+	url: "https://moloclan.fi/map"
+};
 
 export default function Servers() {
 	return (
@@ -47,7 +59,7 @@ export default function Servers() {
 					faIcon={MINECRAFT_FA_ICON}
 				/>
 				<ServerSection
-					serverComponent={<MinecraftMap mapUrl={MINECRAFT_MAP_URL} />}
+					serverComponent={<MinecraftMap mapUrl={MINECRAFT_MAP_URL.url} />}
 					infoComponent={
 						<ServerIPInfo
 							urlArray={[MINECRAFT_MAP_URL]}

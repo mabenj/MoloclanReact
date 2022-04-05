@@ -1,5 +1,4 @@
 import { CopyButton, OpenButton } from "../Buttons";
-import { trimProtocolAndQueryString } from "../../Utils";
 
 const ServerIPInfo = ({
 	urlArray,
@@ -7,7 +6,7 @@ const ServerIPInfo = ({
 	linkVerb = "",
 	header = "IP-Osoite"
 }: {
-	urlArray: string[];
+	urlArray: { url: string; displayUrl: string }[];
 	linkVerb?: string;
 	isLink?: boolean;
 	header?: string;
@@ -15,18 +14,16 @@ const ServerIPInfo = ({
 	return (
 		<>
 			<h5 className="text-uppercase">{header}</h5>
-			{urlArray.map((url) => (
-				<div key={url} className="server-info">
+			{urlArray.map(({ url, displayUrl }) => (
+				<div key={displayUrl} className="server-info">
 					{isLink ? (
 						<code>
 							<a href={url} target="_blank" rel="noreferrer">
-								{trimProtocolAndQueryString(url)}
+								{displayUrl}
 							</a>
 						</code>
 					) : (
-						<code className="user-select-all">
-							{trimProtocolAndQueryString(url)}
-						</code>
+						<code className="user-select-all">{displayUrl}</code>
 					)}
 					<span>
 						{isLink ? <OpenButton href={url} verb={linkVerb} /> : null}

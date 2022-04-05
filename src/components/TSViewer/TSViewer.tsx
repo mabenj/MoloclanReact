@@ -1,6 +1,6 @@
 import { useEffect } from "react";
+import { waitForElements, waitForElementsAndDelete } from "../../Utils";
 import TSVConfig from "./tsviewer-config.json";
-import { waitForElemAndDelete } from "../../Utils";
 
 interface ITSViewerConfig {
 	loaderUrl: string;
@@ -20,11 +20,11 @@ const TSViewer = () => {
 		const script = document.createElement("script");
 		script.async = true;
 		script.src = config.loaderUrl;
-		script.onload = () => {
+		script.onload = async () => {
 			const ts3v_url_1 = config.viewerUrl;
 			// @ts-ignore
 			ts3v_display.init(ts3v_url_1, config.id, 100);
-			elementsToDelete.forEach(waitForElemAndDelete);
+			removeUnnecessaryStuff();
 		};
 		document.body.appendChild(script);
 	}, []);
@@ -35,5 +35,34 @@ const TSViewer = () => {
 		</div>
 	);
 };
+
+async function removeUnnecessaryStuff() {
+	elementsToDelete.forEach(waitForElementsAndDelete);
+
+	const title = (((await waitForElements(
+		"[title='Connect to TeamSpeak 3 Server']"
+	)) as NodeListOf<HTMLAnchorElement>) || [])[0];
+	if (title) {
+		title.href = "";
+		title.title = "";
+	}
+
+	const usersCounter = (((await waitForElements(
+		"[title='More Details at TSViewer.com']"
+	)) as NodeListOf<HTMLAnchorElement>) || [])[0];
+	if (usersCounter) {
+		usersCounter.href = "";
+		usersCounter.title = "";
+		usersCounter.target = "_self";
+	}
+
+	const users = (await waitForElements(
+		".tsv_level.tsv_user"
+	)) as NodeListOf<HTMLDivElement>;
+	users.forEach((user) => {
+		const newUserElement = user.cloneNode(true);
+		user.parentNode?.replaceChild(newUserElement, user);
+	});
+}
 
 export default TSViewer;

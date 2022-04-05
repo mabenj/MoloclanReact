@@ -37,15 +37,17 @@ export function getYoutubeThumbnailUrl(id: string) {
 }
 
 // https://stackoverflow.com/a/61511955
-export function waitForElem(selector: string): Promise<Element | null> {
-	return new Promise<Element | null>((resolve) => {
-		if (document.querySelector(selector)) {
-			resolve(document.querySelector(selector));
+export function waitForElements(
+	selector: string
+): Promise<NodeListOf<Element> | null> {
+	return new Promise<NodeListOf<Element> | null>((resolve) => {
+		if (document.querySelectorAll(selector).length > 0) {
+			resolve(document.querySelectorAll(selector));
 		}
 
 		const observer = new MutationObserver(() => {
-			if (document.querySelector(selector)) {
-				resolve(document.querySelector(selector));
+			if (document.querySelectorAll(selector).length > 0) {
+				resolve(document.querySelectorAll(selector));
 				observer.disconnect();
 			}
 		});
@@ -57,9 +59,11 @@ export function waitForElem(selector: string): Promise<Element | null> {
 	});
 }
 
-export async function waitForElemAndDelete(selector: string): Promise<void> {
-	const elem = await waitForElem(selector);
-	elem?.parentNode?.removeChild(elem);
+export async function waitForElementsAndDelete(
+	selector: string
+): Promise<void> {
+	const elements = await waitForElements(selector);
+	elements?.forEach((element) => element?.parentNode?.removeChild(element));
 }
 
 export function scrollToElementSmooth(selector: string): void {

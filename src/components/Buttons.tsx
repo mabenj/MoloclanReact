@@ -1,7 +1,6 @@
 import React, { useState, useRef, HTMLAttributes } from "react";
 import { Button, Overlay, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { trimProtocolAndQueryString } from "../Utils";
 
 const TOOLTIP_DURATION = 1000;
 
@@ -10,8 +9,7 @@ export const CopyButton = ({ targetText }: { targetText: string }) => {
 	const targetRef = useRef<HTMLSpanElement>(null);
 
 	const handleCopy: React.MouseEventHandler<HTMLElement> = (_e) => {
-		const textToCopy = trimProtocolAndQueryString(targetText);
-		navigator.clipboard.writeText(textToCopy);
+		navigator.clipboard.writeText(targetText);
 		setShowTooltip(true);
 		setTimeout(() => {
 			setShowTooltip(false);
