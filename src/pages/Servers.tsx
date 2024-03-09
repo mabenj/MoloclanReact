@@ -9,8 +9,8 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const TEAMSPEAK_URL_ARRAY = [
 	{
-		displayUrl: "*****.moloclan.fi",
-		url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+		displayUrl: "ts.moloclan.fi",
+		url: "ts.moloclan.fi"
 	}
 ];
 const MINECRAFT_URL_ARRAY = [
